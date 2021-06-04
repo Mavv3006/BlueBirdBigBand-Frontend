@@ -1,0 +1,92 @@
+@import "../../colors.scss";
+
+:host {
+  width: 100%;
+}
+
+#menu{
+  display: flex;
+  gap: 36px;
+  align-content: center;
+  justify-content: center;
+}
+
+label,
+#menu > li > a {
+  position: relative;
+  display: block;
+  padding: 0 18px 0 12px;
+  line-height: 3em;
+  transition: background 0.3s;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: 5px;
+  width: 0;
+  height: 0;
+  border-top: 4px solid $bigband-red;
+  border-bottom: 0 solid $bigband-red;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  transition: border-bottom 0.1s, border-top 0.1s 0.1s;
+}
+
+label:hover,
+input:checked ~ label,
+#menu > li > a:hover {
+  color: $yellow;
+}
+
+input:checked ~ label:after {
+  border-top: 4px solid $bigband-red;
+  border-bottom: 0 solid $bigband-red;
+  transition: border-top 0.1s, border-bottom 0.1s 0.1s;
+}
+
+/*hide the inputs*/
+input {
+  display: none;
+}
+
+/*show the second levele menu of the selected voice*/
+input:checked ~ ul.submenu {
+  max-height: 300px;
+  transition: max-height 0.25s ease-in;
+}
+
+/*style for the second level menu*/
+ul.submenu {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+  background: $bigband-red;
+  transition: max-height 0.25s ease-out;
+  position: absolute;
+  min-width: 140px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+ul.submenu li a {
+  display: block;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.25s;
+  white-space: nowrap;
+}
+
+ul.submenu li a:hover {
+  background-color: #ff4133;
+}
