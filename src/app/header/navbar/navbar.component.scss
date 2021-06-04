@@ -1,0 +1,23 @@
+:host {
+  width: 100%;
+  ul {
+    list-style: none;
+  }
+}
+
+.main-menu {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  > li {
+    padding: 17px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    a {
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
+}
