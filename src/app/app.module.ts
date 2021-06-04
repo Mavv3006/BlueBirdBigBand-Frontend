@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
-import { DropdownComponent } from './header/dropdown/dropdown.component';
 import { NavbarComponent } from './header/navbar/navbar.component';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { NavbarComponent } from './header/navbar/navbar.component';
     AppComponent,
     HeaderComponent,
     MainComponent,
-    DropdownComponent,
     NavbarComponent,
   ],
   imports: [
