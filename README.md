@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Code Guidelines
+
+- HTML - https://google.github.io/styleguide/htmlcssguide.html
+- CSS - BEM - https://github.com/airbnb/css
+- SCSS - https://sass-guidelin.es/
+- JavaScript - https://github.com/airbnb/javascript
