@@ -7,6 +7,7 @@ import { MusiciansComponent } from './musicians/musicians.component';
 import { JourneyComponent } from './journey/journey.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { LegalNotesComponent } from './legal-notes/legal-notes.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -18,7 +19,8 @@ import { LegalNotesComponent } from './legal-notes/legal-notes.component';
     MusiciansComponent,
     JourneyComponent,
     AboutUsComponent,
-    LegalNotesComponent
+    LegalNotesComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule
