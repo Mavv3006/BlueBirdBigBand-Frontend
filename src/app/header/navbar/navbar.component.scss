@@ -11,7 +11,6 @@
   justify-content: center;
 }
 
-label,
 #menu > li > a,
 .nav-container {
   position: relative;
@@ -27,7 +26,6 @@ label,
   letter-spacing: 1px;
 }
 
-label:after,
 .nav-container:after {
   content: "";
   position: absolute;
@@ -43,56 +41,10 @@ label:after,
   transition: border-bottom 0.1s, border-top 0.1s 0.1s;
 }
 
-label:hover,
-input:checked ~ label,
 #menu > li > a:hover,
 .nav-container:hover,
 .nav-container:active {
   color: $yellow;
-}
-
-input:checked ~ label:after {
-  border-top: 4px solid $bigband-red;
-  border-bottom: 0 solid $bigband-red;
-  transition: border-top 0.1s, border-bottom 0.1s 0.1s;
-}
-
-/*hide the inputs*/
-input {
-  display: none;
-}
-
-/*show the second level menu of the selected voice*/
-input:checked ~ ul.submenu {
-  max-height: 300px;
-  transition: max-height 0.25s ease-in;
-}
-
-/*style for the second level menu*/
-ul.submenu {
-  max-height: 0;
-  padding: 0;
-  overflow: hidden;
-  list-style-type: none;
-  background: $bigband-red;
-  transition: max-height 0.25s ease-out;
-  position: absolute;
-  min-width: 140px;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-}
-
-ul.submenu li a {
-  display: block;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  transition: background 0.25s;
-  white-space: nowrap;
-}
-
-ul.submenu li a:hover {
-  background-color: #ff4133;
 }
 
 .mat-menu-content {
@@ -124,4 +76,9 @@ ul.submenu li a:hover {
     padding-top: 0;
     padding-bottom: 0;
   }
+}
+
+.mat-submenu a {
+  color: inherit;
+  text-decoration: none;
 }
