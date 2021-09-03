@@ -8,5 +8,9 @@ export interface Concert {
     number: string,
     plz: number,
     name: string
+  },
+  description: {
+    organizer: string,
+    place: string
   }
 }

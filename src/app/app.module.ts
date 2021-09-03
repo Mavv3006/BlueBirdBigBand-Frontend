@@ -10,19 +10,14 @@ import { NavbarComponent } from './header/navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MainComponent,
-    NavbarComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, MainComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

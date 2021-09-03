@@ -7,7 +7,7 @@ import { Environment } from "./environment-interface";
 export const environment: Environment = {
   production: false,
   concerts: {
-    upcoming_url: "https://api.bluebirdbigband.de/upcoming" //"http://localhost:8080/upcoming"
+    upcoming_url: "http://localhost:8080/upcoming"
   }
 };
 

@@ -5,20 +5,38 @@ import { ConcertService } from 'src/app/services/concert.service';
 @Component({
   selector: 'app-concerts',
   templateUrl: './concerts.component.html',
-  styleUrls: ['./concerts.component.scss']
+  styleUrls: ['./concerts.component.scss'],
 })
-export class ConcertsComponent implements OnInit{
+export class ConcertsComponent implements OnInit {
+  private _date_formatting_options: any = {
+    weekday: 'long',
+    year: 'numeric',
+    month: '2-digit',
+    day: 'numeric',
+  };
 
-  concerts: Concert[] | undefined;
+  concerts: Concert[] = [];
 
-  constructor(private concertService: ConcertService) {  }
+  constructor(private _concertService: ConcertService) {}
 
   ngOnInit(): void {
-    this.concertService
-      .upcoming()
-      .subscribe((data: Concert[]) => {
-        this.concerts = { ...data };
-        console.debug( this.concerts);
-      });
+    this._concertService.upcoming().subscribe((data) => (this.concerts = data));
+  }
+
+  createDay(concert: Concert): string {
+    return new Date(concert.date).toLocaleDateString(
+      'de-DE',
+      this._date_formatting_options
+    );
+  }
+
+  play_time(concert: Concert): string {
+    return (
+      concert.start_time.substr(0, 5) +
+      ' Uhr - ' +
+      concert.end_time.substr(0, 5) +
+      ' Uhr | ' +
+      concert.description.organizer
+    );
   }
 }
