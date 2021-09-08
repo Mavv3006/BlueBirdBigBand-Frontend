@@ -8,9 +8,9 @@ describe('ConcertsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ConcertsPageComponent]
-    })
-      .compileComponents();
+      declarations: [ConcertsPageComponent],
+    }).compileComponents();
+
   });
 
   beforeEach(() => {

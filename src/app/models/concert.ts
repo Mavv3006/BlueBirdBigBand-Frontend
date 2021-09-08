@@ -1,8 +1,8 @@
 export interface Concert {
-  date: string,
-  start_time: string,
-  end_time: string,
-  band_name: string,
+  date: string;
+  start_time: string;
+  end_time: string;
+  band_name: string;
   location: {
     street: string,
     number: string,
@@ -13,4 +13,3 @@ export interface Concert {
     organizer: string,
     place: string
   }
-}
