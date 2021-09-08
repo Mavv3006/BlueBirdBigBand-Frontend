@@ -4,13 +4,12 @@ export interface Concert {
   end_time: string;
   band_name: string;
   location: {
-    street: string;
-    number: string;
-    plz: number;
-    name: string;
-  };
+    street: string,
+    number: string,
+    plz: number,
+    name: string
+  },
   descriptions: {
-    organizer: string;
-    place: string;
-  };
-}
+    organizer: string,
+    place: string
+  }

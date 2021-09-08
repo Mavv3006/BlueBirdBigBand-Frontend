@@ -10,6 +10,7 @@ describe('ConcertsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ConcertsPageComponent],
     }).compileComponents();
+
   });
 
   beforeEach(() => {
