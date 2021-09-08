@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Concert } from 'src/app/models/concert';
-import { ConcertService } from 'src/app/services/concert.service';
+import { Concert } from '../../models/concert';
+import { ConcertService } from '../../services/concert.service';
 
 @Component({
   selector: 'app-concerts',
