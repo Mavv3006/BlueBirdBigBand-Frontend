@@ -4,10 +4,10 @@ import { ConcertService } from 'src/app/services/concert.service';
 
 @Component({
   selector: 'app-concerts',
-  templateUrl: './concerts.component.html',
-  styleUrls: ['./concerts.component.scss'],
+  templateUrl: './concerts-page.component.html',
+  styleUrls: ['./concerts-page.component.scss'],
 })
-export class ConcertsComponent implements OnInit {
+export class ConcertsPageComponent implements OnInit {
   private _date_formatting_options: any = {
     weekday: 'long',
     year: 'numeric',
