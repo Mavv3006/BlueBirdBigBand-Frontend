@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Concert } from 'src/app/models/concert';
-import { ConcertService } from 'src/app/services/concert.service';
+import { Concert } from '../../models/concert';
+import { ConcertService } from '../../services/concert.service';
 
 @Component({
   selector: 'app-concerts',
-  templateUrl: './concerts.component.html',
-  styleUrls: ['./concerts.component.scss'],
+  templateUrl: './concerts-page.component.html',
+  styleUrls: ['./concerts-page.component.scss'],
 })
-export class ConcertsComponent implements OnInit {
+export class ConcertsPageComponent implements OnInit {
   private _date_formatting_options: any = {
     weekday: 'long',
     year: 'numeric',
@@ -36,7 +36,7 @@ export class ConcertsComponent implements OnInit {
       ' Uhr - ' +
       concert.end_time.substr(0, 5) +
       ' Uhr | ' +
-      concert.description.organizer
+      concert.descriptions.organizer
     );
   }
 }
