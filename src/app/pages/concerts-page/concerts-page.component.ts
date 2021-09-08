@@ -31,7 +31,6 @@ export class ConcertsPageComponent implements OnInit {
   }
 
   play_time(concert: Concert): string {
-    console.log(concert);
     return (
       concert.start_time.substr(0, 5) +
       ' Uhr - ' +

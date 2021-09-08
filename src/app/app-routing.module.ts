@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ConcertsComponent } from './pages/concerts/concerts.component';
+import { ConcertsPageComponent } from './pages/concerts-page/concerts-page.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { JourneyComponent } from './pages/journey/journey.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'auftritte',
-    component: ConcertsComponent,
+    component: ConcertsPageComponent,
   },
   {
     path: 'anfahrt',
