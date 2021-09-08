@@ -9,7 +9,7 @@ export interface Concert {
     plz: number,
     name: string
   },
-  description: {
+  descriptions: {
     organizer: string,
     place: string
   }

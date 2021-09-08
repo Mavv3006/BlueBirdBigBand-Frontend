@@ -31,12 +31,13 @@ export class ConcertsComponent implements OnInit {
   }
 
   play_time(concert: Concert): string {
+    console.log(concert);
     return (
       concert.start_time.substr(0, 5) +
       ' Uhr - ' +
       concert.end_time.substr(0, 5) +
       ' Uhr | ' +
-      concert.description.organizer
+      concert.descriptions.organizer
     );
   }
 }
