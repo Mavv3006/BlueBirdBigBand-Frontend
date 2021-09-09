@@ -1,13 +1,9 @@
-<ul id="gig-list">
-  <li *ngFor="let concert of concerts">
-    <span class="band bold">
-      {{ concert.band_name }}
-    </span>
-    <span class="date bold">
-      {{ concert.date }}
-    </span>
-    <span class="description">
-      {{ play_time(concert) }}
-    </span>
-  </li>
-</ul>
+<h1>Auftritte</h1>
+
+<div class="gig-list" *ngIf="concerts.length > 0">
+  <app-concert *ngFor="let concert of concerts" [concert]="concert"></app-concert>
+</div>
+
+<div class="no-gigs" *ngIf="concerts.length === 0">
+  Aktuell sind keine Konzerte/Auftritte geplant.
+</div>

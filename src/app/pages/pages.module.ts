@@ -8,6 +8,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { LegalNotesComponent } from './legal-notes/legal-notes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ConcertsPageComponent } from './concerts-page/concerts-page.component';
+import { ConcertComponent } from './concerts-page/concert/concert.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ConcertsPageComponent } from './concerts-page/concerts-page.component';
     AboutUsComponent,
     LegalNotesComponent,
     PageNotFoundComponent,
+    ConcertComponent,
   ],
   imports: [CommonModule],
 })
