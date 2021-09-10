@@ -3,7 +3,6 @@ import { Concert } from '../../models/concert';
 import { ConcertService } from '../../services/concert.service';
 
 @Component({
-  selector: 'app-concerts',
   templateUrl: './concerts-page.component.html',
   styleUrls: ['./concerts-page.component.scss'],
 })

@@ -2,7 +2,7 @@ import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 import { MusiciansComponent } from './musicians/musicians.component';
 import { JourneyComponent } from './journey/journey.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -11,18 +11,22 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ConcertsPageComponent } from './concerts-page/concerts-page.component';
 import { ConcertComponent } from './concerts-page/concert/concert.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BookingComponent } from './booking/booking.component';
+import { ContactComponent } from './contact-page/contact/contact.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ConcertsPageComponent,
-    ContactComponent,
+    ContactPageComponent,
     MusiciansComponent,
     JourneyComponent,
     AboutUsComponent,
     LegalNotesComponent,
     PageNotFoundComponent,
     ConcertComponent,
+    BookingComponent,
+    ContactComponent,
   ],
   imports: [CommonModule, MatProgressSpinnerModule, ComponentsModule],
 })
