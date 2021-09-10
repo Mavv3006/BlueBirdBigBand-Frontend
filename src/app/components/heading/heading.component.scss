@@ -1,0 +1,32 @@
+:host {
+  font-size: 2em;
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin: 0 0 0.5em 0;
+
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  color: #3d4449;
+}
+
+@media screen and (min-width: 769px) {
+  :host {
+    font-size: 3.25em;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 981px) {
+  :host {
+    font-size: 3.5em;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  :host {
+    font-size: 4em;
+    line-height: 1.3;
+  }
+}

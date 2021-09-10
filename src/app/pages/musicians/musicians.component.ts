@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-musicians',
   templateUrl: './musicians.component.html',
-  styleUrls: ['./musicians.component.scss']
+  styleUrls: ['./musicians.component.scss'],
 })
-export class MusiciansComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class MusiciansComponent {
+  constructor() {}
 }

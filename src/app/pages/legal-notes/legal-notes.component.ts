@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-legal-notes',
   templateUrl: './legal-notes.component.html',
-  styleUrls: ['./legal-notes.component.scss']
+  styleUrls: ['./legal-notes.component.scss'],
 })
-export class LegalNotesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class LegalNotesComponent {
+  constructor() {}
 }

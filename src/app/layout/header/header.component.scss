@@ -1,9 +1,11 @@
-@import "../colors";
+@import "../../colors";
 
 :host {
   display: flex;
   position: relative;
   flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .logo {
