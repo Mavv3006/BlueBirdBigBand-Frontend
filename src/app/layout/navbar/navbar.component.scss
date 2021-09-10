@@ -1,0 +1,84 @@
+@import "../../colors.scss";
+
+:host {
+  width: 100%;
+}
+
+#menu {
+  display: flex;
+  gap: 36px;
+  align-content: center;
+  justify-content: center;
+}
+
+#menu > li > a,
+.nav-container {
+  position: relative;
+  display: block;
+  padding: 0 18px 0 12px;
+  line-height: 3em;
+  transition: background 0.3s;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav-container:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: 5px;
+  width: 0;
+  height: 0;
+  border-top: 4px solid $bigband-red;
+  border-bottom: 0 solid $bigband-red;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  transition: border-bottom 0.1s, border-top 0.1s 0.1s;
+}
+
+#menu > li > a:hover,
+.nav-container:hover,
+.nav-container:active {
+  color: $yellow;
+}
+
+.mat-menu-content {
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+  background: $bigband-red;
+  position: absolute;
+  min-width: 140px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+
+  .mat-menu-item {
+    color: white;
+    transition: background 0.25s;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+
+    &:hover {
+      background-color: #ff4133;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+  &:not(:empty) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.mat-submenu a {
+  color: inherit;
+  text-decoration: none;
+}

@@ -1,0 +1,33 @@
+<ul id="menu">
+  <li><a href="#">Home</a></li>
+  <li>
+    <button mat-button [matMenuTriggerFor]="aktuelles" class="nav-container">
+      Aktuelles
+    </button>
+    <mat-menu #aktuelles="matMenu" class="mat-submenu">
+      <a href="/auftritte"><button mat-menu-item>Auftritte</button></a>
+      <a href="/presse"><button mat-menu-item>Presseinfos</button></a>
+      <a href="/buchung"><button mat-menu-item>Buchungsinfos</button></a>
+    </mat-menu>
+  </li>
+  <li>
+    <button mat-button [matMenuTriggerFor]="band" class="nav-container">
+      Band
+    </button>
+    <mat-menu #band="matMenu" class="mat-submenu">
+      <a href="/about-us"><button mat-menu-item>Über uns</button></a>
+      <a href="/musiker"><button mat-menu-item>Musiker</button></a>
+      <a href="/anfahrt"><button mat-menu-item>Anfahrt</button></a>
+    </mat-menu>
+  </li>
+  <li>
+    <button mat-button [matMenuTriggerFor]="kontakt" class="nav-container">
+      Kontakt
+    </button>
+    <mat-menu #kontakt="matMenu" class="mat-submenu">
+      <a href="/kontakt"><button mat-menu-item>Kontakt</button></a>
+      <a href="/impressum"><button mat-menu-item>Impressum</button></a>
+    </mat-menu>
+  </li>
+  <li><a href="#intern">Login</a></li>
+</ul>
