@@ -1,3 +1,5 @@
+@import "../../../styles/mixin/responsive.scss";
+
 :host {
   font-size: 2em;
   line-height: 1.4;
@@ -9,23 +11,17 @@
   font-family: "Roboto Slab", serif;
   font-weight: 700;
   color: #3d4449;
-}
 
-@media screen and (min-width: 769px) {
-  :host {
+  @include medium {
     font-size: 3.25em;
     text-align: left;
   }
-}
 
-@media screen and (min-width: 981px) {
-  :host {
+  @include large {
     font-size: 3.5em;
   }
-}
 
-@media screen and (min-width: 1680px) {
-  :host {
+  @include extra_large_2 {
     font-size: 4em;
     line-height: 1.3;
   }

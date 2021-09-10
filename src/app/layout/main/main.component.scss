@@ -1,3 +1,5 @@
+@import "../../../styles/mixin/responsive";
+
 main {
   background-color: white;
   color: black;
@@ -6,29 +8,21 @@ main {
   margin: auto;
   margin-bottom: 15px;
   padding: 1.5em 1em 1em 1em;
-}
 
-@media screen and (min-width: 769px) {
-  main {
-    padding: 3em 1em 1em 1em;
+  @include medium {
+    padding-top: 3em;
     width: 88vw;
   }
-}
 
-@media screen and (min-width: 981px) {
-  main {
+  @include large {
     width: 85vw;
   }
-}
 
-@media screen and (min-width: 1281px) {
-  main {
+  @include extra_large {
     width: 80vw;
   }
-}
 
-@media screen and (min-width: 1681px) {
-  main {
+  @include extra_large_2 {
     width: 75vw;
   }
 }
