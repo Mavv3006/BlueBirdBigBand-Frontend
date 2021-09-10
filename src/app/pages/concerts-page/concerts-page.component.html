@@ -1,9 +1,11 @@
-<h1>Auftritte</h1>
+<app-heading>Auftritte</app-heading>
 
-<div class="gig-list" *ngIf="concerts.length > 0">
+<div class="gig-list" *ngIf="showConcerts">
   <app-concert *ngFor="let concert of concerts" [concert]="concert"></app-concert>
 </div>
 
-<div class="no-gigs" *ngIf="concerts.length === 0">
+<p *ngIf="showZeroConcertsMessage" class="no-concerts-message">
   Aktuell sind keine Konzerte/Auftritte geplant.
-</div>
+</p>
+
+<mat-spinner *ngIf="showSpinner" class="spinner" [diameter]="spinnerDiameter"></mat-spinner>

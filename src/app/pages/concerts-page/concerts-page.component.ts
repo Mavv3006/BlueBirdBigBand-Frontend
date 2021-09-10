@@ -16,11 +16,31 @@ export class ConcertsPageComponent implements OnInit {
   };
 
   concerts: Concert[] = [];
+  hasValues = false;
+
+  get showSpinner() {
+    return !this.hasValues;
+  }
+
+  get showZeroConcertsMessage() {
+    return this.hasValues && this.concerts.length === 0;
+  }
+
+  get showConcerts() {
+    return this.hasValues && this.concerts.length > 0;
+  }
+
+  get spinnerDiameter(): number {
+    return 60; // todo: make responsive
+  }
 
   constructor(private _concertService: ConcertService) {}
 
   ngOnInit(): void {
-    this._concertService.upcoming().subscribe((data) => (this.concerts = data));
+    this._concertService.upcoming().subscribe((data) => {
+      this.concerts = data;
+      this.hasValues = true;
+    });
   }
 
   createDay(concert: Concert): string {
