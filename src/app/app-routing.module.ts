@@ -1,8 +1,9 @@
+import { BookingComponent } from './pages/booking/booking.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ConcertsPageComponent } from './pages/concerts-page/concerts-page.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { HomeComponent } from './pages/home/home.component';
 import { JourneyComponent } from './pages/journey/journey.component';
 import { LegalNotesComponent } from './pages/legal-notes/legal-notes.component';
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'kontakt',
-    component: ContactComponent,
+    component: ContactPageComponent,
   },
   {
     path: 'impressum',
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'anfahrt',
     component: JourneyComponent,
+  },
+  {
+    path: 'buchung',
+    component: BookingComponent,
   },
   {
     path: '**',

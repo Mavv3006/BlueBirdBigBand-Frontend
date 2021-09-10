@@ -1,0 +1,6 @@
+<p [ngClass]="{ 'bold': bold_name }">{{name}}</p>
+<p>Telefon: {{telephone}}</p>
+<p *ngIf="telefax !== undefined">Telefax: {{telefax}}</p>
+<p>
+  E-Mail: <a href="mailto:{{email}}">{{email}}</a>
+</p>
