@@ -13,6 +13,9 @@ import { ConcertComponent } from './concerts-page/concert/concert.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BookingComponent } from './booking/booking.component';
 import { ContactComponent } from './contact-page/contact/contact.component';
+import { BandleaderComponent } from './contact-page/contact/bandleader.component';
+import { ManagementComponent } from './contact-page/contact/management.component';
+import { WebadminComponent } from './contact-page/contact/webadmin.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { ContactComponent } from './contact-page/contact/contact.component';
     ConcertComponent,
     BookingComponent,
     ContactComponent,
+    BandleaderComponent,
+    ManagementComponent,
+    WebadminComponent,
   ],
   imports: [CommonModule, MatProgressSpinnerModule, ComponentsModule],
 })

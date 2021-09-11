@@ -1,5 +1,8 @@
 {
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
-    "editor.linkedEditing": true
+    "editor.linkedEditing": true,
+    "cSpell.words": [
+      "Webadmin"
+    ]
 }
