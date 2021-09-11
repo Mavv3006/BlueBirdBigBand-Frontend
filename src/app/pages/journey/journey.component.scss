@@ -1,0 +1,33 @@
+@import "../../../styles/anchor-tag.scss";
+@import "../../../styles/util.scss";
+@import "../../../styles/mixin/responsive.scss";
+
+p {
+  text-align: justify;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.map {
+  width: 85%;
+  height: 400px;
+  margin: auto;
+
+  @include large {
+    width: 800px;
+    height: 600px;
+  }
+}

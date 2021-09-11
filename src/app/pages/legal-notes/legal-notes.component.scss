@@ -1,13 +1,6 @@
 @import "../../../styles/anchor-tag.scss";
+@import "../../../styles/util.scss";
 @import "../../../styles/mixin/responsive.scss";
-
-.bold {
-  font-weight: bold;
-}
-
-.underline {
-  text-decoration: underline;
-}
 
 .small {
   font-size: 80%;

@@ -1,8 +1,5 @@
 @import '../../../styles/mixin/responsive.scss';
-
-.bold {
-  font-weight: bold;
-}
+@import '../../../styles/util.scss';
 
 .outer {
   display: flex;
