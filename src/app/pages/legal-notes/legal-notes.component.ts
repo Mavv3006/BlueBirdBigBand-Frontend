@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { KlausGehrlein } from '../../models/klaus_gehrlein';
 
 @Component({
-  selector: 'app-legal-notes',
   templateUrl: './legal-notes.component.html',
   styleUrls: ['./legal-notes.component.scss'],
 })
 export class LegalNotesComponent {
-  constructor() {}
+  bandleader = KlausGehrlein;
 }

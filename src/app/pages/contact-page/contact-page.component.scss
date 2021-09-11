@@ -27,11 +27,15 @@
     }
   }
 
-  @include extra_large {
+  @include large {
     gap: 3em;
   }
 
-  @include extra_large_2 {
+  @include extra_large {
     gap: 4em;
+  }
+
+  @include extra_large_2 {
+    gap: 5em;
   }
 }

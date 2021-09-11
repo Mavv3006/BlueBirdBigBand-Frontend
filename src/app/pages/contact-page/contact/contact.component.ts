@@ -13,11 +13,14 @@ export class ContactComponent {
   name: string = '';
 
   @Input()
-  telephone: string|undefined;
+  telephone: string | undefined;
 
   @Input()
   telefax: string | undefined;
 
   @Input()
   bold_name: boolean = false;
+
+  @Input()
+  mobile: string | undefined;
 }
