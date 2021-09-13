@@ -1,0 +1,21 @@
+@import '../../../styles/anchor-tag.scss';
+@import '../../../styles/util.scss';
+@import '../../../styles/mixin/responsive.scss';
+
+p {
+  text-align: justify;
+  margin-bottom: 1.5em;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  
+  @include medium {
+    flex-direction: row;
+
+    & > * {
+      width: 50%;
+    }
+  }
+}
