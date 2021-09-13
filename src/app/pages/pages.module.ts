@@ -16,6 +16,7 @@ import { ContactComponent } from './contact-page/contact/contact.component';
 import { BandleaderComponent } from './contact-page/contact/bandleader.component';
 import { ManagementComponent } from './contact-page/contact/management.component';
 import { WebadminComponent } from './contact-page/contact/webadmin.component';
+import { PressComponent } from './press/press.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { WebadminComponent } from './contact-page/contact/webadmin.component';
     BandleaderComponent,
     ManagementComponent,
     WebadminComponent,
+    PressComponent,
   ],
   imports: [CommonModule, MatProgressSpinnerModule, ComponentsModule],
 })
