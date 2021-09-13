@@ -2,8 +2,10 @@
 
 <div class="heading">
   <div class="left">
-    <h1>Blue Bird Big Band</h1>
-    <p>der Städtischen Musikschule Speyer</p>
+    <div>
+      <h1>Blue Bird Big Band</h1>
+      <p>der Städtischen Musikschule Speyer</p>
+    </div>
 
     <h2>Let's swing again!</h2>
     <h2>Bigband-Jazz vom Feinsten</h2>
@@ -57,15 +59,22 @@
 <div class="contact">
   <p class="bold">Kontaktadresse der Blue Bird Big Band:</p>
   <div>
-    <p>{{ bandleader.name }}</p>
-    <p>{{ bandleader.address.street }}</p>
-    <p>{{ bandleader.address.plz }} {{ bandleader.address.city_name }}</p>
-  </div>
-  <div>
-    <p>Tel. {{ bandleader.telephone }}</p>
-    <p>Fax: {{ bandleader.telefax }}</p>
-    <p>
-      E-Mail: <a href="mailto:{{ bandleader.email }}">{{ bandleader.email }}</a>
-    </p>
+    <div>
+      <p>{{ bandleader.name }}</p>
+      <p>{{ bandleader.address.street }}</p>
+      <p>{{ bandleader.address.plz }} {{ bandleader.address.city_name }}</p>
+    </div>
+    <div>
+      <p>Tel. {{ bandleader.telephone }}</p>
+      <p>Fax: {{ bandleader.telefax }}</p>
+      <p>
+        E-Mail: <a href="mailto:{{ bandleader.email }}">{{ bandleader.email }}</a>
+      </p>
+    </div>
   </div>
 </div>
+
+<footer>
+  <a href="assets/documents/presseinfo.doc">Diese Seite als Word-Document</a>
+  <a href="assets/documents/presseinfo.pdf">Diese Seite als PDF</a>
+</footer>

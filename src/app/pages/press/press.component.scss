@@ -1,0 +1,117 @@
+@import "../../../styles/util.scss";
+@import "../../../styles/anchor-tag.scss";
+@import "../../../styles/mixin/responsive.scss";
+
+:host > p {
+  margin-bottom: 1.5em;
+  text-align: justify;
+
+  @include medium {
+    margin-bottom: 1em;
+  }
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+
+  @include medium {
+    margin-bottom: 1em;
+  }
+
+  h1,
+  h2 {
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 1.25em;
+  }
+
+  h2 {
+    font-size: 1.125em;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+
+  & > p {
+    margin-bottom: 0.5em;
+  }
+
+  & > div {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @include medium {
+    flex-direction: row;
+    margin-bottom: 1em;
+    gap: 1.75em;
+
+    & > p {
+      margin-bottom: 0;
+    }
+
+    & > div {
+      gap: 1em;
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+  }
+
+  @include large {
+    gap: 3em;
+
+    & > * {
+      width: 50%;
+    }
+
+    & > p {
+      text-align: right;
+    }
+  }
+  
+  @include extra_large {
+    gap: 4em;
+  }
+
+  @include extra_large_2 {
+    gap: 5em;
+  }
+}
+
+footer {
+  border-top: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  padding-top: calc(1em - 1px);
+
+  a {
+    text-align: center;
+  }
+
+  @include medium {
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 0;
+
+    a {
+      width: 50%;
+    }
+  }
+}
