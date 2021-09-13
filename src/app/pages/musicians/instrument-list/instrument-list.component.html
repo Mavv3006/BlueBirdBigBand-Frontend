@@ -1,0 +1,8 @@
+<h1>{{instrument}}</h1>
+
+<div class="musicians">
+  <div class="musician" *ngFor="let musician of musicians">
+    <img src="assets/musicians/{{ musician.picture }}" alt="{{ musician.name }}" />
+    <p>{{ musician.name }}</p>
+  </div>
+</div>

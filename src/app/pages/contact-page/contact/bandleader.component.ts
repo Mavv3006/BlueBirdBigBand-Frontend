@@ -5,11 +5,11 @@ import { KlausGehrlein } from '../../../models/klaus_gehrlein';
   selector: 'app-contact-bandleader',
   template: `
     <app-contact
-      email="{{bandleader.email}}"
-      telefax="{{bandleader.telefax}}"
-      telephone="{{bandleader.telephone}}"
-      name="{{bandleader.name}}"
-      mobile="{{bandleader.mobile}}"
+      email="{{ bandleader.email }}"
+      telefax="{{ bandleader.telefax }}"
+      telephone="{{ bandleader.telephone }}"
+      name="{{ bandleader.name }}"
+      mobile="{{ bandleader.mobile }}"
       [bold_name]="bold_name"
     ></app-contact>
   `,
