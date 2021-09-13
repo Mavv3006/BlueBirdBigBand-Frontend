@@ -1,0 +1,29 @@
+@import "../../../styles/mixin/responsive.scss";
+@import "../../../styles/anchor-tag.scss";
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include medium {
+    display: initial;
+    float: right;
+    margin: 0;
+    width: 60%;
+    max-width: 430px;
+  }
+}
+
+p {
+  text-align: justify;
+}
+
+ul li:not(ul li:last-child) {
+  margin-bottom: 0.25em;
+}
+
+p,
+ul {
+  margin-bottom: 1.5em;
+}
