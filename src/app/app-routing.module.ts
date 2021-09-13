@@ -9,6 +9,7 @@ import { JourneyComponent } from './pages/journey/journey.component';
 import { LegalNotesComponent } from './pages/legal-notes/legal-notes.component';
 import { MusiciansComponent } from './pages/musicians/musicians.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PressComponent } from './pages/press/press.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
     component: BookingComponent,
   },
   {
+    path: 'presse',
+    component: PressComponent,
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },
@@ -53,4 +58,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
