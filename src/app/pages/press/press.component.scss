@@ -3,22 +3,16 @@
 @import "../../../styles/mixin/responsive.scss";
 
 :host > p {
-  margin-bottom: 1.5em;
   text-align: justify;
+}
 
-  @include medium {
-    margin-bottom: 1em;
-  }
+:host > p, .heading {
+  margin-bottom: 1.5em;
 }
 
 .heading {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5em;
-
-  @include medium {
-    margin-bottom: 1em;
-  }
 
   h1,
   h2 {
