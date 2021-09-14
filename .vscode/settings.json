@@ -1,9 +1,13 @@
 {
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "editor.linkedEditing": true,
-    "cSpell.words": [
-      "Gehrlein",
-      "Webadmin"
-    ]
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.linkedEditing": true,
+  "cSpell.words": ["Gehrlein", "Webadmin"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

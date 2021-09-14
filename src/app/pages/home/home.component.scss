@@ -17,8 +17,7 @@ img {
   --height: calc(50px - 1em);
   position: relative;
   height: var(--height);
-  // overflow: hidden;
-  border: 1px solid red;
+  overflow: hidden;
 
   p {
     position: absolute;
@@ -32,6 +31,26 @@ img {
     width: 100vw;
 
     animation: scroll-left 12.5s linear infinite;
+
+    @include small {
+      animation-duration: 14s;
+    }
+
+    @include medium {
+      animation-duration: 16s;
+    }
+
+    @include large {
+      animation-duration: 18s;
+    }
+
+    @include extra_large {
+      animation-duration: 20s;
+    }
+
+    @include extra_large_2 {
+      animation-duration: 22s;
+    }
   }
 }
 
