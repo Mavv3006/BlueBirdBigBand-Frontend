@@ -1,23 +1,50 @@
-@import '../../../styles/colors.scss';
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixin/responsive.scss";
 
 :host {
-  display: flex;
-  position: relative;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin-bottom: 10px;
+  @include medium {
+    display: flex;
+    position: relative;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
 }
 
 .logo {
-  width: 100%;
-  padding: 10px;
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $bigband-red;
-    img {
-      height: 4m;
+  @include medium {
+    width: 100%;
+    padding: 10px;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $bigband-red;
+      img {
+        height: 4m;
+      }
     }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+mat-icon {
+  color: white;
+}
+
+app-desktop-navbar {
+  display: none;
+}
+
+@include medium {
+  app-desktop-navbar {
+    display: block;
+  }
+
+  app-mobile-navbar {
+    display: none;
   }
 }

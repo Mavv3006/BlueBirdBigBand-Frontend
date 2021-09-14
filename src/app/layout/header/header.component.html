@@ -1,6 +1,19 @@
-<div class="logo">
-  <a href="/">
-    <img src="/assets/logo/logo-header.gif" alt="Header logo of the Blue Bird Big Band">
-  </a>
+<div>
+  <div class="logo">
+    <a href="/">
+      <img
+        src="/assets/logo/logo-header.gif"
+        alt="Header logo of the Blue Bird Big Band"
+      />
+    </a>
+  </div>
+
+  <button mat-button (click)="toggleMobileMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
 </div>
-<app-navbar></app-navbar>
+
+<app-desktop-navbar></app-desktop-navbar>
+<div [ngClass]="{ hidden: mobile_menu_hidden }">
+  <app-mobile-navbar></app-mobile-navbar>
+</div>
