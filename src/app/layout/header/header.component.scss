@@ -1,32 +1,6 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/mixin/responsive.scss";
 
-:host {
-  @include medium {
-    display: flex;
-    position: relative;
-    flex-flow: row wrap;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-}
-
-.logo {
-  @include medium {
-    width: 100%;
-    padding: 10px;
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $bigband-red;
-      img {
-        height: 4m;
-      }
-    }
-  }
-}
-
 .hidden {
   display: none;
 }
@@ -39,9 +13,69 @@ app-desktop-navbar {
   display: none;
 }
 
+.headline {
+  background-color: $bigband-red;
+  height: 48px;
+  margin: 10px 0;
+
+  .logo {
+    height: 100%;
+
+    a {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+
+      img {
+        height: 100%;
+
+        @media (max-width: 390px) {
+          margin-right: 44px;
+        }
+      }
+    }
+  }
+
+  .mobile-toggle {
+    height: 48px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
 @include medium {
+  :host {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    width: 100%;
+    padding: 10px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $bigband-red;
+
+      img {
+        height: 4em;
+      }
+    }
+  }
+
+  .mobile-toggle {
+    display: none;
+  }
+
   app-desktop-navbar {
-    display: block;
+    display: initial;
   }
 
   app-mobile-navbar {

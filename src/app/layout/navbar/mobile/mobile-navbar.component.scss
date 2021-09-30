@@ -1,3 +1,51 @@
 :host {
+  font-weight: 600;
+}
+
+:host,
+a,
+a:visited,
+a:hover,
+a:active {
   color: white;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  li {
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: flex;
+    position: relative;
+    text-transform: uppercase;
+    transition: all ease-in-out 0.3s;
+    height: 49px;
+    justify-content: space-between;
+
+    button {
+      color: white;
+      padding-right: 17px;
+      padding-left: 17px;
+      border-left: 1px solid #444;
+    }
+  }
+
+  .container {
+    padding: 17px;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+}
+
+.submenu {
+  display: none;
 }
