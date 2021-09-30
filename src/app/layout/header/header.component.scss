@@ -54,9 +54,14 @@ app-desktop-navbar {
     margin-bottom: 10px;
   }
 
+  .headline {
+    height: calc(10.125vw - 29.5px);
+    min-height: 48px;
+    max-height: 100px;
+  }
+
   .logo {
     width: 100%;
-    padding: 10px;
 
     a {
       display: flex;
