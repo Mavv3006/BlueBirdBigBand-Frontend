@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class MobileNavbarComponent {
   constructor() {}
+
+  toggleVisibility(element: HTMLElement) {
+    element.classList.toggle('hidden');
+  }
 }

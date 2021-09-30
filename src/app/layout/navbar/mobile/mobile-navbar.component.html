@@ -2,35 +2,35 @@
   <li><a href="#" class="container">Home</a></li>
   <li>
     <div class="container">Aktuelles</div>
-    <button>
+    <button (click)="toggleVisibility(aktuelles)">
       <mat-icon>add</mat-icon>
     </button>
-    <div class="submenu">
-      <a href="/auftritte"><button mat-menu-item>Auftritte</button></a>
-      <a href="/presse"><button mat-menu-item>Presseinfos</button></a>
-      <a href="/buchung"><button mat-menu-item>Buchungsinfos</button></a>
-    </div>
+  </li>
+  <li class="submenu hidden" #aktuelles>
+    <a href="/auftritte">Auftritte</a>
+    <a href="/presse">Presseinfos</a>
+    <a href="/buchung">Buchungsinfos</a>
   </li>
   <li>
     <div class="container">Band</div>
-    <button>
+    <button (click)="toggleVisibility(band)">
       <mat-icon>add</mat-icon>
     </button>
-    <div class="submenu">
-      <a href="/about-us"><button mat-menu-item>Über uns</button></a>
-      <a href="/musiker"><button mat-menu-item>Musiker</button></a>
-      <a href="/anfahrt"><button mat-menu-item>Anfahrt</button></a>
-    </div>
+  </li>
+  <li class="submenu hidden" #band>
+    <a href="/about-us">Über uns</a>
+    <a href="/musiker">Musiker</a>
+    <a href="/anfahrt">Anfahrt</a>
   </li>
   <li>
     <div class="container">Kontakt</div>
-    <button>
+    <button (click)="toggleVisibility(kontakt)">
       <mat-icon>add</mat-icon>
     </button>
-    <div class="submenu">
-      <a href="/kontakt"><button mat-menu-item>Kontakt</button></a>
-      <a href="/impressum"><button mat-menu-item>Impressum</button></a>
-    </div>
+  </li>
+  <li class="submenu hidden" #kontakt>
+    <a href="/kontakt">Kontakt</a>
+    <a href="/impressum">Impressum</a>
   </li>
   <li><a href="#intern" class="container">Login</a></li>
 </ul>

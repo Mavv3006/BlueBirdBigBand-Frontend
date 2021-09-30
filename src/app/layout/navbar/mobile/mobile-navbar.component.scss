@@ -1,3 +1,6 @@
+@import "../../../../styles/util.scss";
+@import "../../../../styles/colors.scss";
+
 :host {
   font-weight: 600;
 }
@@ -20,7 +23,7 @@ ul {
   flex-direction: column;
   align-content: center;
 
-  li {
+  li:not(.submenu) {
     border: 0;
     list-style: none;
     line-height: 1;
@@ -47,5 +50,12 @@ ul {
 }
 
 .submenu {
-  display: none;
+  background-color: $bigband-red;
+  padding-left: 20px;
+
+  a {
+    padding: 14px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
 }
