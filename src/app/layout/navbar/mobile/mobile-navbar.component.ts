@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,7 +9,5 @@ import { Component } from '@angular/core';
 export class MobileNavbarComponent {
   constructor() {}
 
-  toggleVisibility(element: HTMLElement) {
-    element.classList.toggle('hidden');
-  }
+  toggleVisibility(element: HTMLElement) {}
 }
