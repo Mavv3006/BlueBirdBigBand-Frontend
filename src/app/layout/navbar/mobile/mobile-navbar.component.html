@@ -2,35 +2,37 @@
   <li><a href="#" class="container">Home</a></li>
   <li>
     <div class="container">Aktuelles</div>
-    <button (click)="toggleVisibility(aktuelles)">
+    <button (click)="toggleNews()">
       <mat-icon>add</mat-icon>
     </button>
   </li>
-  <li class="submenu" #aktuelles>
+  <li class="submenu">
     <a href="/auftritte">Auftritte</a>
     <a href="/presse">Presseinfos</a>
     <a href="/buchung">Buchungsinfos</a>
   </li>
-  <li>
+  <li #band_container class="band_container">
     <div class="container">Band</div>
-    <button (click)="toggleVisibility(band)">
+    <button (click)="toggleBand()">
       <mat-icon>add</mat-icon>
     </button>
   </li>
-  <li class="submenu" #band>
+  <li class="submenu band_submenu" #band_submenu>
     <a href="/about-us">Über uns</a>
     <a href="/musiker">Musiker</a>
     <a href="/anfahrt">Anfahrt</a>
   </li>
-  <li>
+  <li #contact_container class="contact_container">
     <div class="container">Kontakt</div>
-    <button (click)="toggleVisibility(kontakt)">
+    <button (click)="toggleContact()">
       <mat-icon>add</mat-icon>
     </button>
   </li>
-  <li class="submenu" #kontakt>
+  <li class="submenu contakt_submenu" #contakt_submenu>
     <a href="/kontakt">Kontakt</a>
-    <a href="/impressum">Impressum</a>
+    <a href="/impressum" #impressum class="impressum">Impressum</a>
   </li>
-  <li><a href="#intern" class="container">Login</a></li>
+  <li #login_container class="login_container">
+    <a href="#intern" class="container">Login</a>
+  </li>
 </ul>

@@ -1,5 +1,6 @@
 @import "../../../../styles/util.scss";
 @import "../../../../styles/colors.scss";
+@import "../../../../styles/mixin/sliding-transition.scss";
 
 :host {
   font-weight: 600;
@@ -30,9 +31,11 @@ ul {
     display: flex;
     position: relative;
     text-transform: uppercase;
-    transition: all ease-in-out 0.3s;
     height: 49px;
     justify-content: space-between;
+    background-color: $bigband-blue;
+
+    @include sliding-transition;
 
     button {
       color: white;
@@ -49,13 +52,28 @@ ul {
   }
 }
 
-.submenu {
+.submenu a {
   background-color: $bigband-red;
-  padding-left: 20px;
+  padding: 14px;
+  padding-left: 34px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
 
-  a {
-    padding: 14px;
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
+.band_container,
+.band_submenu {
+  transform: translateY(calc(-3 * 47px));
+}
+
+.contact_container,
+.contakt_submenu {
+  transform: translateY(calc(-6 * 47px));
+}
+
+.login_container {
+  transform: translateY(calc(-8 * 47px));
+}
+
+.impressum {
+  transform: translateY(-47px);
 }
