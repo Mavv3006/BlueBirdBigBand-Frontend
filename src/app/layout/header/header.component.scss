@@ -87,3 +87,20 @@ app-desktop-navbar {
     display: none;
   }
 }
+
+.mobile-nav-wrapper {
+  position: relative;
+}
+
+.mobile-nav {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+
+  transition: opacity 150ms ease;
+}
+
+.opacity-100 {
+  opacity: 100;
+  transition-delay: 75ms;
+}

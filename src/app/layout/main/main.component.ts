@@ -6,7 +6,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
   selector: 'app-main',
   template: `
     <div class="main-wrapper" #wrapper>
-      <main #main>
+      <main>
         <router-outlet></router-outlet>
       </main>
     </div>
@@ -14,9 +14,6 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  @ViewChild('main')
-  main: ElementRef | undefined;
-
   @ViewChild('wrapper')
   wrapper: ElementRef | undefined;
 
@@ -31,14 +28,12 @@ export class MainComponent {
       if (isOpen) {
         this.setTranslateY(0);
       } else {
-        this.setTranslateY(-8 * 47);
+        this.setTranslateY(5 * 49);
       }
     });
   }
 
   private setTranslateY(pixel: number) {
-    // (this.main?.nativeElement as HTMLElement).style.transform =
-    //   'translateY(' + pixel + 'px)';
     (this.wrapper?.nativeElement as HTMLElement).style.transform =
       'translateY(' + pixel + 'px)';
   }

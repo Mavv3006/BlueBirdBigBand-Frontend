@@ -40,6 +40,8 @@ export class MobileNavbarComponent {
   constructor(private messageService: SlidingMessageService) {}
 
   toggleNews() {
+    console.debug('toggleNews');
+
     if (this.isNewsOpen) {
       this.band_container_transform_pixel -= this.news_pixel;
       this.band_submenu_transform_pixel -= this.news_pixel;
@@ -71,6 +73,8 @@ export class MobileNavbarComponent {
   }
 
   toggleBand() {
+    console.debug('toggleBand');
+
     if (this.isBandOpen) {
       this.contact_container_transform_pixel -= this.band_pixel;
       this.contact_submenu_transform_pixel -= this.band_pixel;
@@ -96,6 +100,8 @@ export class MobileNavbarComponent {
   }
 
   toggleContact() {
+    console.debug('toggleContact');
+
     if (this.isContactOpen) {
       this.login_container_transform_pixel -= this.contact_pixel;
 

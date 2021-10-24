@@ -14,6 +14,9 @@
 </div>
 
 <app-desktop-navbar></app-desktop-navbar>
-<div [ngClass]="{ hidden: mobile_menu_hidden }">
-  <app-mobile-navbar></app-mobile-navbar>
+<div class="mobile-nav-wrapper">
+  <app-mobile-navbar
+    [ngClass]="{ 'opacity-100': !mobile_menu_hidden }"
+    class="mobile-nav"
+  ></app-mobile-navbar>
 </div>
