@@ -1,12 +1,12 @@
 import { SlidingMessageService } from './../../../services/sliding-message.service';
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-mobile-navbar',
   templateUrl: './mobile-navbar.component.html',
   styleUrls: ['./mobile-navbar.component.scss'],
 })
-export class MobileNavbarComponent implements AfterViewInit {
+export class MobileNavbarComponent {
   @ViewChild('band_container')
   band_container: ElementRef | undefined;
 
@@ -37,28 +37,57 @@ export class MobileNavbarComponent implements AfterViewInit {
   readonly band_pixel = 3 * 47;
   readonly contact_pixel = 2 * 47;
 
-  contact_submenu_native_element: HTMLElement | undefined;
-
   constructor(private messageService: SlidingMessageService) {}
 
-  ngAfterViewInit() {
-    this.contact_submenu_native_element = this.contact_submenu?.nativeElement;
+  toggleNews() {
+    if (this.isNewsOpen) {
+      this.band_container_transform_pixel -= this.news_pixel;
+      this.band_submenu_transform_pixel -= this.news_pixel;
+
+      this.contact_container_transform_pixel -= this.news_pixel;
+      this.contact_submenu_transform_pixel -= this.news_pixel;
+
+      this.login_container_transform_pixel -= this.news_pixel;
+
+      this.main_transform_pixel -= this.news_pixel;
+    } else {
+      this.band_container_transform_pixel += this.news_pixel;
+      this.band_submenu_transform_pixel += this.news_pixel;
+
+      this.contact_container_transform_pixel += this.news_pixel;
+      this.contact_submenu_transform_pixel += this.news_pixel;
+
+      this.login_container_transform_pixel += this.news_pixel;
+
+      this.main_transform_pixel += this.news_pixel;
+    }
+
+    this.updateBand();
+    this.updateContact();
+    this.updateLogin();
+    this.updateMain();
+
+    this.isNewsOpen = !this.isNewsOpen;
   }
 
-  toggleNews() {}
   toggleBand() {
     if (this.isBandOpen) {
       this.contact_container_transform_pixel -= this.band_pixel;
       this.contact_submenu_transform_pixel -= this.band_pixel;
+
       this.login_container_transform_pixel -= this.band_pixel;
+
       this.main_transform_pixel -= this.band_pixel;
     } else {
       this.contact_container_transform_pixel += this.band_pixel;
       this.contact_submenu_transform_pixel += this.band_pixel;
+
       this.login_container_transform_pixel += this.band_pixel;
+
       this.main_transform_pixel += this.band_pixel;
     }
 
+    this.updateBand();
     this.updateContact();
     this.updateLogin();
     this.updateMain();
@@ -69,17 +98,28 @@ export class MobileNavbarComponent implements AfterViewInit {
   toggleContact() {
     if (this.isContactOpen) {
       this.login_container_transform_pixel -= this.contact_pixel;
+
       this.main_transform_pixel -= this.contact_pixel;
     } else {
       this.login_container_transform_pixel += this.contact_pixel;
+
       this.main_transform_pixel += this.contact_pixel;
     }
 
+    this.updateBand();
     this.updateContact();
     this.updateLogin();
     this.updateMain();
 
     this.isContactOpen = !this.isContactOpen;
+  }
+
+  private updateBand() {
+    (this.band_container?.nativeElement as HTMLElement).style.transform =
+      'translateY(' + this.band_container_transform_pixel + 'px)';
+
+    (this.band_submenu?.nativeElement as HTMLElement).style.transform =
+      'translateY(' + this.band_submenu_transform_pixel + 'px)';
   }
 
   private updateContact() {
