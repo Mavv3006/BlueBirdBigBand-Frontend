@@ -52,12 +52,15 @@ ul {
   }
 }
 
-.submenu a {
-  background-color: $bigband-red;
-  padding: 14px;
-  padding-left: 34px;
-  font-size: 14px;
-  letter-spacing: 1px;
+.submenu {
+  @include sliding-transition;
+  a {
+    background-color: $bigband-red;
+    padding: 14px;
+    padding-left: 34px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
 }
 
 .band_container,
@@ -66,14 +69,10 @@ ul {
 }
 
 .contact_container,
-.contakt_submenu {
+.contact_submenu {
   transform: translateY(calc(-6 * 47px));
 }
 
 .login_container {
   transform: translateY(calc(-8 * 47px));
-}
-
-.impressum {
-  transform: translateY(-47px);
 }
