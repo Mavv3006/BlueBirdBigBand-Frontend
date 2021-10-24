@@ -27,7 +27,6 @@ export class MobileNavbarComponent {
   contact_container_transform_pixel = -6 * 47;
   contact_submenu_transform_pixel = -6 * 47;
   login_container_transform_pixel = -8 * 47;
-  main_transform_pixel = -8 * 47;
 
   isNewsOpen = false;
   isBandOpen = false;
@@ -40,8 +39,6 @@ export class MobileNavbarComponent {
   constructor(private messageService: SlidingMessageService) {}
 
   toggleNews() {
-    console.debug('toggleNews');
-
     if (this.isNewsOpen) {
       this.band_container_transform_pixel -= this.news_pixel;
       this.band_submenu_transform_pixel -= this.news_pixel;
@@ -50,8 +47,6 @@ export class MobileNavbarComponent {
       this.contact_submenu_transform_pixel -= this.news_pixel;
 
       this.login_container_transform_pixel -= this.news_pixel;
-
-      this.main_transform_pixel -= this.news_pixel;
     } else {
       this.band_container_transform_pixel += this.news_pixel;
       this.band_submenu_transform_pixel += this.news_pixel;
@@ -60,64 +55,52 @@ export class MobileNavbarComponent {
       this.contact_submenu_transform_pixel += this.news_pixel;
 
       this.login_container_transform_pixel += this.news_pixel;
-
-      this.main_transform_pixel += this.news_pixel;
     }
 
-    this.updateBand();
-    this.updateContact();
-    this.updateLogin();
-    this.updateMain();
+    this.updateMenuItems();
+    this.updateMain(this.isNewsOpen ? -this.news_pixel : this.news_pixel);
 
     this.isNewsOpen = !this.isNewsOpen;
   }
 
   toggleBand() {
-    console.debug('toggleBand');
-
     if (this.isBandOpen) {
       this.contact_container_transform_pixel -= this.band_pixel;
       this.contact_submenu_transform_pixel -= this.band_pixel;
 
       this.login_container_transform_pixel -= this.band_pixel;
-
-      this.main_transform_pixel -= this.band_pixel;
     } else {
       this.contact_container_transform_pixel += this.band_pixel;
       this.contact_submenu_transform_pixel += this.band_pixel;
 
       this.login_container_transform_pixel += this.band_pixel;
-
-      this.main_transform_pixel += this.band_pixel;
     }
 
-    this.updateBand();
-    this.updateContact();
-    this.updateLogin();
-    this.updateMain();
+    this.updateMenuItems();
+    this.updateMain(this.isBandOpen ? -this.band_pixel : this.band_pixel);
 
     this.isBandOpen = !this.isBandOpen;
   }
 
   toggleContact() {
-    console.debug('toggleContact');
-
     if (this.isContactOpen) {
       this.login_container_transform_pixel -= this.contact_pixel;
-
-      this.main_transform_pixel -= this.contact_pixel;
     } else {
       this.login_container_transform_pixel += this.contact_pixel;
-
-      this.main_transform_pixel += this.contact_pixel;
     }
 
+    this.updateMenuItems();
+    this.updateMain(
+      this.isContactOpen ? -this.contact_pixel : this.contact_pixel
+    );
+
+    this.isContactOpen = !this.isContactOpen;
+  }
+
+  private updateMenuItems() {
     this.updateBand();
     this.updateContact();
     this.updateLogin();
-    this.updateMain();
-
-    this.isContactOpen = !this.isContactOpen;
   }
 
   private updateBand() {
@@ -141,9 +124,9 @@ export class MobileNavbarComponent {
       'translateY(' + this.login_container_transform_pixel + 'px)';
   }
 
-  private updateMain() {
+  private updateMain(pixel: number) {
     setTimeout(() => {
-      this.messageService.sendMessage(this.main_transform_pixel);
+      this.messageService.sendMessage(pixel);
     }, 0);
   }
 }

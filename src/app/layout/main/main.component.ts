@@ -1,6 +1,6 @@
 import { OpenMobileMenuMessageService } from './../../services/open-mobile-menu-message.service';
 import { SlidingMessageService } from './../../services/sliding-message.service';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -17,24 +17,26 @@ export class MainComponent {
   @ViewChild('wrapper')
   wrapper: ElementRef | undefined;
 
+  translated_pixels = 0;
+  old_translated_pixels = 0;
+
   constructor(
     private messageService: SlidingMessageService,
     private openMobileMenuMessageService: OpenMobileMenuMessageService
   ) {
     this.messageService.getMessage().subscribe((pixel) => {
-      this.setTranslateY(pixel);
+      this.translated_pixels += pixel;
+      this.updateTranslateY();
     });
     this.openMobileMenuMessageService.getState().subscribe((isOpen) => {
-      if (isOpen) {
-        this.setTranslateY(0);
-      } else {
-        this.setTranslateY(5 * 49);
-      }
+      if (isOpen) this.old_translated_pixels = this.translated_pixels - 5 * 49;
+      this.translated_pixels = isOpen ? 0 : 5 * 49 + this.old_translated_pixels;
+      this.updateTranslateY();
     });
   }
 
-  private setTranslateY(pixel: number) {
+  private updateTranslateY() {
     (this.wrapper?.nativeElement as HTMLElement).style.transform =
-      'translateY(' + pixel + 'px)';
+      'translateY(' + this.translated_pixels + 'px)';
   }
 }
