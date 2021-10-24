@@ -5,15 +5,20 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-main',
   template: `
-    <main #main>
-      <router-outlet></router-outlet>
-    </main>
+    <div class="main-wrapper" #wrapper>
+      <main #main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
   `,
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
   @ViewChild('main')
   main: ElementRef | undefined;
+
+  @ViewChild('wrapper')
+  wrapper: ElementRef | undefined;
 
   constructor(
     private messageService: SlidingMessageService,
@@ -32,7 +37,9 @@ export class MainComponent {
   }
 
   private setTranslateY(pixel: number) {
-    (this.main?.nativeElement as HTMLElement).style.transform =
+    // (this.main?.nativeElement as HTMLElement).style.transform =
+    //   'translateY(' + pixel + 'px)';
+    (this.wrapper?.nativeElement as HTMLElement).style.transform =
       'translateY(' + pixel + 'px)';
   }
 }
