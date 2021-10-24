@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { OpenMobileMenuMessageService } from './../../services/open-mobile-menu-message.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor() {}
+  mobile_menu_hidden = true;
+
+  constructor(
+    private openMobileMenuMessageService: OpenMobileMenuMessageService
+  ) {}
+
+  toggleMobileMenu() {
+    this.mobile_menu_hidden = !this.mobile_menu_hidden;
+    this.openMobileMenuMessageService.setState(this.mobile_menu_hidden);
+  }
 }

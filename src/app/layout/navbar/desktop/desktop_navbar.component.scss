@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import "../../../../styles/colors.scss";
 
 :host {
   width: 100%;
@@ -81,4 +81,8 @@
 .mat-submenu a {
   color: inherit;
   text-decoration: none;
+}
+
+li button {
+  height: 100%;
 }

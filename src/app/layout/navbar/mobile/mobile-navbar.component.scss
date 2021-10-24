@@ -1,0 +1,78 @@
+@import "../../../../styles/util.scss";
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/mixin/sliding-transition.scss";
+
+:host {
+  font-weight: 600;
+}
+
+:host,
+a,
+a:visited,
+a:hover,
+a:active {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  li:not(.submenu) {
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: flex;
+    position: relative;
+    text-transform: uppercase;
+    height: 49px;
+    justify-content: space-between;
+    background-color: $bigband-blue;
+
+    @include sliding-transition;
+
+    button {
+      color: white;
+      padding-right: 17px;
+      padding-left: 17px;
+      border-left: 1px solid #444;
+    }
+  }
+
+  .container {
+    padding: 17px;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+}
+
+.submenu {
+  @include sliding-transition;
+  a {
+    background-color: $bigband-red;
+    padding: 14px;
+    padding-left: 34px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+.band_container,
+.band_submenu {
+  transform: translateY(calc(-3 * 47px));
+}
+
+.contact_container,
+.contact_submenu {
+  transform: translateY(calc(-6 * 47px));
+}
+
+.login_container {
+  transform: translateY(calc(-8 * 47px));
+}

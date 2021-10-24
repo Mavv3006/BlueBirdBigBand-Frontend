@@ -1,4 +1,13 @@
 @import "../../../styles/mixin/responsive";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixin/sliding-transition.scss";
+
+.main-wrapper {
+  background-color: $bigband-blue;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  @include sliding-transition;
+}
 
 main {
   background-color: white;
@@ -6,8 +15,10 @@ main {
   border-radius: 15px;
   width: 85vw;
   margin: auto;
-  margin-bottom: 15px;
+  margin-top: 0;
   padding: 1.5em 1em 1em 1em;
+
+  @include sliding-transition;
 
   @include medium {
     padding-top: 3em;
