@@ -8,8 +8,12 @@
     </a>
   </div>
 
-  <button (click)="toggleMobileMenu()" class="mobile-toggle">
-    <mat-icon>menu</mat-icon>
+  <button
+    (click)="toggleMobileMenu()"
+    class="mobile-toggle"
+    [ngClass]="{ 'open-mobile-toggle': !mobile_menu_hidden }"
+  >
+    <mat-icon>{{ mobile_menu_hidden ? "menu" : "close" }}</mat-icon>
   </button>
 </div>
 
