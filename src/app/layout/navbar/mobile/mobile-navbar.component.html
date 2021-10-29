@@ -2,8 +2,11 @@
   <li><a href="#" class="container">Home</a></li>
   <li>
     <div class="container">Aktuelles</div>
-    <button (click)="toggleNews()">
-      <mat-icon>add</mat-icon>
+    <button
+      (click)="toggleNews()"
+      [ngClass]="{ 'open-submenu-bg-color': isNewsOpen }"
+    >
+      <mat-icon>{{ isNewsOpen ? "remove" : "add" }}</mat-icon>
     </button>
   </li>
   <li class="submenu">
@@ -13,8 +16,11 @@
   </li>
   <li #band_container class="band_container">
     <div class="container">Band</div>
-    <button (click)="toggleBand()">
-      <mat-icon>add</mat-icon>
+    <button
+      (click)="toggleBand()"
+      [ngClass]="{ 'open-submenu-bg-color': isBandOpen }"
+    >
+      <mat-icon>{{ isBandOpen ? "remove" : "add" }}</mat-icon>
     </button>
   </li>
   <li class="submenu band_submenu" #band_submenu>
@@ -24,8 +30,11 @@
   </li>
   <li #contact_container class="contact_container">
     <div class="container">Kontakt</div>
-    <button (click)="toggleContact()">
-      <mat-icon>add</mat-icon>
+    <button
+      (click)="toggleContact()"
+      [ngClass]="{ 'open-submenu-bg-color': isContactOpen }"
+    >
+      <mat-icon>{{ isContactOpen ? "remove" : "add" }}</mat-icon>
     </button>
   </li>
   <li class="submenu contakt_submenu" #contact_submenu>
