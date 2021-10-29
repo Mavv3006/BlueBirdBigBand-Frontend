@@ -2,8 +2,14 @@
 @import "../../../../styles/colors.scss";
 @import "../../../../styles/mixin/sliding-transition.scss";
 
+$lighter-big-band-blue: hsl(234, 94%, 45%);
+
 :host {
   font-weight: 600;
+}
+
+.open-submenu-bg-color {
+  background-color: $lighter-big-band-blue;
 }
 
 :host,
@@ -41,7 +47,8 @@ ul {
       color: white;
       padding-right: 17px;
       padding-left: 17px;
-      border-left: 1px solid #444;
+      border-left: 1px solid $lighter-big-band-blue;
+      @include sliding-transition;
     }
   }
 

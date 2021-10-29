@@ -1,5 +1,6 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/mixin/responsive.scss";
+@import "../../../styles/mixin/sliding-transition.scss";
 
 .hidden {
   display: none;
@@ -11,6 +12,10 @@ mat-icon {
 
 app-desktop-navbar {
   display: none;
+}
+
+.open-mobile-toggle {
+  background-color: $bigband-blue;
 }
 
 .headline {
@@ -42,6 +47,7 @@ app-desktop-navbar {
     position: absolute;
     top: 0;
     right: 0;
+    @include sliding-transition;
   }
 }
 
