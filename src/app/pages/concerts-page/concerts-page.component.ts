@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { Concert } from '../../models/concert';
 import { ConcertService } from '../../services/concert.service';
@@ -38,9 +39,13 @@ export class ConcertsPageComponent implements OnInit {
     return this.hasError;
   }
 
-  constructor(private _concertService: ConcertService) {}
+  constructor(
+    private _concertService: ConcertService,
+    private titleService: Title
+  ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Auftrittinfos');
     this._concertService.upcoming().subscribe(
       (data) => {
         this.concerts = data;
@@ -49,7 +54,6 @@ export class ConcertsPageComponent implements OnInit {
       (error) => {
         console.error('Cannot make request', error);
         this.hasError = true;
-        console.log(this.showSpinner);
       }
     );
   }

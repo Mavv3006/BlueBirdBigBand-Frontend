@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Musician } from '../../models/musician';
 
 @Component({
   templateUrl: './musicians.component.html',
   styleUrls: ['./musicians.component.scss'],
 })
-export class MusiciansComponent {
+export class MusiciansComponent implements OnInit {
   readonly tux_sax = 'default/tux-sax.jpg';
   readonly tux_dirigent = 'default/tux-dirigent.png';
   readonly tux_drummer = 'default/tux-drummer.png';
@@ -51,4 +52,10 @@ export class MusiciansComponent {
     { name: 'Rudolf Schultz (bass)', picture: this.tux_gitarrist },
     { name: 'Leonard Breuning (dr)', picture: this.tux_drummer },
   ];
+
+  constructor(private titleService: Title) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Blue Bird Big Band - Besetzung');
+  }
 }
