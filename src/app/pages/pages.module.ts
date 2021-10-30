@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -38,6 +39,7 @@ import { InstrumentListComponent } from './musicians/instrument-list/instrument-
     PressComponent,
     InstrumentListComponent,
   ],
+  providers: [Title],
   imports: [CommonModule, MatProgressSpinnerModule, ComponentsModule],
 })
 export class PagesModule {}
