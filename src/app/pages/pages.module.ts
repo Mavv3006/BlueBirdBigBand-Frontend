@@ -19,6 +19,7 @@ import { ManagementComponent } from './contact-page/contact/management.component
 import { WebadminComponent } from './contact-page/contact/webadmin.component';
 import { PressComponent } from './press/press.component';
 import { InstrumentListComponent } from './musicians/instrument-list/instrument-list.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { InstrumentListComponent } from './musicians/instrument-list/instrument-
     WebadminComponent,
     PressComponent,
     InstrumentListComponent,
+    LoginComponent,
   ],
   providers: [Title],
   imports: [CommonModule, MatProgressSpinnerModule, ComponentsModule],
