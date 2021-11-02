@@ -9,5 +9,8 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.yaml": "home-assistant"
   }
 }
