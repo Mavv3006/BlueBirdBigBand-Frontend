@@ -20,6 +20,9 @@ import { WebadminComponent } from './contact-page/contact/webadmin.component';
 import { PressComponent } from './press/press.component';
 import { InstrumentListComponent } from './musicians/instrument-list/instrument-list.component';
 import { LoginComponent } from './login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,13 @@ import { LoginComponent } from './login/login.component';
     LoginComponent,
   ],
   providers: [Title],
-  imports: [CommonModule, MatProgressSpinnerModule, ComponentsModule],
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+    ComponentsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+  ],
 })
 export class PagesModule {}
