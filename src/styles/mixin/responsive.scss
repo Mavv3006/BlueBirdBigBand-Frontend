@@ -1,3 +1,9 @@
+@mixin extra_small {
+  @media (max-width: 390px) {
+    @content;
+  }
+}
+
 @mixin small {
   @media (min-width: 640px) {
     @content;
@@ -16,17 +22,14 @@
   }
 }
 
-
 @mixin extra_large {
   @media (min-width: 1280px) {
     @content;
   }
 }
 
-
 @mixin extra_large_2 {
   @media (min-width: 1536px) {
     @content;
   }
 }
-
