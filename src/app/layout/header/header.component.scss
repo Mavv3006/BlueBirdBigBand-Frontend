@@ -64,19 +64,21 @@ app-desktop-navbar {
     height: calc(10.125vw - 29.5px);
     min-height: 48px;
     max-height: 100px;
-  }
 
-  .logo {
-    width: 100%;
+    .logo {
+      width: 100%;
 
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $bigband-red;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $bigband-red;
 
-      img {
-        height: 4em;
+        img {
+          // height: 4em;
+          height: 100%;
+          max-height: unset;
+        }
       }
     }
   }
