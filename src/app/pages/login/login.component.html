@@ -2,24 +2,28 @@
 
 <div class="content">
   <form action="#" method="post">
-    <mat-form-field class="input username">
-      <input
-        matInput
-        placeholder="Benutzername"
-        type="text"
-        id="username"
-        name="username"
-      />
-    </mat-form-field>
-    <mat-form-field class="input password">
-      <input
-        type="password"
-        name="password"
-        id="password"
-        matInput
-        placeholder="Passwort"
-      />
-    </mat-form-field>
-    <button type="submit" mat-raised-button color="primary">Login</button>
+    <div class="input-fields">
+      <mat-form-field class="input username">
+        <input
+          matInput
+          placeholder="Benutzername"
+          type="text"
+          id="username"
+          name="username"
+        />
+      </mat-form-field>
+      <mat-form-field class="input password">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          matInput
+          placeholder="Passwort"
+        />
+      </mat-form-field>
+    </div>
+    <div class="login-button">
+      <button type="submit" mat-raised-button color="primary">Login</button>
+    </div>
   </form>
 </div>
