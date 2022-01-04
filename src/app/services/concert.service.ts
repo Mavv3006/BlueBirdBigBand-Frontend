@@ -11,6 +11,6 @@ export class ConcertService {
   constructor(private http: HttpClient) {}
 
   upcoming() {
-    return this.http.get<Concert[]>(environment.concerts.upcoming_url);
+    return this.http.get<Concert[]>(environment.urls.concerts.upcoming);
   }
 }
