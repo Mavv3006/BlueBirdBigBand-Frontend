@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { CoreService } from './core.service';
+import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { LocalStorageKey } from '../storage/local-storage-keys';
 
 export interface LoginResponse {
   access_token: 'string';
@@ -16,22 +16,42 @@ export interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private tokenService: TokenService,
+    private coreService: CoreService
+  ) {}
 
   public login(username: string, password: string) {
-    return this.http.post<LoginResponse>(environment.urls.auth.login, {
+    let data = {
       username: username,
       password: password,
-    });
+    };
+    this.coreService.post(environment.urls.auth.login, data).subscribe(
+      (val) => {
+        console.log('login response value', val);
+        this.tokenService.setToken(val.access_token);
+      },
+      () => {},
+      () => {
+        console.log('Login done');
+      }
+    );
   }
 
   public logout() {
-    return this.http.get(environment.urls.auth.logout);
+    this.coreService.get(environment.urls.auth.logout).subscribe(
+      (val) => {
+        console.log('logout response value', val);
+      },
+      () => {},
+      () => {
+        console.log('Logout done');
+        this.tokenService.clear();
+      }
+    );
   }
 
   public isLoggedIn(): boolean {
-    // TODO: add check for format of item with LocalStorageKey.jwt key
-    let item = localStorage.getItem(LocalStorageKey.jwt);
-    return item !== null;
+    return this.tokenService.getToken() !== null;
   }
 }
