@@ -8,14 +8,18 @@ export class TokenService {
   constructor() {}
 
   public setToken(token: string): void {
+    console.info('localStorage set', { JWT: token });
     window.localStorage.setItem(LocalStorageKey.jwt, token);
   }
 
   public getToken(): string | null {
-    return window.localStorage.getItem(LocalStorageKey.jwt);
+    const token = window.localStorage.getItem(LocalStorageKey.jwt);
+    console.info('localStorage get', { JWT: token });
+    return token;
   }
 
   public clear(): void {
+    console.info('localStorage clear');
     window.localStorage.removeItem(LocalStorageKey.jwt);
   }
 }

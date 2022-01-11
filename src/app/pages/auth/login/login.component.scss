@@ -1,0 +1,45 @@
+@import "../../../../styles/mixin/responsive.scss";
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .input {
+    width: 60vw;
+    min-width: 190px;
+  }
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  button {
+    min-width: 85px;
+  }
+}
+
+@include small {
+  .input-fields {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+
+    .input {
+      width: unset;
+      min-width: unset;
+    }
+  }
+}
+
+@include medium {
+  .input {
+    width: 35%;
+    max-width: 20vw;
+  }
+}
+
+button {
+  width: 20vw;
+  max-width: 175px;
+}

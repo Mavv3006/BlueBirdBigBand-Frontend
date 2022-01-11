@@ -28,10 +28,12 @@ export class AuthService {
     };
     this.coreService.post(environment.urls.auth.login, data).subscribe(
       (val) => {
-        console.log('login response value', val);
+        console.log('login response:', val);
         this.tokenService.setToken(val.access_token);
       },
-      () => {},
+      (error) => {
+        console.error(error);
+      },
       () => {
         console.log('Login done');
       }
@@ -41,9 +43,11 @@ export class AuthService {
   public logout() {
     this.coreService.get(environment.urls.auth.logout).subscribe(
       (val) => {
-        console.log('logout response value', val);
+        console.log('logout response:', val);
       },
-      () => {},
+      (error) => {
+        console.error(error);
+      },
       () => {
         console.log('Logout done');
         this.tokenService.clear();

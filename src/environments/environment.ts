@@ -11,9 +11,9 @@ export const environment: Environment = {
       upcoming: 'http://localhost:8080/upcoming',
     },
     auth: {
-      login: '',
-      logout: '',
-      refresh: '',
+      login: 'http://localhost:8080/auth/login',
+      logout: 'http://localhost:8080/auth/logout',
+      refresh: 'http://localhost:8080/auth/refresh',
     },
   },
 };

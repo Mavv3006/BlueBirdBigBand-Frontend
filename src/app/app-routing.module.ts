@@ -1,3 +1,4 @@
+import { LogoutComponent } from './pages/auth/logout/logout.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,7 +11,7 @@ import { LegalNotesComponent } from './pages/legal-notes/legal-notes.component';
 import { MusiciansComponent } from './pages/musicians/musicians.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PressComponent } from './pages/press/press.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 
 const routes: Routes = [
   {
@@ -50,8 +51,14 @@ const routes: Routes = [
     component: PressComponent,
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      { path: 'logout', component: LogoutComponent },
+    ],
   },
   {
     path: '**',

@@ -1,0 +1,31 @@
+<app-heading>Login</app-heading>
+
+<div class="content">
+  <form (ngSubmit)="onSubmit()">
+    <div class="input-fields">
+      <mat-form-field class="input username">
+        <input
+          matInput
+          placeholder="Benutzername"
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+        />
+      </mat-form-field>
+      <mat-form-field class="input password">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          matInput
+          placeholder="Passwort"
+          [(ngModel)]="password"
+        />
+      </mat-form-field>
+    </div>
+    <div class="login-button">
+      <button type="submit" mat-raised-button color="primary">Login</button>
+    </div>
+  </form>
+</div>
