@@ -23,7 +23,7 @@ export class AuthService {
 
   public login(username: string, password: string) {
     let data = {
-      username: username,
+      name: username,
       password: password,
     };
     this.coreService.post(environment.urls.auth.login, data).subscribe(
