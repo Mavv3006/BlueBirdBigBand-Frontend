@@ -1,16 +1,8 @@
+import { Router } from '@angular/router';
 import { CoreService } from './core.service';
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-
-export interface LoginResponse {
-  access_token: 'string';
-  token_type: 'string';
-  expires: {
-    in: number;
-    at: number;
-  };
-}
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +10,8 @@ export interface LoginResponse {
 export class AuthService {
   constructor(
     private tokenService: TokenService,
-    private coreService: CoreService
+    private coreService: CoreService,
+    private router: Router
   ) {}
 
   public login(username: string, password: string) {
@@ -30,12 +23,13 @@ export class AuthService {
       (val) => {
         console.log('login response:', val);
         this.tokenService.setToken(val.access_token);
+        this.tokenService.setExpireDateTime(val.expires.at);
       },
       (error) => {
         console.error(error);
       },
       () => {
-        console.log('Login done');
+        this.router.navigateByUrl('/intern');
       }
     );
   }

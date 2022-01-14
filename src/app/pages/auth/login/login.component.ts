@@ -1,5 +1,6 @@
 import { AuthService } from './../../../services/auth.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './login.component.html',
@@ -9,7 +10,7 @@ export class LoginComponent {
   password: string = '';
   username: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
     console.log({ username: this.username, password: this.password });

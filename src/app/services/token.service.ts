@@ -8,18 +8,34 @@ export class TokenService {
   constructor() {}
 
   public setToken(token: string): void {
-    console.info('localStorage set', { JWT: token });
+    console.debug('set auth token');
     window.localStorage.setItem(LocalStorageKey.jwt, token);
   }
 
   public getToken(): string | null {
     const token = window.localStorage.getItem(LocalStorageKey.jwt);
-    console.info('localStorage get', { JWT: token });
     return token;
+  }
+
+  public setExpireDateTime(value: number): void {
+    console.debug('set auth token exp date');
+    window.localStorage.setItem(
+      LocalStorageKey.expire_date_time,
+      value.toString()
+    );
+  }
+
+  public getExpireDateTime(): Date | null {
+    let value = window.localStorage.getItem(LocalStorageKey.expire_date_time);
+    if (value == null) {
+      return null;
+    }
+    return new Date(+value * 1000);
   }
 
   public clear(): void {
     console.info('localStorage clear');
     window.localStorage.removeItem(LocalStorageKey.jwt);
+    window.localStorage.removeItem(LocalStorageKey.expire_date_time);
   }
 }
