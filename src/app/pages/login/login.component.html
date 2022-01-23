@@ -1,7 +1,7 @@
 <app-heading>Login</app-heading>
 
 <div class="content">
-  <form action="#" method="post">
+  <form (submit)="login()" [formGroup]="form">
     <div class="input-fields">
       <mat-form-field class="input username">
         <input
@@ -10,17 +10,24 @@
           type="text"
           id="username"
           name="username"
+          formControlName="username"
+          required
         />
       </mat-form-field>
       <mat-form-field class="input password">
         <input
           type="password"
           name="password"
+          formControlName="password"
           id="password"
           matInput
           placeholder="Passwort"
+          required
         />
       </mat-form-field>
+    </div>
+    <div class="login-error" *ngIf="hasLoginError">
+      Error beim Login: Benutzername oder Passwort falsch.
     </div>
     <div class="login-button">
       <button type="submit" mat-raised-button color="primary">Login</button>
