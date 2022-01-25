@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './login.component.html',
@@ -7,18 +7,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
   hasLoginError = false;
-  form: FormGroup = this.formBuilder.group({});
+  form = this.formBuilder.group({
+    password: [''],
+    username: [''],
+  });
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = formBuilder.group({
-      password: ['', Validators.required],
-      username: ['', Validators.required],
-    });
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   login() {
     this.hasLoginError = !this.hasLoginError;
     console.info(this.form.value);
-    console.info('valid', this.form.valid);
   }
 }
