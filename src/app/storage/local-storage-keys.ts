@@ -1,3 +1,4 @@
 export enum LocalStorageKey {
-  jwt = 'JWT',
+  jwt = 'jwt',
+  expire_date_time = 'jwt exp',
 }

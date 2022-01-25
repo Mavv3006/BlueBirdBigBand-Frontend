@@ -63,7 +63,7 @@ describe('AuthService', () => {
     // Validation
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({
-      username: username,
+      name: username,
       password: password,
     });
     expect(tokenService.getToken()).toEqual(token);

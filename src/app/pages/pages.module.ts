@@ -1,4 +1,5 @@
-import { Title } from '@angular/platform-browser';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { Title, BrowserModule } from '@angular/platform-browser';
 import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,7 @@ import { ManagementComponent } from './contact-page/contact/management.component
 import { WebadminComponent } from './contact-page/contact/webadmin.component';
 import { PressComponent } from './press/press.component';
 import { InstrumentListComponent } from './musicians/instrument-list/instrument-list.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -43,18 +44,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WebadminComponent,
     PressComponent,
     InstrumentListComponent,
+    LogoutComponent,
     LoginComponent,
   ],
   providers: [Title],
   imports: [
+    BrowserModule,
     CommonModule,
-    MatProgressSpinnerModule,
     ComponentsModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
+    MatCardModule,
     MatInputModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class PagesModule {}
