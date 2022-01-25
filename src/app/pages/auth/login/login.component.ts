@@ -1,5 +1,9 @@
+import { TokenService } from './../../../services/token.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthService, LoginResponse } from './../../../services/auth.service';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   templateUrl: './login.component.html',
@@ -12,10 +16,35 @@ export class LoginComponent {
     username: [''],
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private http: HttpClient,
+    private tokenService: TokenService
+  ) {}
 
   login() {
-    this.hasLoginError = !this.hasLoginError;
-    console.info(this.form.value);
+    this.authService
+      .login({
+        name: this.form.value.username,
+        password: this.form.value.password,
+      })
+      .subscribe(
+        this.handleLogin,
+        (error) => {
+          this.hasLoginError = true;
+        },
+        () => {
+          if (!this.hasLoginError) {
+            this.router.navigateByUrl('/intern');
+          }
+        }
+      );
+  }
+
+  private handleLogin(response: LoginResponse) {
+    this.tokenService.setExpireDateTime(response.expires.at);
+    this.tokenService.setToken(response.access_token);
   }
 }
