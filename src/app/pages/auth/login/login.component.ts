@@ -1,5 +1,4 @@
 import { TokenService } from './../../../services/token.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService, LoginResponse } from './../../../services/auth.service';
 import { Component } from '@angular/core';
@@ -11,6 +10,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class LoginComponent {
   hasLoginError = false;
+  hasClicked = false;
   form = this.formBuilder.group({
     password: [''],
     username: [''],
@@ -20,27 +20,29 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private http: HttpClient,
     private tokenService: TokenService
   ) {}
 
   login() {
-    this.authService
-      .login({
+    this.hasLoginError = false;
+    this.hasClicked = true;
+    this.authService.login({
+      data: {
         name: this.form.value.username,
         password: this.form.value.password,
-      })
-      .subscribe(
-        this.handleLogin,
-        (error) => {
-          this.hasLoginError = true;
-        },
-        () => {
-          if (!this.hasLoginError) {
-            this.router.navigateByUrl('/intern');
-          }
-        }
-      );
+      },
+      next: (response: LoginResponse) => this.handleLogin(response),
+      error: (error) => {
+        this.hasLoginError = true;
+        this.hasClicked = false;
+        console.info(error);
+      },
+      complete: () => {
+        this.hasClicked = false;
+        // TODO: redirect to query param
+        this.router.navigateByUrl('/intern');
+      },
+    });
   }
 
   private handleLogin(response: LoginResponse) {

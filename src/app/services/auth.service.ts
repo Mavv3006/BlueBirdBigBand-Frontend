@@ -1,8 +1,10 @@
+import { TokenService } from './token.service';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs/internal/observable/throwError';
+import { BehaviorSubject } from 'rxjs';
 
 export interface LoginData {
   name: string;
@@ -18,22 +20,70 @@ export interface LoginResponse {
   };
 }
 
+export interface LogoutResponse {
+  message: string;
+}
+
+export type LoginParams = {
+  data: LoginData;
+  next: (value: LoginResponse) => void;
+  error: (error: any) => void;
+  complete?: (() => void) | undefined;
+};
+
+export type LogoutParams = {
+  next: (value: LogoutResponse) => void;
+  error: (error: any) => void;
+  complete?: (() => void) | undefined;
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  private _isLoggedIn: BehaviorSubject<boolean>;
 
-  public login(data: LoginData) {
-    return this.http
-      .post<LoginResponse>(environment.urls.auth.login, data)
-      .pipe(retry(3), catchError(this.handleError));
+  public get isLoggedIn(): BehaviorSubject<boolean> {
+    return this._isLoggedIn;
   }
 
-  public logout() {
-    return this.http
-      .get(environment.urls.auth.login)
-      .pipe(retry(3), catchError(this.handleError));
+  constructor(private http: HttpClient, private tokenService: TokenService) {
+    this._isLoggedIn = new BehaviorSubject<boolean>(this.loggedIn());
+  }
+
+  public login(params: LoginParams) {
+    this.http
+      .post<LoginResponse>(environment.urls.auth.login, params.data)
+      .pipe(retry(3), catchError(this.handleError))
+      .subscribe({
+        next: (res: LoginResponse) => {
+          this.tokenService.setToken(res.access_token);
+          this.tokenService.setExpireDateTime(res.expires.at);
+          this.isLoggedIn.next(this.loggedIn());
+          params.next(res);
+        },
+        error: params.error,
+        complete: params.complete,
+      });
+  }
+
+  public logout(params: LogoutParams) {
+    this.http
+      .get<LogoutResponse>(environment.urls.auth.logout)
+      .pipe(retry(3), catchError(this.handleError))
+      .subscribe({
+        next: (res: LogoutResponse) => {
+          this.tokenService.clear();
+          this.isLoggedIn.next(this.loggedIn());
+          params.next(res);
+        },
+        error: params.error,
+        complete: params.complete,
+      });
+  }
+
+  private loggedIn(): boolean {
+    return this.tokenService.getToken() !== null;
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -49,6 +99,6 @@ export class AuthService {
       );
     }
 
-    return throwError('Something bad happened; please try again later');
+    return throwError(error.error);
   }
 }

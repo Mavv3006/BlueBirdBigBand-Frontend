@@ -28,7 +28,14 @@
       Error beim Login: Benutzername oder Passwort falsch.
     </div>
     <div class="login-button">
-      <button type="submit" mat-raised-button color="primary">Login</button>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="hasClicked"
+      >
+        Login
+      </button>
     </div>
   </form>
 </div>

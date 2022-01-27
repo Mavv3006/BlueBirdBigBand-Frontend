@@ -8,7 +8,6 @@ export class TokenService {
   constructor() {}
 
   public setToken(token: string): void {
-    console.debug('set auth token');
     window.localStorage.setItem(LocalStorageKey.jwt, token);
   }
 
@@ -18,7 +17,6 @@ export class TokenService {
   }
 
   public setExpireDateTime(value: number): void {
-    console.debug('set auth token exp date');
     window.localStorage.setItem(
       LocalStorageKey.expire_date_time,
       value.toString()
@@ -34,7 +32,6 @@ export class TokenService {
   }
 
   public clear(): void {
-    console.info('localStorage clear');
     window.localStorage.removeItem(LocalStorageKey.jwt);
     window.localStorage.removeItem(LocalStorageKey.expire_date_time);
   }
