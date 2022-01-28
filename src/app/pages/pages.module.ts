@@ -25,6 +25,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './intern/index/index.component';
+import { BbbbScheduleComponent } from './intern/schedule/bbbb-schedule.component';
+import { DtbScheduleComponent } from './intern/schedule/dtb-schedule.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InstrumentListComponent,
     LogoutComponent,
     LoginComponent,
+    IndexComponent,
+    BbbbScheduleComponent,
+    DtbScheduleComponent,
   ],
   providers: [Title],
   imports: [
