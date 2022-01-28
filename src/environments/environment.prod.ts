@@ -1,8 +1,11 @@
-import { Environment } from "./environment-interface";
+import { Environment } from './environment-interface';
 
 export const environment: Environment = {
   production: true,
-  concerts: {
-    upcoming_url: "https://api.bluebirdbigband.de/upcoming"
-  }
+  urls: {
+    concerts: {
+      upcoming: 'https://api.bluebirdbigband.de/upcoming',
+    },
+    auth: { login: '', logout: '', refresh: '' },
+  },
 };

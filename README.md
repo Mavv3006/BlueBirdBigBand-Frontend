@@ -32,3 +32,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - CSS - BEM - https://github.com/airbnb/css
 - SCSS - https://sass-guidelin.es/
 - JavaScript - https://github.com/airbnb/javascript
+
+# Helpt with angular/common/http module
+
+- https://blog.angular-university.io/angular-http/
