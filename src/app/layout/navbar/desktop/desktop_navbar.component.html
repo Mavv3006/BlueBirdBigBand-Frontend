@@ -29,5 +29,8 @@
       <a href="/impressum"><button mat-menu-item>Impressum</button></a>
     </mat-menu>
   </li>
-  <li><a href="#intern">Login</a></li>
+  <li>
+    <a href="/auth/login" *ngIf="!isLoggedIn">Login</a>
+    <a (click)="clickme()" *ngIf="isLoggedIn">Logout</a>
+  </li>
 </ul>

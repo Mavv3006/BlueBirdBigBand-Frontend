@@ -6,9 +6,16 @@ import { Environment } from './environment-interface';
 
 export const environment: Environment = {
   production: false,
-  concerts: {
-    upcoming_url: 'http://localhost:8080/upcoming'
-  }
+  urls: {
+    concerts: {
+      upcoming: 'http://localhost:8080/upcoming',
+    },
+    auth: {
+      login: 'http://localhost:8080/auth/login',
+      logout: 'http://localhost:8080/auth/logout',
+      refresh: 'http://localhost:8080/auth/refresh',
+    },
+  },
 };
 
 /*

@@ -1,6 +1,13 @@
 export interface Environment {
-  production: boolean,
-  concerts: {
-    upcoming_url: string
-  }
+  production: boolean;
+  urls: {
+    concerts: {
+      upcoming: string;
+    };
+    auth: {
+      login: string;
+      logout: string;
+      refresh: string;
+    };
+  };
 }
