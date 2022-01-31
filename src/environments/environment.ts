@@ -6,14 +6,18 @@ import { Environment } from './environment-interface';
 
 export const environment: Environment = {
   production: false,
+  base_url: 'http://localhost:8080',
   urls: {
     concerts: {
-      upcoming: 'http://localhost:8080/upcoming',
+      upcoming: 'upcoming',
     },
     auth: {
-      login: 'http://localhost:8080/auth/login',
-      logout: 'http://localhost:8080/auth/logout',
-      refresh: 'http://localhost:8080/auth/refresh',
+      login: 'auth/login',
+      logout: 'auth/logout',
+      refresh: 'auth/refresh',
+    },
+    intern: {
+      emails: 'intern/basics',
     },
   },
 };
