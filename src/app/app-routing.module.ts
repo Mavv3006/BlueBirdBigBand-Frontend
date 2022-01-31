@@ -1,3 +1,4 @@
+import { EmailComponent } from './pages/intern/email/email.component';
 import { LogoutComponent } from './pages/auth/logout/logout.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { NgModule } from '@angular/core';
@@ -77,6 +78,10 @@ const routes: Routes = [
       {
         path: 'termine-dtb',
         component: DtbScheduleComponent,
+      },
+      {
+        path: 'email',
+        component: EmailComponent,
       },
       {
         path: '**',
