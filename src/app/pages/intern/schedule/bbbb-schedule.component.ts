@@ -19,8 +19,6 @@ import { Component } from '@angular/core';
       </a>
     </p>
   `,
-  styles: [],
+  styleUrls: ['./schedule.component.scss'],
 })
-export class BbbbScheduleComponent {
-  constructor() {}
-}
+export class BbbbScheduleComponent {}
