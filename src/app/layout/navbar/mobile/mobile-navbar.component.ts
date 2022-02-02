@@ -1,12 +1,15 @@
+import { AuthService } from './../../../services/auth.service';
 import { SlidingMessageService } from './../../../services/sliding-message.service';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-mobile-navbar',
   templateUrl: './mobile-navbar.component.html',
   styleUrls: ['./mobile-navbar.component.scss'],
 })
-export class MobileNavbarComponent {
+export class MobileNavbarComponent implements OnInit {
+  //TODO: Refactor
+
   @ViewChild('band_container')
   band_container: ElementRef | undefined;
 
@@ -22,6 +25,9 @@ export class MobileNavbarComponent {
   @ViewChild('login_container')
   login_container: ElementRef | undefined;
 
+  @ViewChild('intern_container')
+  intern_container: ElementRef | undefined;
+
   band_container_transform_pixel = -3 * 47;
   band_submenu_transform_pixel = -3 * 47;
   contact_container_transform_pixel = -6 * 47;
@@ -31,12 +37,39 @@ export class MobileNavbarComponent {
   isNewsOpen = false;
   isBandOpen = false;
   isContactOpen = false;
+  isInternOpen = false;
 
   readonly news_pixel = 3 * 47;
   readonly band_pixel = 3 * 47;
   readonly contact_pixel = 2 * 47;
 
-  constructor(private messageService: SlidingMessageService) {}
+  isLoggedIn = false;
+
+  constructor(
+    private messageService: SlidingMessageService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn.subscribe({
+      next: (value: boolean) => {
+        console.debug('[DesktopNavbarComponent] isLoggedIn =', value);
+        this.isLoggedIn = value;
+      },
+    });
+  }
+
+  clickme() {
+    this.authService.logout({
+      next: (val) => console.debug('[DesktopNavbarComponent]', val),
+      error: () => {},
+      complete: () => {
+        // TODO: redirect to home if current route is in intern namespace
+      },
+    });
+  }
+
+  toggleIntern() {}
 
   toggleNews() {
     if (this.isNewsOpen) {

@@ -41,7 +41,23 @@
     <a href="/kontakt">Kontakt</a>
     <a href="/impressum" #impressum class="impressum">Impressum</a>
   </li>
+  <li #intern_container class="intern_container" *ngIf="isLoggedIn">
+    <div class="container">Intern</div>
+    <button
+      (click)="toggleIntern()"
+      [ngClass]="{ 'open-submenu-bg-color': isInternOpen }"
+    >
+      <mat-icon>{{ isInternOpen ? "remove" : "add" }}</mat-icon>
+    </button>
+  </li>
+  <li class="submenu intern_submenu" #intern_submenu *ngIf="isLoggedIn">
+    <a href="/intern/"> Intern-Startseite </a>
+    <a href="/intern/emails"> Email-Verteiler </a>
+    <a href="/intern/termine-bbbb"> Termine BBBB </a>
+    <a href="/intern/termine-dtb" #intern> Termine DTB </a>
+  </li>
   <li #login_container class="login_container">
-    <a href="/auth/login" class="container">Login</a>
+    <a class="container" href="/auth/login" *ngIf="!isLoggedIn">Login</a>
+    <a class="container" (click)="clickme()" *ngIf="isLoggedIn">Logout</a>
   </li>
 </ul>
