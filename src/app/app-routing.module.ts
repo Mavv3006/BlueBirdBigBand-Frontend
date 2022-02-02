@@ -80,7 +80,7 @@ const routes: Routes = [
         component: DtbScheduleComponent,
       },
       {
-        path: 'email',
+        path: 'emails',
         component: EmailComponent,
       },
       {

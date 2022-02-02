@@ -1,25 +1,29 @@
-import { LocalStorageKey } from './../../../storage/local-storage-keys';
-import { Subject } from 'rxjs';
-import { EmailService, EmailBand } from './../../../services/email.service';
+import { EmailService, EmailGroup } from './../../../services/email.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  templateUrl: './email.component.html',
+  template: `
+    <app-heading>E-Mail Verteiler</app-heading>
+    <div class="email-group" *ngFor="let group of email">
+      <app-email-group [emails]="group"></app-email-group>
+    </div>
+  `,
   styleUrls: ['./email.component.scss'],
 })
 export class EmailComponent implements OnInit {
-  email: EmailBand[] | undefined = undefined;
+  email: EmailGroup[] | undefined = undefined;
 
   constructor(private emailService: EmailService) {}
 
   ngOnInit(): void {
-    if (window.localStorage.getItem(LocalStorageKey.email) != null) {
-      let email_string = window.localStorage.getItem(LocalStorageKey.email);
-    }
+    // if (window.localStorage.getItem(LocalStorageKey.email) != null) {
+    //   let email_string = window.localStorage.getItem(LocalStorageKey.email);
+    // }
 
     this.emailService.get().subscribe(
-      (res: EmailBand[]) => {
+      (res: EmailGroup[]) => {
         this.email = res;
+        console.debug('[EmailComponent]', this.email);
       },
       (error) => {
         console.error('[EmailComponent]', error);

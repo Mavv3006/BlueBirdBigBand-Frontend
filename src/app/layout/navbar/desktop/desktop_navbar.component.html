@@ -29,6 +29,20 @@
       <a href="/impressum"><button mat-menu-item>Impressum</button></a>
     </mat-menu>
   </li>
+  <li *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="intern" class="nav-container">
+      Intern
+    </button>
+    <mat-menu #intern="matMenu" class="mat-submenu">
+      <a href="/intern/email">Emails</a>
+      <a href="/intern/termine-bbbb"
+        ><button mat-menu-item>Termine BBBB</button></a
+      >
+      <a href="/intern/termine-dtb"
+        ><button mat-menu-item>Termine DTB</button></a
+      >
+    </mat-menu>
+  </li>
   <li>
     <a href="/auth/login" *ngIf="!isLoggedIn">Login</a>
     <a (click)="clickme()" *ngIf="isLoggedIn">Logout</a>

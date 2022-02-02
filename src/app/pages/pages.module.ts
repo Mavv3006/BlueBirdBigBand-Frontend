@@ -1,3 +1,5 @@
+import { EmailGroupComponent } from './intern/email/email-group.component';
+import { EmailComponent } from './intern/email/email.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { Title, BrowserModule } from '@angular/platform-browser';
 import { ComponentsModule } from './../components/components.module';
@@ -38,6 +40,8 @@ const components = [
   AboutUsComponent,
   LegalNotesComponent,
   PageNotFoundComponent,
+  EmailComponent,
+  EmailGroupComponent,
   ConcertComponent,
   BookingComponent,
   ContactComponent,
