@@ -1,6 +1,7 @@
 <li #container>
   <div class="container">{{ container_title }}</div>
   <button
+    *ngIf="has_children"
     (click)="toggleSubmenu()"
     [ngClass]="{ 'open-submenu-bg-color': isOpen }"
   >

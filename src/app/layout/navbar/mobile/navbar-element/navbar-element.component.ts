@@ -1,11 +1,19 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-navbar-element',
   templateUrl: './navbar-element.component.html',
   styleUrls: ['./navbar-element.component.scss'],
 })
-export class NavbarElementComponent {
+export class NavbarElementComponent implements AfterViewInit {
   @ViewChild('container')
   container: ElementRef | undefined;
 
@@ -16,10 +24,26 @@ export class NavbarElementComponent {
   container_title: string = '';
 
   get submenu_children_count(): number {
+    if (this.submenu === undefined) {
+      return 0;
+    }
     return (this.submenu?.nativeElement as HTMLElement).childElementCount;
+  }
+
+  get has_children(): boolean {
+    return this.submenu_children_count > 0;
   }
 
   isOpen = false;
 
-  toggleSubmenu() {}
+  ngAfterViewInit(): void {
+    console.debug(
+      '[NavbarElementComponent] children count:',
+      this.submenu_children_count
+    );
+  }
+
+  toggleSubmenu() {
+    this.isOpen = !this.isOpen;
+  }
 }
