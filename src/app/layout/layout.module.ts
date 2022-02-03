@@ -8,12 +8,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from '../app-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { NavbarElementComponent } from './navbar/mobile/navbar-element/navbar-element.component';
 
 const components = [
   HeaderComponent,
   MainComponent,
   DesktopNavbarComponent,
   MobileNavbarComponent,
+  NavbarElementComponent,
 ];
 
 @NgModule({
