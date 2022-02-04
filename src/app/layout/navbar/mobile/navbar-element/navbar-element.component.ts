@@ -3,8 +3,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 
@@ -22,6 +24,9 @@ export class NavbarElementComponent implements AfterViewInit {
 
   @Input()
   container_title: string = '';
+
+  @Output()
+  openToggle = new EventEmitter<boolean>();
 
   get submenu_children_count(): number {
     if (this.submenu === undefined) {
@@ -45,5 +50,6 @@ export class NavbarElementComponent implements AfterViewInit {
 
   toggleSubmenu() {
     this.isOpen = !this.isOpen;
+    this.openToggle.emit(this.isOpen);
   }
 }

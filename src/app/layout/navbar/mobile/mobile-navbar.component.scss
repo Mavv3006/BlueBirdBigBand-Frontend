@@ -58,15 +58,17 @@ ul {
   }
 }
 
+.child .child-link,
+.submenu a {
+  background-color: $bigband-red;
+  padding: 14px;
+  padding-left: 34px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
 .submenu {
   @include sliding-transition;
-  a {
-    background-color: $bigband-red;
-    padding: 14px;
-    padding-left: 34px;
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
 }
 
 .band_container,

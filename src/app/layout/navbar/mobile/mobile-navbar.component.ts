@@ -1,13 +1,19 @@
 import { AuthService } from './../../../services/auth.service';
 import { SlidingMessageService } from './../../../services/sliding-message.service';
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  OnInit,
+  AfterViewInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-mobile-navbar',
   templateUrl: './mobile-navbar.component.html',
   styleUrls: ['./mobile-navbar.component.scss'],
 })
-export class MobileNavbarComponent implements OnInit {
+export class MobileNavbarComponent implements OnInit, AfterViewInit {
   //TODO: Refactor
 
   @ViewChild('band_container')
@@ -27,6 +33,12 @@ export class MobileNavbarComponent implements OnInit {
 
   @ViewChild('intern_container')
   intern_container: ElementRef | undefined;
+
+  @ViewChild('Test1')
+  test1: ElementRef | undefined;
+
+  @ViewChild('Test2')
+  test2: ElementRef | undefined;
 
   band_container_transform_pixel = -3 * 47;
   band_submenu_transform_pixel = -3 * 47;
@@ -49,6 +61,14 @@ export class MobileNavbarComponent implements OnInit {
     private messageService: SlidingMessageService,
     private authService: AuthService
   ) {}
+
+  ngAfterViewInit(): void {
+    const text_pixel = -15;
+    setTimeout(() => {
+      (this.test2?.nativeElement as HTMLElement).style.transform =
+        'translateY(' + text_pixel + 'px)';
+    }, 0);
+  }
 
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe({
@@ -128,6 +148,12 @@ export class MobileNavbarComponent implements OnInit {
     );
 
     this.isContactOpen = !this.isContactOpen;
+  }
+
+  handleToggleHomeTest(isOpen: boolean) {
+    console.info(
+      '[MobileNavbarComponent] home test is ' + (isOpen ? 'open' : 'closed')
+    );
   }
 
   private updateMenuItems() {
