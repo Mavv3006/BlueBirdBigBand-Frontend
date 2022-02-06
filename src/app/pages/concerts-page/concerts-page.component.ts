@@ -8,13 +8,6 @@ import { ConcertService } from '../../services/concert.service';
   styleUrls: ['./concerts-page.component.scss'],
 })
 export class ConcertsPageComponent implements OnInit {
-  private _date_formatting_options: any = {
-    weekday: 'long',
-    year: 'numeric',
-    month: '2-digit',
-    day: 'numeric',
-  };
-
   concerts: Concert[] = [];
   hasValues = false;
   hasError = false;
@@ -56,23 +49,6 @@ export class ConcertsPageComponent implements OnInit {
         console.error('Cannot make request', error);
         this.hasError = true;
       }
-    );
-  }
-
-  createDay(concert: Concert): string {
-    return new Date(concert.date).toLocaleDateString(
-      'de-DE',
-      this._date_formatting_options
-    );
-  }
-
-  play_time(concert: Concert): string {
-    return (
-      concert.start_time.substring(0, 5) +
-      ' Uhr - ' +
-      concert.end_time.substring(0, 5) +
-      ' Uhr | ' +
-      concert.descriptions.organizer
     );
   }
 }
