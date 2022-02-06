@@ -1,0 +1,13 @@
+<li #container>
+  <div class="container">{{ container_title }}</div>
+  <button
+    *ngIf="has_children"
+    (click)="toggleSubmenu()"
+    [ngClass]="{ 'open-submenu-bg-color': isOpen }"
+  >
+    <mat-icon>{{ isOpen ? "remove" : "add" }}</mat-icon>
+  </button>
+</li>
+<li class="submenu" #submenu [ngClass]="{ 'open-submenu': isOpen }">
+  <ng-content></ng-content>
+</li>

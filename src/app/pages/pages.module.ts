@@ -1,3 +1,5 @@
+import { EmailGroupComponent } from './intern/email/email-group.component';
+import { EmailComponent } from './intern/email/email.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { Title, BrowserModule } from '@angular/platform-browser';
 import { ComponentsModule } from './../components/components.module';
@@ -25,28 +27,39 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './intern/index/index.component';
+import { BbbbScheduleComponent } from './intern/schedule/bbbb-schedule.component';
+import { DtbScheduleComponent } from './intern/schedule/dtb-schedule.component';
+
+const components = [
+  HomeComponent,
+  ConcertsPageComponent,
+  ContactPageComponent,
+  MusiciansComponent,
+  JourneyComponent,
+  AboutUsComponent,
+  LegalNotesComponent,
+  PageNotFoundComponent,
+  EmailComponent,
+  EmailGroupComponent,
+  ConcertComponent,
+  BookingComponent,
+  ContactComponent,
+  BandleaderComponent,
+  ManagementComponent,
+  WebadminComponent,
+  PressComponent,
+  InstrumentListComponent,
+  LogoutComponent,
+  LoginComponent,
+  IndexComponent,
+  BbbbScheduleComponent,
+  DtbScheduleComponent,
+];
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    ConcertsPageComponent,
-    ContactPageComponent,
-    MusiciansComponent,
-    JourneyComponent,
-    AboutUsComponent,
-    LegalNotesComponent,
-    PageNotFoundComponent,
-    ConcertComponent,
-    BookingComponent,
-    ContactComponent,
-    BandleaderComponent,
-    ManagementComponent,
-    WebadminComponent,
-    PressComponent,
-    InstrumentListComponent,
-    LogoutComponent,
-    LoginComponent,
-  ],
+  declarations: components,
+  exports: components,
   providers: [Title],
   imports: [
     BrowserModule,

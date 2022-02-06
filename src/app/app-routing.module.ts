@@ -1,3 +1,4 @@
+import { EmailComponent } from './pages/intern/email/email.component';
 import { LogoutComponent } from './pages/auth/logout/logout.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,9 @@ import { MusiciansComponent } from './pages/musicians/musicians.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PressComponent } from './pages/press/press.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { IndexComponent } from './pages/intern/index/index.component';
+import { BbbbScheduleComponent } from './pages/intern/schedule/bbbb-schedule.component';
+import { DtbScheduleComponent } from './pages/intern/schedule/dtb-schedule.component';
 
 const routes: Routes = [
   {
@@ -60,7 +64,31 @@ const routes: Routes = [
       { path: 'logout', component: LogoutComponent },
     ],
   },
-  { path: 'intern', component: PageNotFoundComponent },
+  {
+    path: 'intern',
+    children: [
+      {
+        path: '',
+        component: IndexComponent,
+      },
+      {
+        path: 'termine-bbbb',
+        component: BbbbScheduleComponent,
+      },
+      {
+        path: 'termine-dtb',
+        component: DtbScheduleComponent,
+      },
+      {
+        path: 'emails',
+        component: EmailComponent,
+      },
+      {
+        path: '**',
+        component: IndexComponent,
+      },
+    ],
+  },
   {
     path: '**',
     redirectTo: '',

@@ -1,5 +1,6 @@
 export interface Environment {
   production: boolean;
+  base_url: string;
   urls: {
     concerts: {
       upcoming: string;
@@ -8,6 +9,9 @@ export interface Environment {
       login: string;
       logout: string;
       refresh: string;
+    };
+    intern: {
+      emails: string;
     };
   };
 }

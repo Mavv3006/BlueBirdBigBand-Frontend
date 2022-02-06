@@ -53,7 +53,10 @@ export class AuthService {
 
   public login(params: LoginParams) {
     this.http
-      .post<LoginResponse>(environment.urls.auth.login, params.data)
+      .post<LoginResponse>(
+        environment.base_url + environment.urls.auth.login,
+        params.data
+      )
       .pipe(retry(3), catchError(this.handleError))
       .subscribe({
         next: (res: LoginResponse) => {

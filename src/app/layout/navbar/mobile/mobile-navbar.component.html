@@ -1,47 +1,70 @@
 <ul>
-  <li><a href="#" class="container">Home</a></li>
-  <li>
-    <div class="container">Aktuelles</div>
-    <button
-      (click)="toggleNews()"
-      [ngClass]="{ 'open-submenu-bg-color': isNewsOpen }"
-    >
-      <mat-icon>{{ isNewsOpen ? "remove" : "add" }}</mat-icon>
-    </button>
-  </li>
-  <li class="submenu">
-    <a href="/auftritte">Auftritte</a>
-    <a href="/presse">Presseinfos</a>
-    <a href="/buchung">Buchungsinfos</a>
-  </li>
-  <li #band_container class="band_container">
-    <div class="container">Band</div>
-    <button
-      (click)="toggleBand()"
-      [ngClass]="{ 'open-submenu-bg-color': isBandOpen }"
-    >
-      <mat-icon>{{ isBandOpen ? "remove" : "add" }}</mat-icon>
-    </button>
-  </li>
-  <li class="submenu band_submenu" #band_submenu>
-    <a href="/about-us">Über uns</a>
-    <a href="/musiker">Musiker</a>
-    <a href="/anfahrt">Anfahrt</a>
-  </li>
-  <li #contact_container class="contact_container">
-    <div class="container">Kontakt</div>
-    <button
-      (click)="toggleContact()"
-      [ngClass]="{ 'open-submenu-bg-color': isContactOpen }"
-    >
-      <mat-icon>{{ isContactOpen ? "remove" : "add" }}</mat-icon>
-    </button>
-  </li>
-  <li class="submenu contakt_submenu" #contact_submenu>
-    <a href="/kontakt">Kontakt</a>
-    <a href="/impressum" #impressum class="impressum">Impressum</a>
-  </li>
-  <li #login_container class="login_container">
-    <a href="/auth/login" class="container">Login</a>
-  </li>
+  <app-navbar-element
+    container_title="Home"
+    class="clickable"
+    (click)="navigateTo('', 'home')"
+    [(isOpen)]="homeIsOpen"
+    style="z-index: 1"
+  ></app-navbar-element>
+
+  <app-navbar-element
+    container_title="Aktuelles"
+    style="z-index: 2"
+    [(isOpen)]="newsIsOpen"
+  >
+    <p (click)="navigateTo('auftritte', 'news')">Auftritte</p>
+    <p (click)="navigateTo('presse', 'news')">Presseinfos</p>
+    <p (click)="navigateTo('buchung', 'news')">Buchungsinfos</p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    container_title="Band"
+    style="z-index: 3"
+    [(isOpen)]="bandIsOpen"
+  >
+    <p (click)="navigateTo('about-us', 'band')">Über uns</p>
+    <p (click)="navigateTo('musiker', 'band')">Musiker</p>
+    <p (click)="navigateTo('anfahrt', 'band')">Anfahrt</p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    container_title="Kontakt"
+    style="z-index: 4"
+    [(isOpen)]="contactIsOpen"
+  >
+    <p (click)="navigateTo('kontakt', 'contact')">Kontakt</p>
+    <p class="impressum" (click)="navigateTo('impressum', 'contact')">
+      Impressum
+    </p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="isLoggedIn"
+    container_title="Intern"
+    style="z-index: 5"
+    [(isOpen)]="internIsOpen"
+  >
+    <p (click)="navigateTo('intern/', 'intern')">Intern-Startseite</p>
+    <p (click)="navigateTo('intern/emails', 'intern')">Email-Verteiler</p>
+    <p (click)="navigateTo('intern/termine-bbbb', 'intern')">Termine BBBB</p>
+    <p (click)="navigateTo('intern/termine-dtb', 'intern')">Termine DTB</p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="!isLoggedIn"
+    class="clickable"
+    [(isOpen)]="loginIsOpen"
+    container_title="Login"
+    (click)="navigateTo('auth/login', 'login')"
+    style="z-index: 6"
+  ></app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="isLoggedIn"
+    class="clickable"
+    container_title="Logout"
+    [(isOpen)]="logoutIsOpen"
+    (click)="logout()"
+    style="z-index: 7"
+  ></app-navbar-element>
 </ul>

@@ -1,4 +1,5 @@
-import { AuthService, LogoutResponse } from './../../../services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from './../../../services/auth.service';
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 export class DesktopNavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe({
       next: (value: boolean) => {
@@ -20,7 +21,7 @@ export class DesktopNavbarComponent implements OnInit {
     });
   }
 
-  clickme() {
+  logout() {
     this.authService.logout({
       next: (val) => console.debug('[DesktopNavbarComponent]', val),
       error: () => {},
@@ -28,5 +29,9 @@ export class DesktopNavbarComponent implements OnInit {
         // TODO: redirect to home if current route is in intern namespace
       },
     });
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
   }
 }
