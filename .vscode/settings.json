@@ -2,7 +2,18 @@
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.linkedEditing": true,
-  "cSpell.words": ["Gehrlein", "Webadmin"],
+  "cSpell.words": [
+    "auftritte",
+    "buchung",
+    "Buchungsinfos",
+    "Gehrlein",
+    "impressum",
+    "kontakt",
+    "musiker",
+    "Presseinfos",
+    "termine",
+    "Webadmin"
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

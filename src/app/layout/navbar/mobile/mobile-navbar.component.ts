@@ -7,6 +7,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  ViewChild,
 } from '@angular/core';
 
 type ViewChildRef = ElementRef | undefined;
@@ -17,6 +18,35 @@ type ViewChildRef = ElementRef | undefined;
   styleUrls: ['./mobile-navbar.component.scss'],
 })
 export class MobileNavbarComponent implements OnInit {
+  @ViewChild('home')
+  homeRef: ViewChildRef;
+
+  @ViewChild('news')
+  newsRef: ViewChildRef;
+
+  @ViewChild('band')
+  bandRef: ViewChildRef;
+
+  @ViewChild('contact')
+  contactRef: ViewChildRef;
+
+  @ViewChild('intern')
+  internRef: ViewChildRef;
+
+  @ViewChild('login')
+  loginRef: ViewChildRef;
+
+  @ViewChild('logout')
+  logoutRef: ViewChildRef;
+
+  homeIsOpen = false;
+  newsIsOpen = false;
+  bandIsOpen = false;
+  contactIsOpen = false;
+  internIsOpen = false;
+  loginIsOpen = false;
+  logoutIsOpen = false;
+
   isLoggedIn = false;
 
   @Input()
@@ -30,7 +60,7 @@ export class MobileNavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe({
       next: (value: boolean) => {
-        console.debug('[DesktopNavbarComponent] isLoggedIn =', value);
+        console.debug('[MobileNavbarComponent] isLoggedIn =', value);
         this.isLoggedIn = value;
       },
     });
@@ -38,19 +68,54 @@ export class MobileNavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout({
-      next: (val) => console.debug('[DesktopNavbarComponent]', val),
+      next: (val) => console.debug('[MobileNavbarComponent]', val),
       error: () => {},
       complete: () => {
-        // TODO: redirect to home if current route is in intern namespace
+        if (this.router.url.startsWith('intern')) {
+          this.navigateTo('', '');
+          return;
+        }
+        this.close();
       },
     });
   }
 
-  login() {
+  private close() {
     this.isOpen = false;
     this.isOpenChange.emit(this.isOpen);
-    this.router.navigate(['auth/login']);
   }
 
-  onHomeClicked() {}
+  navigateTo(route: string, containerName: string) {
+    this.closeContainer(containerName);
+    this.close();
+    this.router.navigate([route]);
+  }
+
+  private closeContainer(containerName: string) {
+    switch (containerName) {
+      case 'home':
+        this.homeIsOpen = false;
+        break;
+      case 'news':
+        this.newsIsOpen = false;
+        break;
+      case 'band':
+        this.bandIsOpen = false;
+        break;
+      case 'contact':
+        this.contactIsOpen = false;
+        break;
+      case 'intern':
+        this.internIsOpen = false;
+        break;
+      case 'login':
+        this.loginIsOpen = false;
+        break;
+      case 'logout':
+        this.logoutIsOpen = false;
+        break;
+      default:
+        break;
+    }
+  }
 }

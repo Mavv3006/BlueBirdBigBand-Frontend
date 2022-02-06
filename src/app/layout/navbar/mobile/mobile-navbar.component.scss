@@ -58,7 +58,8 @@ ul {
   }
 }
 
-app-navbar-element a {
+app-navbar-element a,
+app-navbar-element p {
   background-color: $bigband-red;
   padding: 14px;
   padding-left: 34px;
