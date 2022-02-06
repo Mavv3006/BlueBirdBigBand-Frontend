@@ -2,6 +2,7 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { Concert } from '../../models/concert';
 import { ConcertService } from '../../services/concert.service';
+import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 @Component({
   templateUrl: './concerts-page.component.html',
@@ -39,16 +40,41 @@ export class ConcertsPageComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: add current concert to local Storage and fetch in the background. If some concerts are different, update the UI accordingly
+    const storageConcerts = this.getConcertsFromStorage();
+    if (storageConcerts != null) {
+      this.setConcerts(storageConcerts);
+    }
+
     this.titleService.setTitle('Auftrittinfos');
     this._concertService.upcoming().subscribe(
       (data) => {
-        this.concerts = data;
-        this.hasValues = true;
+        if (storageConcerts == null || data != storageConcerts) {
+          console.debug('[ConcertsPageComponent] updating concerts');
+          this.setConcerts(data);
+          return;
+        }
+        console.debug('[ConcertsPageComponent] concerts already up to date');
       },
       (error) => {
         console.error('Cannot make request', error);
         this.hasError = true;
       }
     );
+  }
+
+  private setConcerts(concerts: Concert[]) {
+    this.concerts = concerts;
+    this.hasValues = true;
+  }
+
+  private getConcertsFromStorage(): Concert[] | null {
+    const storageConcerts = window.localStorage.getItem(
+      LocalStorageKey.concerts
+    );
+    if (storageConcerts === null) {
+      return null;
+    }
+
+    return JSON.parse(storageConcerts);
   }
 }
