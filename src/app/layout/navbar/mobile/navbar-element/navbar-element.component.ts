@@ -15,7 +15,7 @@ import {
   templateUrl: './navbar-element.component.html',
   styleUrls: ['./navbar-element.component.scss'],
 })
-export class NavbarElementComponent implements AfterViewInit {
+export class NavbarElementComponent {
   @ViewChild('container')
   container: ElementRef | undefined;
 
@@ -25,8 +25,11 @@ export class NavbarElementComponent implements AfterViewInit {
   @Input()
   container_title: string = '';
 
+  @Input()
+  isOpen = false;
+
   @Output()
-  openToggle = new EventEmitter<boolean>();
+  isOpenChange = new EventEmitter<boolean>();
 
   get submenu_children_count(): number {
     if (this.submenu === undefined) {
@@ -38,18 +41,8 @@ export class NavbarElementComponent implements AfterViewInit {
   get has_children(): boolean {
     return this.submenu_children_count > 0;
   }
-
-  isOpen = false;
-
-  ngAfterViewInit(): void {
-    console.debug(
-      '[NavbarElementComponent] children count:',
-      this.submenu_children_count
-    );
-  }
-
   toggleSubmenu() {
     this.isOpen = !this.isOpen;
-    this.openToggle.emit(this.isOpen);
+    this.isOpenChange.emit(this.isOpen);
   }
 }

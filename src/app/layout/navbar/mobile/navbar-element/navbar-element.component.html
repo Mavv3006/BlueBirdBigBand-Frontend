@@ -8,6 +8,6 @@
     <mat-icon>{{ isOpen ? "remove" : "add" }}</mat-icon>
   </button>
 </li>
-<li class="submenu" #submenu>
+<li class="submenu" #submenu [ngClass]="{ 'open-submenu': isOpen }">
   <ng-content></ng-content>
 </li>

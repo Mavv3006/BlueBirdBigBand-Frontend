@@ -1,79 +1,52 @@
 <ul>
   <app-navbar-element
-    container_title="Ohne Kind"
-    #Test1
-    class="child"
+    container_title="Home"
+    class="clickable"
+    (click)="onHomeClicked()"
+    style="z-index: 1"
   ></app-navbar-element>
 
-  <app-navbar-element
-    container_title="Home Test"
-    class="child"
-    (openToggle)="handleToggleHomeTest($event)"
-    #Test2
-  >
-    <a href="/auftritte" class="child-link">Auftritte</a>
-    <a href="/presse" class="child-link">Presseinfos</a>
-    <a href="/buchung" class="child-link">Buchungsinfos</a>
-  </app-navbar-element>
-  <li><a href="#" class="container">Home</a></li>
-  <li>
-    <div class="container">Aktuelles</div>
-    <button
-      (click)="toggleNews()"
-      [ngClass]="{ 'open-submenu-bg-color': isNewsOpen }"
-    >
-      <mat-icon>{{ isNewsOpen ? "remove" : "add" }}</mat-icon>
-    </button>
-  </li>
-  <li class="submenu">
+  <app-navbar-element container_title="Aktuelles" style="z-index: 2">
     <a href="/auftritte">Auftritte</a>
     <a href="/presse">Presseinfos</a>
     <a href="/buchung">Buchungsinfos</a>
-  </li>
-  <li #band_container class="band_container">
-    <div class="container">Band</div>
-    <button
-      (click)="toggleBand()"
-      [ngClass]="{ 'open-submenu-bg-color': isBandOpen }"
-    >
-      <mat-icon>{{ isBandOpen ? "remove" : "add" }}</mat-icon>
-    </button>
-  </li>
-  <li class="submenu band_submenu" #band_submenu>
+  </app-navbar-element>
+
+  <app-navbar-element container_title="Band" style="z-index: 3">
     <a href="/about-us">Über uns</a>
     <a href="/musiker">Musiker</a>
     <a href="/anfahrt">Anfahrt</a>
-  </li>
-  <li #contact_container class="contact_container">
-    <div class="container">Kontakt</div>
-    <button
-      (click)="toggleContact()"
-      [ngClass]="{ 'open-submenu-bg-color': isContactOpen }"
-    >
-      <mat-icon>{{ isContactOpen ? "remove" : "add" }}</mat-icon>
-    </button>
-  </li>
-  <li class="submenu contakt_submenu" #contact_submenu>
+  </app-navbar-element>
+
+  <app-navbar-element container_title="Kontakt" style="z-index: 4">
     <a href="/kontakt">Kontakt</a>
     <a href="/impressum" #impressum class="impressum">Impressum</a>
-  </li>
-  <li #intern_container class="intern_container" *ngIf="isLoggedIn">
-    <div class="container">Intern</div>
-    <button
-      (click)="toggleIntern()"
-      [ngClass]="{ 'open-submenu-bg-color': isInternOpen }"
-    >
-      <mat-icon>{{ isInternOpen ? "remove" : "add" }}</mat-icon>
-    </button>
-  </li>
-  <li class="submenu intern_submenu" #intern_submenu *ngIf="isLoggedIn">
+  </app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="isLoggedIn"
+    container_title="Intern"
+    style="z-index: 5"
+  >
     <a href="/intern/"> Intern-Startseite </a>
     <a href="/intern/emails"> Email-Verteiler </a>
     <a href="/intern/termine-bbbb"> Termine BBBB </a>
     <a href="/intern/termine-dtb" #intern> Termine DTB </a>
-  </li>
-  <li #login_container class="login_container">
-    <a class="container" href="/auth/login" *ngIf="!isLoggedIn">Login</a>
-    <a class="container" (click)="clickme()" *ngIf="isLoggedIn">Logout</a>
-  </li>
+  </app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="!isLoggedIn"
+    class="clickable"
+    container_title="Login"
+    (click)="login()"
+    style="z-index: 6"
+  ></app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="isLoggedIn"
+    class="clickable"
+    container_title="Logout"
+    (click)="logout()"
+    style="z-index: 7"
+  ></app-navbar-element>
 </ul>

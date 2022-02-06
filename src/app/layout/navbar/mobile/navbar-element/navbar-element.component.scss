@@ -50,4 +50,8 @@ li:not(.submenu) {
 
 .submenu {
   @include sliding-transition;
+  display: none;
+  &.open-submenu {
+    display: block;
+  }
 }
