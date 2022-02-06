@@ -1,5 +1,4 @@
 import { EmailComponent } from './pages/intern/email/email.component';
-import { LogoutComponent } from './pages/auth/logout/logout.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -61,7 +60,6 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent,
       },
-      { path: 'logout', component: LogoutComponent },
     ],
   },
   {

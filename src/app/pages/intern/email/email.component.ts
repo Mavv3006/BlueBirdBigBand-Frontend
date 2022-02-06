@@ -16,6 +16,7 @@ export class EmailComponent implements OnInit {
   constructor(private emailService: EmailService) {}
 
   ngOnInit(): void {
+    // TODO: add emails to local Storage after fetching
     // if (window.localStorage.getItem(LocalStorageKey.email) != null) {
     //   let email_string = window.localStorage.getItem(LocalStorageKey.email);
     // }

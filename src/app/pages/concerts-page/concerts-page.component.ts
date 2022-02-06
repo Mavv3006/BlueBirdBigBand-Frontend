@@ -45,6 +45,7 @@ export class ConcertsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // TODO: add current concert to local Storage and fetch in the background. If some concerts are different, update the UI accordingly
     this.titleService.setTitle('Auftrittinfos');
     this._concertService.upcoming().subscribe(
       (data) => {

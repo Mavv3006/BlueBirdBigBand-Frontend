@@ -1,6 +1,3 @@
-import { EmailGroupComponent } from './intern/email/email-group.component';
-import { EmailComponent } from './intern/email/email.component';
-import { LogoutComponent } from './auth/logout/logout.component';
 import { Title, BrowserModule } from '@angular/platform-browser';
 import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
@@ -30,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './intern/index/index.component';
 import { BbbbScheduleComponent } from './intern/schedule/bbbb-schedule.component';
 import { DtbScheduleComponent } from './intern/schedule/dtb-schedule.component';
+import { EmailComponent } from './intern/email/email.component';
+import { EmailGroupComponent } from './intern/email/email-group.component';
 
 const components = [
   HomeComponent,
@@ -50,7 +49,6 @@ const components = [
   WebadminComponent,
   PressComponent,
   InstrumentListComponent,
-  LogoutComponent,
   LoginComponent,
   IndexComponent,
   BbbbScheduleComponent,
