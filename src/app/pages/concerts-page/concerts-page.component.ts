@@ -68,9 +68,9 @@ export class ConcertsPageComponent implements OnInit {
 
   play_time(concert: Concert): string {
     return (
-      concert.start_time.substr(0, 5) +
+      concert.start_time.substring(0, 5) +
       ' Uhr - ' +
-      concert.end_time.substr(0, 5) +
+      concert.end_time.substring(0, 5) +
       ' Uhr | ' +
       concert.descriptions.organizer
     );
