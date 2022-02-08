@@ -51,4 +51,12 @@ describe('ConcertsPageComponent', () => {
     concertService = TestBed.inject(ConcertService);
     titleService = TestBed.inject(Title);
   });
+
+  it('should save concerts to local storage', () => {});
+
+  it('should parse concerts from local storage', () => {});
+
+  it('should end the spinner when there are concerts in local storage', () => {});
+
+  it('should update the ui and local storage when the api returns different values then currently in local storage', () => {});
 });
