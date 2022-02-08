@@ -62,12 +62,12 @@ export class ConcertsPageComponent implements OnInit {
     );
   }
 
-  private setConcerts(concerts: Concert[]) {
+  setConcerts(concerts: Concert[]) {
     this.concerts = concerts;
     this.hasValues = true;
   }
 
-  private getConcertsFromStorage(): Concert[] | null {
+  getConcertsFromStorage(): Concert[] | null {
     const storageConcerts = window.localStorage.getItem(
       LocalStorageKey.concerts
     );
