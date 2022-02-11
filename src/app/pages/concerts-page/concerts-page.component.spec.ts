@@ -4,6 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { ConcertsPageComponent } from './concerts-page.component';
 import { ConcertService } from '../../services/concert.service';
 import { Title } from '@angular/platform-browser';
+import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 class MockTitleService {
   setTitle(title: string): void {
@@ -44,7 +45,7 @@ describe('ConcertsPageComponent', () => {
       providers: [
         ConcertsPageComponent,
         { provide: ConcertService, useClass: MockConcertService },
-        { provide: Title, useclass: MockTitleService },
+        { provide: Title, useClass: MockTitleService },
       ],
     });
     component = TestBed.inject(ConcertsPageComponent);
@@ -52,9 +53,17 @@ describe('ConcertsPageComponent', () => {
     titleService = TestBed.inject(Title);
   });
 
-  it('should save concerts to local storage', () => {});
+  it('should be created', () => {
+    expect(component).toBeTruthy();
+    expect(concertService).toBeTruthy();
+    expect(titleService).toBeTruthy();
+  });
 
-  it('should parse concerts from local storage', () => {});
+  it('should save concerts to local storage', () => {
+    expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBeNull();
+  });
+
+  it('should retrieve and parse concerts from local storage', () => {});
 
   it('should end the spinner when there are concerts in local storage', () => {});
 

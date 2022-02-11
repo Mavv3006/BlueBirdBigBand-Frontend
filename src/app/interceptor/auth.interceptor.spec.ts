@@ -1,5 +1,4 @@
 import { TokenService } from './../services/token.service';
-import { CoreService } from './../services/core.service';
 import { TestBed, getTestBed } from '@angular/core/testing';
 import {
   HttpTestingController,
@@ -7,19 +6,20 @@ import {
 } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { AuthService } from '../services/auth.service';
 
 describe('AuthInterceptor', () => {
   let injector: TestBed;
-  let service: CoreService;
   let tokenService: TokenService;
   let httpMock: HttpTestingController;
+  let authService: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         TokenService,
-        CoreService,
+        AuthService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptor,
@@ -29,7 +29,7 @@ describe('AuthInterceptor', () => {
     });
 
     injector = getTestBed();
-    service = injector.inject(CoreService);
+    authService = injector.inject(AuthService);
     tokenService = injector.inject(TokenService);
     httpMock = injector.inject(HttpTestingController);
   });
@@ -37,10 +37,14 @@ describe('AuthInterceptor', () => {
   it('should add token to http header', () => {
     const token = 'test';
     tokenService.setToken(token);
-    service.get('/users').subscribe((res) => {
-      expect(res).toBeTruthy();
+    authService.login({
+      data: { name: '', password: '' },
+      error: () => {},
+      next: (res) => {
+        expect(res).toBeTruthy();
+      },
     });
-    const request = httpMock.expectOne('/users');
+    const request = httpMock.expectOne('http://localhost:8080/auth/login');
     expect(request.request.headers.has('Authorization')).toBeTrue();
     expect(request.request.headers.has('Content-Type')).toBeTrue();
     expect(request.request.headers.has('Accept')).toBeTrue();
@@ -49,7 +53,7 @@ describe('AuthInterceptor', () => {
     );
     expect(request.request.headers.get('Accept')).toEqual('application/json');
     expect(request.request.headers.get('Authorization')).toEqual(
-      'Bearer: ' + token
+      'bearer ' + token
     );
   });
 });

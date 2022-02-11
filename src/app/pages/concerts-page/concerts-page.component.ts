@@ -40,26 +40,35 @@ export class ConcertsPageComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: add current concert to local Storage and fetch in the background. If some concerts are different, update the UI accordingly
-    const storageConcerts = this.getConcertsFromStorage();
-    if (storageConcerts != null) {
-      this.setConcerts(storageConcerts);
-    }
+    this.setConcertsFromLocalStorage();
 
     this.titleService.setTitle('Auftrittinfos');
     this._concertService.upcoming().subscribe(
       (data) => {
-        if (storageConcerts == null || data != storageConcerts) {
-          console.debug('[ConcertsPageComponent] updating concerts');
-          this.setConcerts(data);
-          return;
-        }
-        console.debug('[ConcertsPageComponent] concerts already up to date');
+        this.handleConcertsFromApi(data);
       },
       (error) => {
         console.error('Cannot make request', error);
         this.hasError = true;
       }
     );
+  }
+
+  setConcertsFromLocalStorage() {
+    const storageConcerts = this.getConcertsFromStorage();
+    if (storageConcerts != null) {
+      this.setConcerts(storageConcerts);
+    }
+  }
+
+  handleConcertsFromApi(data: Concert[]) {
+    const storageConcerts = this.getConcertsFromStorage();
+    if (storageConcerts == null || data != storageConcerts) {
+      console.debug('[ConcertsPageComponent] updating concerts');
+      this.setConcerts(data);
+      return;
+    }
+    console.debug('[ConcertsPageComponent] concerts already up to date');
   }
 
   setConcerts(concerts: Concert[]) {
