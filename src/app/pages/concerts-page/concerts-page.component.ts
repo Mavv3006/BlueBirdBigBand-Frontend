@@ -34,7 +34,7 @@ export class ConcertsPageComponent implements OnInit {
   }
 
   constructor(
-    private _concertService: ConcertService,
+    private concertService: ConcertService,
     private titleService: Title
   ) {}
 
@@ -43,7 +43,7 @@ export class ConcertsPageComponent implements OnInit {
     this.setConcertsFromLocalStorage();
 
     this.titleService.setTitle('Auftrittinfos');
-    this._concertService.upcoming().subscribe(
+    this.concertService.upcoming().subscribe(
       (data) => {
         this.handleConcertsFromApi(data);
       },
@@ -61,14 +61,23 @@ export class ConcertsPageComponent implements OnInit {
     }
   }
 
+  setConcertsToLocalStorage(concerts: Concert[]) {
+    window.localStorage.setItem(
+      LocalStorageKey.concerts,
+      JSON.stringify(concerts)
+    );
+  }
+
   handleConcertsFromApi(data: Concert[]) {
     const storageConcerts = this.getConcertsFromStorage();
-    if (storageConcerts == null || data != storageConcerts) {
-      console.debug('[ConcertsPageComponent] updating concerts');
+    if (
+      storageConcerts == null ||
+      JSON.stringify(data) !== JSON.stringify(storageConcerts)
+    ) {
       this.setConcerts(data);
+      this.setConcertsToLocalStorage(data);
       return;
     }
-    console.debug('[ConcertsPageComponent] concerts already up to date');
   }
 
   setConcerts(concerts: Concert[]) {
@@ -83,7 +92,6 @@ export class ConcertsPageComponent implements OnInit {
     if (storageConcerts === null) {
       return null;
     }
-
     return JSON.parse(storageConcerts);
   }
 }

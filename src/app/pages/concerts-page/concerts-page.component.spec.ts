@@ -14,26 +14,30 @@ class MockTitleService {
 
 class MockConcertService {
   upcoming(): Observable<Concert[]> {
-    return of([
-      {
-        date: 'date',
-        start_time: 'start_time',
-        end_time: 'end_time',
-        band_name: 'band_name',
-        location: {
-          street: 'street',
-          number: 'number',
-          plz: 12,
-          name: 'name',
-        },
-        descriptions: {
-          organizer: 'organizer',
-          place: 'place',
-        },
-      },
-    ]);
+    return of(mockConcerts);
   }
 }
+
+const mockConcerts: Concert[] = [
+  {
+    band_name: 'band name',
+    date: 'test date',
+    descriptions: {
+      organizer: 'organizer description',
+      place: 'place description',
+    },
+    end_time: 'end time',
+    location: {
+      name: 'location name',
+      number: '12',
+      plz: 12345,
+      street: 'street',
+    },
+    start_time: 'start time',
+  },
+];
+const mockConcertsString =
+  '[{"band_name":"band name","date":"test date","descriptions":{"organizer":"organizer description","place":"place description"},"end_time":"end time","location":{"name":"location name","number":"12","plz":12345,"street":"street"},"start_time":"start time"}]';
 
 describe('ConcertsPageComponent', () => {
   let component: ConcertsPageComponent;
@@ -53,6 +57,10 @@ describe('ConcertsPageComponent', () => {
     titleService = TestBed.inject(Title);
   });
 
+  afterEach(() => {
+    window.localStorage.clear();
+  });
+
   it('should be created', () => {
     expect(component).toBeTruthy();
     expect(concertService).toBeTruthy();
@@ -60,12 +68,77 @@ describe('ConcertsPageComponent', () => {
   });
 
   it('should save concerts to local storage', () => {
-    expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBeNull();
+    expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBeNull(
+      'local storage has not been cleared.'
+    );
+
+    component.setConcertsToLocalStorage(mockConcerts);
+
+    expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBe(
+      mockConcertsString
+    );
   });
 
-  it('should retrieve and parse concerts from local storage', () => {});
+  it('.getConcertsFromStorage should return null when there are no concerts in local storage', () => {
+    expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBeNull();
+    expect(component.getConcertsFromStorage()).toBeNull();
+  });
 
-  it('should end the spinner when there are concerts in local storage', () => {});
+  it('should retrieve and parse concerts from local storage', () => {
+    window.localStorage.setItem(LocalStorageKey.concerts, mockConcertsString);
 
-  it('should update the ui and local storage when the api returns different values then currently in local storage', () => {});
+    const concertsFromStorage = component.getConcertsFromStorage();
+    expect(concertsFromStorage).not.toBeNull();
+    expect(concertsFromStorage).toEqual(mockConcerts);
+  });
+
+  it('should end the spinner when there are concerts in local storage', () => {
+    component.setConcertsToLocalStorage(mockConcerts);
+
+    component.setConcertsFromLocalStorage();
+    component.handleConcertsFromApi(mockConcerts);
+
+    expect(component.hasValues).toBeTrue();
+    expect(component.concerts).toEqual(mockConcerts);
+  });
+
+  it('should not update the ui when and local storage when the api returns the same values as currently in local storage', () => {
+    component.setConcertsToLocalStorage(mockConcerts);
+    const hasValues = component.hasValues;
+    const concerts = component.concerts;
+
+    component.handleConcertsFromApi(mockConcerts);
+
+    expect(component.hasValues).toEqual(
+      hasValues,
+      `hasValues are different. expected: ${hasValues}, gotten: ${component.hasValues}`
+    );
+    expect(component.concerts).toEqual(
+      concerts,
+      `concerts are different. expected: ${concerts}, gotten: ${component.concerts}`
+    );
+  });
+
+  it('should update the ui and local storage when the api returns different values then currently in local storage', () => {
+    component.setConcertsToLocalStorage([]);
+    expect(component.hasValues).toBeFalse();
+    expect(component.concerts).toEqual([]);
+
+    component.setConcertsFromLocalStorage();
+    component.handleConcertsFromApi(mockConcerts);
+
+    expect(component.hasValues).toBeTrue();
+    expect(component.concerts).toEqual(mockConcerts);
+  });
+
+  it('should update the ui when calling ngOnInit()', () => {
+    component.setConcertsToLocalStorage([]);
+    expect(component.hasValues).toBeFalse();
+    expect(component.concerts).toEqual([]);
+
+    component.ngOnInit();
+
+    expect(component.hasValues).toBeTrue();
+    expect(component.concerts).toEqual(mockConcerts);
+  });
 });
