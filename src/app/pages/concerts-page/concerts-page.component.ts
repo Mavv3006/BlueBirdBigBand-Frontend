@@ -2,19 +2,13 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { Concert } from '../../models/concert';
 import { ConcertService } from '../../services/concert.service';
+import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 @Component({
   templateUrl: './concerts-page.component.html',
   styleUrls: ['./concerts-page.component.scss'],
 })
 export class ConcertsPageComponent implements OnInit {
-  private _date_formatting_options: any = {
-    weekday: 'long',
-    year: 'numeric',
-    month: '2-digit',
-    day: 'numeric',
-  };
-
   concerts: Concert[] = [];
   hasValues = false;
   hasError = false;
@@ -40,17 +34,17 @@ export class ConcertsPageComponent implements OnInit {
   }
 
   constructor(
-    private _concertService: ConcertService,
+    private concertService: ConcertService,
     private titleService: Title
   ) {}
 
   ngOnInit(): void {
-    // TODO: add current concert to local Storage and fetch in the background. If some concerts are different, update the UI accordingly
+    this.setConcertsFromLocalStorage();
+
     this.titleService.setTitle('Auftrittinfos');
-    this._concertService.upcoming().subscribe(
+    this.concertService.upcoming().subscribe(
       (data) => {
-        this.concerts = data;
-        this.hasValues = true;
+        this.handleConcertsFromApi(data);
       },
       (error) => {
         console.error('Cannot make request', error);
@@ -59,20 +53,44 @@ export class ConcertsPageComponent implements OnInit {
     );
   }
 
-  createDay(concert: Concert): string {
-    return new Date(concert.date).toLocaleDateString(
-      'de-DE',
-      this._date_formatting_options
+  setConcertsFromLocalStorage() {
+    const storageConcerts = this.getConcertsFromStorage();
+    if (storageConcerts != null) {
+      this.setConcerts(storageConcerts);
+    }
+  }
+
+  setConcertsToLocalStorage(concerts: Concert[]) {
+    window.localStorage.setItem(
+      LocalStorageKey.concerts,
+      JSON.stringify(concerts)
     );
   }
 
-  play_time(concert: Concert): string {
-    return (
-      concert.start_time.substr(0, 5) +
-      ' Uhr - ' +
-      concert.end_time.substr(0, 5) +
-      ' Uhr | ' +
-      concert.descriptions.organizer
+  handleConcertsFromApi(data: Concert[]) {
+    const storageConcerts = this.getConcertsFromStorage();
+    if (
+      storageConcerts == null ||
+      JSON.stringify(data) !== JSON.stringify(storageConcerts)
+    ) {
+      this.setConcerts(data);
+      this.setConcertsToLocalStorage(data);
+      return;
+    }
+  }
+
+  setConcerts(concerts: Concert[]) {
+    this.concerts = concerts;
+    this.hasValues = true;
+  }
+
+  getConcertsFromStorage(): Concert[] | null {
+    const storageConcerts = window.localStorage.getItem(
+      LocalStorageKey.concerts
     );
+    if (storageConcerts === null) {
+      return null;
+    }
+    return JSON.parse(storageConcerts);
   }
 }
