@@ -1,3 +1,4 @@
+import { FileDownloadService } from './../../services/file-download.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent {
-  constructor() {}
+  constructor(private fileDownload: FileDownloadService) {}
+
+  requestFile() {
+    this.fileDownload.downloadFile('test.txt');
+  }
 }
