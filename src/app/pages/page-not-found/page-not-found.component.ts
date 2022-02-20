@@ -1,5 +1,6 @@
 import { FileDownloadService } from './../../services/file-download.service';
 import { Component } from '@angular/core';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-page-not-found',
@@ -10,6 +11,9 @@ export class PageNotFoundComponent {
   constructor(private fileDownload: FileDownloadService) {}
 
   requestFile() {
-    this.fileDownload.downloadFile('test.txt');
+    const filename = 'This is me.mp3';
+    this.fileDownload
+      .downloadFile('songs/' + filename)
+      .subscribe((blob) => saveAs(blob, filename));
   }
 }
