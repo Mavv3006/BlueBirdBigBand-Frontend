@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { IndexComponent } from './pages/intern/index/index.component';
 import { BbbbScheduleComponent } from './pages/intern/schedule/bbbb-schedule.component';
 import { DtbScheduleComponent } from './pages/intern/schedule/dtb-schedule.component';
+import { ConcertRecordingsComponent } from './pages/intern/concert-recordings/concert-recordings.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
       {
         path: 'emails',
         component: EmailComponent,
+      },
+      {
+        path: 'downloads',
+        component: ConcertRecordingsComponent,
       },
       {
         path: '**',
