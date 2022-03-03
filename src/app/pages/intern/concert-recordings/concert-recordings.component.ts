@@ -43,10 +43,12 @@ export class ConcertRecordingsComponent implements OnInit {
   }
 
   downloadFile(file_name: string) {
+    // TODO: add file download here
     console.debug('Hier würde der Dateidownload stattfinden.');
   }
 
   navigateTo(route: string) {
+    // TODO: add route for intern/downloads/songs
     this.router.navigate([route]);
   }
 }

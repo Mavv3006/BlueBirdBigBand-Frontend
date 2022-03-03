@@ -1,7 +1,10 @@
 @import "../../../../styles/mixin/responsive.scss";
 @import "../../../../styles/anchor-tag.scss";
 
+$border-bottom: 1px solid lightgray;
+
 h2 {
+  padding-top: 10px;
   font-size: 1.5em;
   line-height: 1.4;
   text-align: center;
@@ -24,7 +27,7 @@ h3 {
 .concert {
   padding-top: 10px;
   padding-bottom: 1em;
-  border-bottom: 1px solid lightgray;
+  border-bottom: $border-bottom;
 
   &:last-child {
     border-bottom: none;
@@ -39,4 +42,9 @@ h3 {
   @include extra_large {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.other-downloads {
+  border-bottom: $border-bottom;
+  padding-bottom: 1em;
 }

@@ -1,22 +1,26 @@
 <app-heading>Downloads für BBBBler</app-heading>
 
-<a (click)="navigateTo('intern/download/songs')">BBBB-Songs als MP3-File</a>
+<section class="other-downloads">
+  <a (click)="navigateTo('intern/downloads/songs')">BBBB-Songs als MP3-File</a>
+</section>
 
-<h2>Bilder und Videos von unseren Auftritten zum Download</h2>
+<section class="concert-recordings">
+  <h2>Bilder und Videos von unseren Auftritten zum Download</h2>
 
-<div class="recordings">
-  <div class="concert" *ngFor="let concert of recordings">
-    <h3>
-      {{ concert.concert.description }} in {{ concert.concert.place }}
-      {{ concert.concert.date }}
-    </h3>
-    <ul class="files">
-      <li *ngFor="let file of concert.files" class="file">
-        <a class="file" (click)="downloadFile(file.file_name)">
-          {{ file.description }}
-        </a>
-        ({{ file.file_size }})
-      </li>
-    </ul>
+  <div class="recordings">
+    <div class="concert" *ngFor="let concert of recordings">
+      <h3>
+        {{ concert.concert.description }} in {{ concert.concert.place }}
+        {{ concert.concert.date }}
+      </h3>
+      <ul class="files">
+        <li *ngFor="let file of concert.files" class="file">
+          <a class="file" (click)="downloadFile(file.file_name)">
+            {{ file.description }}
+          </a>
+          ({{ file.file_size }})
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
+</section>
