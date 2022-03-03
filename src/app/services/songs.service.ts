@@ -27,6 +27,48 @@ export const songsDevData: Song[] = [
     arranger: 'Eric Osterling',
     file_name: 'bblb.mp3',
   },
+  {
+    title: 'A Night in Tunisia',
+    genre: 'Latin Rock',
+    author: 'Dizzy Gillespie & Fr. Paparelli',
+    arranger: 'Michael Sweeney',
+    file_name: 'a_night.mp3',
+  },
+  {
+    title: 'Bad Bad Leroy Brown',
+    genre: '	Shuffle',
+    author: 'Jim Croce',
+    arranger: 'Eric Osterling',
+    file_name: 'bblb.mp3',
+  },
+  {
+    title: 'A Night in Tunisia',
+    genre: 'Latin Rock',
+    author: 'Dizzy Gillespie & Fr. Paparelli',
+    arranger: 'Michael Sweeney',
+    file_name: 'a_night.mp3',
+  },
+  {
+    title: 'Bad Bad Leroy Brown',
+    genre: '	Shuffle',
+    author: 'Jim Croce',
+    arranger: 'Eric Osterling',
+    file_name: 'bblb.mp3',
+  },
+  {
+    title: 'A Night in Tunisia',
+    genre: 'Latin Rock',
+    author: 'Dizzy Gillespie & Fr. Paparelli',
+    arranger: 'Michael Sweeney',
+    file_name: 'a_night.mp3',
+  },
+  {
+    title: 'Bad Bad Leroy Brown',
+    genre: '	Shuffle',
+    author: 'Jim Croce',
+    arranger: 'Eric Osterling',
+    file_name: 'bblb.mp3',
+  },
 ];
 
 @Injectable({

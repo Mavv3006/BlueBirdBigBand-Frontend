@@ -1,10 +1,8 @@
+import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import {
-  Song,
-  songsDevData,
-  SongsService,
-} from 'src/app/services/songs.service';
+import { Observable, ReplaySubject } from 'rxjs';
+import { Song, SongsService } from 'src/app/services/songs.service';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 @Component({
@@ -13,16 +11,12 @@ import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
   styleUrls: ['./songs-list.component.scss'],
 })
 export class SongsListComponent implements OnInit {
-  private _songs: Song[] = [];
+  private dataSource = new SongDataSource([]);
 
   columns: string[] = ['title', 'genre', 'author', 'arranger'];
 
-  set songs(new_songs) {
-    this._songs = new_songs;
-    this.table?.renderRows();
-  }
-  get songs(): Song[] {
-    return this._songs;
+  get songs() {
+    return this.dataSource;
   }
 
   @ViewChild(MatTable)
@@ -32,19 +26,43 @@ export class SongsListComponent implements OnInit {
 
   ngOnInit(): void {
     if (window.localStorage.getItem(LocalStorageKey.songs) !== null) {
-      this.songs = JSON.parse(
-        window.localStorage.getItem(LocalStorageKey.songs)!
+      this.setSongs(
+        JSON.parse(window.localStorage.getItem(LocalStorageKey.songs)!)
       );
     }
 
     this.songsService.get().subscribe(
       (res: Song[]) => {
-        this.songs = res;
+        this.setSongs(res);
         window.localStorage.setItem(LocalStorageKey.songs, JSON.stringify(res));
       },
       (error) => {
         console.error('[EmailComponent]', error);
       }
     );
+  }
+
+  setSongs(new_songs: Song[]) {
+    this.dataSource.setData(new_songs);
+    this.table?.renderRows();
+  }
+}
+
+class SongDataSource extends DataSource<Song> {
+  private _dataStream = new ReplaySubject<Song[]>();
+
+  constructor(initialData: Song[]) {
+    super();
+    this.setData(initialData);
+  }
+
+  connect(_collectionViewer: CollectionViewer): Observable<readonly Song[]> {
+    return this._dataStream;
+  }
+
+  disconnect(_collectionViewer: CollectionViewer): void {}
+
+  setData(data: Song[]) {
+    this._dataStream.next(data);
   }
 }
