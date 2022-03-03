@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   ConcertRecordingList,
   ConcertRecordingsService,
@@ -13,7 +14,10 @@ import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 export class ConcertRecordingsComponent implements OnInit {
   recordings: ConcertRecordingList[] | undefined = undefined;
 
-  constructor(private recordingService: ConcertRecordingsService) {}
+  constructor(
+    private recordingService: ConcertRecordingsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (
@@ -40,5 +44,9 @@ export class ConcertRecordingsComponent implements OnInit {
 
   downloadFile(file_name: string) {
     console.debug('Hier würde der Dateidownload stattfinden.');
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
   }
 }

@@ -12,6 +12,88 @@ export interface ConcertRecordingList {
   };
   files: ConcertRecording[];
 }
+const devData: ConcertRecordingList[] = [
+  {
+    concert: {
+      description: 'Sommerkonzert',
+      date: '20.04.2021',
+      place: 'Speyer',
+    },
+    files: [
+      {
+        description: 'Anfang',
+        file_name: 'beginning.mp3',
+        file_size: '20 MB',
+      },
+      { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
+      { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
+    ],
+  },
+  {
+    concert: {
+      description: 'Sommerkonzert',
+      date: '20.04.2021',
+      place: 'Speyer',
+    },
+    files: [
+      {
+        description: 'Anfang',
+        file_name: 'beginning.mp3',
+        file_size: '20 MB',
+      },
+      { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
+      { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
+    ],
+  },
+  {
+    concert: {
+      description: 'Sommerkonzert',
+      date: '20.04.2021',
+      place: 'Speyer',
+    },
+    files: [
+      {
+        description: 'Anfang',
+        file_name: 'beginning.mp3',
+        file_size: '20 MB',
+      },
+      { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
+      { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
+    ],
+  },
+  {
+    concert: {
+      description: 'Sommerkonzert',
+      date: '20.04.2021',
+      place: 'Speyer',
+    },
+    files: [
+      {
+        description: 'Anfang',
+        file_name: 'beginning.mp3',
+        file_size: '20 MB',
+      },
+      { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
+      { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
+    ],
+  },
+  {
+    concert: {
+      description: 'Weihnachtskonzert',
+      date: '21.05.2019',
+      place: 'Ludwigshafen',
+    },
+    files: [
+      {
+        description: 'Anfang',
+        file_name: 'beginning.mp3',
+        file_size: '20 MB',
+      },
+      { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
+      { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
+    ],
+  },
+];
 
 export interface ConcertRecording {
   description: string;
@@ -33,88 +115,6 @@ export class ConcertRecordingsService {
         )
         .pipe(retry(3), catchError(this.handleError));
     }
-    const devData: ConcertRecordingList[] = [
-      {
-        concert: {
-          description: 'Sommerkonzert',
-          date: '20.04.2021',
-          place: 'Speyer',
-        },
-        files: [
-          {
-            description: 'Anfang',
-            file_name: 'beginning.mp3',
-            file_size: '20 MB',
-          },
-          { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
-          { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
-        ],
-      },
-      {
-        concert: {
-          description: 'Sommerkonzert',
-          date: '20.04.2021',
-          place: 'Speyer',
-        },
-        files: [
-          {
-            description: 'Anfang',
-            file_name: 'beginning.mp3',
-            file_size: '20 MB',
-          },
-          { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
-          { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
-        ],
-      },
-      {
-        concert: {
-          description: 'Sommerkonzert',
-          date: '20.04.2021',
-          place: 'Speyer',
-        },
-        files: [
-          {
-            description: 'Anfang',
-            file_name: 'beginning.mp3',
-            file_size: '20 MB',
-          },
-          { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
-          { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
-        ],
-      },
-      {
-        concert: {
-          description: 'Sommerkonzert',
-          date: '20.04.2021',
-          place: 'Speyer',
-        },
-        files: [
-          {
-            description: 'Anfang',
-            file_name: 'beginning.mp3',
-            file_size: '20 MB',
-          },
-          { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
-          { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
-        ],
-      },
-      {
-        concert: {
-          description: 'Weihnachtskonzert',
-          date: '21.05.2019',
-          place: 'Ludwigshafen',
-        },
-        files: [
-          {
-            description: 'Anfang',
-            file_name: 'beginning.mp3',
-            file_size: '20 MB',
-          },
-          { description: 'Mitte', file_name: 'middle.mp3', file_size: '20 MB' },
-          { description: 'Ende', file_name: 'end.mp3', file_size: '20 MB' },
-        ],
-      },
-    ];
     return of(devData);
   }
 
