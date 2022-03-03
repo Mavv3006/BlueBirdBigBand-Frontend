@@ -29,6 +29,8 @@ import { BbbbScheduleComponent } from './intern/schedule/bbbb-schedule.component
 import { DtbScheduleComponent } from './intern/schedule/dtb-schedule.component';
 import { EmailComponent } from './intern/email/email.component';
 import { EmailGroupComponent } from './intern/email/email-group.component';
+import { SongsListComponent } from './intern/songs-list/songs-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 const components = [
   HomeComponent,
@@ -53,6 +55,7 @@ const components = [
   IndexComponent,
   BbbbScheduleComponent,
   DtbScheduleComponent,
+  SongsListComponent,
 ];
 
 @NgModule({
@@ -70,6 +73,7 @@ const components = [
     MatCardModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatTableModule,
   ],
 })
 export class PagesModule {}
