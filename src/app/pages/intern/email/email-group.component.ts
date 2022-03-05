@@ -1,4 +1,4 @@
-import { EmailGroup } from './../../../services/email.service';
+import { EmailGroup } from './../../../services/email/email.service';
 import { Component, Input } from '@angular/core';
 
 @Component({
