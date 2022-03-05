@@ -1,6 +1,9 @@
-import { TokenService } from './../../../services/token.service';
+import { TokenService } from './../../../services/token/token.service';
 import { Router } from '@angular/router';
-import { AuthService, LoginResponse } from './../../../services/auth.service';
+import {
+  AuthService,
+  LoginResponse,
+} from '../../../services/auth/auth.service';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 

@@ -1,4 +1,7 @@
-import { EmailService, EmailGroup } from './../../../services/email.service';
+import {
+  EmailService,
+  EmailGroup,
+} from './../../../services/email/email.service';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 

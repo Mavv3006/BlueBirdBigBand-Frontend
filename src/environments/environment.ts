@@ -19,6 +19,7 @@ export const environment: Environment = {
     intern: {
       emails: 'intern/basics',
     },
+    download: 'download',
   },
 };
 

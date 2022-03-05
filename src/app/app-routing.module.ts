@@ -89,8 +89,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
-    // component: PageNotFoundComponent // TODO: update PageNotFoundComponent
+    // redirectTo: '',
+    component: PageNotFoundComponent, // TODO: update PageNotFoundComponent
   },
 ];
 

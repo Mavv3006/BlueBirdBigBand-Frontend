@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../../../services/auth.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 @Component({
@@ -26,7 +26,9 @@ export class DesktopNavbarComponent implements OnInit {
       next: (val) => console.debug('[DesktopNavbarComponent]', val),
       error: () => {},
       complete: () => {
-        // TODO: redirect to home if current route is in intern namespace
+        if (this.router.url.startsWith('/intern')) {
+          this.router.navigate(['']);
+        }
       },
     });
   }
