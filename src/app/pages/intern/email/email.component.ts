@@ -1,8 +1,9 @@
 import {
-  EmailGroup,
   EmailService,
+  EmailGroup,
 } from './../../../services/email/email.service';
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 @Component({
   template: `
@@ -19,15 +20,16 @@ export class EmailComponent implements OnInit {
   constructor(private emailService: EmailService) {}
 
   ngOnInit(): void {
-    // TODO: add emails to local Storage after fetching
-    // if (window.localStorage.getItem(LocalStorageKey.email) != null) {
-    //   let email_string = window.localStorage.getItem(LocalStorageKey.email);
-    // }
+    if (window.localStorage.getItem(LocalStorageKey.email) !== null) {
+      this.email = JSON.parse(
+        window.localStorage.getItem(LocalStorageKey.email)!
+      );
+    }
 
     this.emailService.get().subscribe(
       (res: EmailGroup[]) => {
         this.email = res;
-        console.debug('[EmailComponent]', this.email);
+        window.localStorage.setItem(LocalStorageKey.email, JSON.stringify(res));
       },
       (error) => {
         console.error('[EmailComponent]', error);

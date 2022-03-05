@@ -1,4 +1,4 @@
-import { TokenService } from '../../services/token.service';
+import { TokenService } from '../../services/token/token.service';
 import { TestBed, getTestBed } from '@angular/core/testing';
 import {
   HttpTestingController,

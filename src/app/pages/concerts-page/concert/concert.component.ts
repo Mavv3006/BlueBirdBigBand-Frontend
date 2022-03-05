@@ -43,9 +43,9 @@ export class ConcertComponent {
 
   get playTime(): string {
     return (
-      this.concert.start_time.substr(0, 5) +
+      this.concert.start_time.substring(0, 5) +
       ' Uhr - ' +
-      this.concert.end_time.substr(0, 5) +
+      this.concert.end_time.substring(0, 5) +
       ' Uhr | ' +
       this.concert.descriptions.organizer
     );
