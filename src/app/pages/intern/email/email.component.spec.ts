@@ -4,7 +4,7 @@ import {
   Email,
   EmailGroup,
   EmailService,
-} from 'src/app/services/email.service';
+} from 'src/app/services/email/email.service';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 import { EmailComponent } from './email.component';
 
