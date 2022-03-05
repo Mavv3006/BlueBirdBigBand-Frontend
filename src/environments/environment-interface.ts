@@ -13,5 +13,6 @@ export interface Environment {
     intern: {
       emails: string;
     };
+    download: string;
   };
 }

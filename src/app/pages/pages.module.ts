@@ -1,3 +1,4 @@
+import { SecurityModule } from './../security/security.module';
 import { Title, BrowserModule } from '@angular/platform-browser';
 import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
@@ -65,6 +66,7 @@ const components = [
   imports: [
     BrowserModule,
     CommonModule,
+    SecurityModule,
     ComponentsModule,
     FormsModule,
     ReactiveFormsModule,

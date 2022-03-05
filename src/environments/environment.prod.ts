@@ -9,5 +9,6 @@ export const environment: Environment = {
     },
     auth: { login: '', logout: '', refresh: '' },
     intern: { emails: '' },
+    download: '',
   },
 };

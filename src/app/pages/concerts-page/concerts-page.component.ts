@@ -1,7 +1,7 @@
+import { ConcertService } from './../../services/concert/concert.service';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { Concert } from '../../models/concert';
-import { ConcertService } from '../../services/concert.service';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 @Component({

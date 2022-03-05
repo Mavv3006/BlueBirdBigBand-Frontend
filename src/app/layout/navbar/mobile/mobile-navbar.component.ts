@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../../../services/auth.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import {
   Component,
   ElementRef,
@@ -71,7 +71,7 @@ export class MobileNavbarComponent implements OnInit {
       next: (val) => console.debug('[MobileNavbarComponent]', val),
       error: () => {},
       complete: () => {
-        if (this.router.url.startsWith('intern')) {
+        if (this.router.url.startsWith('/intern')) {
           this.navigateTo('', '');
           return;
         }
@@ -88,6 +88,7 @@ export class MobileNavbarComponent implements OnInit {
   navigateTo(route: string, containerName: string) {
     this.closeContainer(containerName);
     this.close();
+    console.debug('navigate to "' + route + '"');
     this.router.navigate([route]);
   }
 

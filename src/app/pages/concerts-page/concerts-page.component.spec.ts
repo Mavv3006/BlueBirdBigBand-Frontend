@@ -2,7 +2,7 @@ import { Concert } from '../../models/concert';
 import { Observable, of } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
 import { ConcertsPageComponent } from './concerts-page.component';
-import { ConcertService } from '../../services/concert.service';
+import { ConcertService } from '../../services/concert/concert.service';
 import { Title } from '@angular/platform-browser';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
