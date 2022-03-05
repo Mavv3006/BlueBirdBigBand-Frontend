@@ -1,7 +1,7 @@
+import { ConcertService } from './../../services/concert/concert.service';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { Concert } from '../../models/concert';
-import { ConcertService } from '../../services/concert.service';
 
 @Component({
   templateUrl: './concerts-page.component.html',
@@ -40,14 +40,14 @@ export class ConcertsPageComponent implements OnInit {
   }
 
   constructor(
-    private _concertService: ConcertService,
+    private concertService: ConcertService,
     private titleService: Title
   ) {}
 
   ngOnInit(): void {
     // TODO: add current concert to local Storage and fetch in the background. If some concerts are different, update the UI accordingly
     this.titleService.setTitle('Auftrittinfos');
-    this._concertService.upcoming().subscribe(
+    this.concertService.upcoming().subscribe(
       (data) => {
         this.concerts = data;
         this.hasValues = true;

@@ -1,25 +1,23 @@
-import { TokenService } from './../services/token.service';
-import { CoreService } from './../services/core.service';
+import { TokenService } from '../../services/token.service';
 import { TestBed, getTestBed } from '@angular/core/testing';
 import {
   HttpTestingController,
   HttpClientTestingModule,
 } from '@angular/common/http/testing';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 
 describe('AuthInterceptor', () => {
   let injector: TestBed;
-  let service: CoreService;
   let tokenService: TokenService;
   let httpMock: HttpTestingController;
+  let httpClient: HttpClient;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         TokenService,
-        CoreService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptor,
@@ -29,15 +27,15 @@ describe('AuthInterceptor', () => {
     });
 
     injector = getTestBed();
-    service = injector.inject(CoreService);
     tokenService = injector.inject(TokenService);
     httpMock = injector.inject(HttpTestingController);
+    httpClient = injector.inject(HttpClient);
   });
 
   it('should add token to http header', () => {
     const token = 'test';
     tokenService.setToken(token);
-    service.get('/users').subscribe((res) => {
+    httpClient.get('/users').subscribe((res) => {
       expect(res).toBeTruthy();
     });
     const request = httpMock.expectOne('/users');
@@ -49,7 +47,7 @@ describe('AuthInterceptor', () => {
     );
     expect(request.request.headers.get('Accept')).toEqual('application/json');
     expect(request.request.headers.get('Authorization')).toEqual(
-      'Bearer: ' + token
+      'bearer ' + token
     );
   });
 });
