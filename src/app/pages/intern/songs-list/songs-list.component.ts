@@ -14,7 +14,7 @@ export class SongsListComponent implements OnInit {
   private dataSource = new SongDataSource([]);
   private currentlyClickedSong: Song | null = null;
 
-  columns: string[] = ['title', 'genre', 'author', 'arranger', 'actions'];
+  columns = ['title', 'arranger', 'author', 'genre', 'actions'];
 
   get songs() {
     return this.dataSource;

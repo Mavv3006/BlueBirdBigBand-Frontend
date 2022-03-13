@@ -1,20 +1,110 @@
-table {
+@import "../../../../styles/mixin/responsive.scss";
+
+.mat-table {
   width: 100%;
 }
+.mat-menu-icon {
+  color: white;
+}
 
-tr {
-  td,
-  th {
-    vertical-align: middle;
-    &.mat-column-actions {
-      text-align: center;
-    }
+@media screen and (max-width: 767px) {
+  .mat-header-row {
+    display: none;
   }
-  td.mat-column-actions {
-    border-left: 1px solid lightgray;
+
+  tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .mat-table {
+    width: 100%;
+    background: transparent;
+    * {
+      box-sizing: border-box;
+    }
+
+    .mat-row {
+      display: block;
+      overflow: hidden;
+      height: auto;
+      position: relative;
+      clear: both;
+      box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+      background-color: #fff;
+      border-radius: 3px;
+      + .mat-row {
+        margin-top: 24px;
+      }
+    }
+
+    .mat-cell {
+      display: block;
+      width: 100%;
+      padding: 0 16px;
+      margin: 16px 0;
+      border: 0 none;
+
+      &:first-child {
+        padding: 0 48px 0 16px;
+        &.m-card-title {
+          font-size: 20px;
+        }
+      }
+
+      &.m-card-sub-title {
+        margin-top: -8px;
+        padding: 0 48px 0 16px;
+        color: rgba(0, 0, 0, 0.54);
+        &::before {
+          content: "arrangiert von ";
+          color: rgba(0, 0, 0, 0.54);
+        }
+      }
+
+      &.mat-column-author {
+        &::before {
+          content: "Autor: ";
+        }
+      }
+
+      &.mat-column-actions {
+        width: auto;
+        padding: 8px 0 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        &::before {
+          display: none;
+        }
+      }
+
+      &.mat-column-genre {
+        width: auto;
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 8px;
+      }
+    }
   }
 }
 
-.mat-menu-icon {
-  color: white;
+@include medium {
+  tr {
+    td,
+    th {
+      vertical-align: middle;
+      &.mat-column-actions {
+        text-align: center;
+      }
+    }
+    td.mat-column-actions {
+      width: 20px;
+      padding-right: 8px;
+    }
+  }
 }
