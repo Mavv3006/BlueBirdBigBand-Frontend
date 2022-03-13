@@ -1,5 +1,5 @@
 import { LocalStorageKey } from './../../../storage/local-storage-keys';
-import { Song, SongsService } from './../../../services/songs.service';
+import { Song, SongsService } from '../../../services/songs/songs.service';
 import { FileDownloadService } from './../../../services/file-download/file-download.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';

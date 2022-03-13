@@ -1,6 +1,6 @@
 import { DataSource, CollectionViewer } from '@angular/cdk/collections';
 import { ReplaySubject, Observable } from 'rxjs';
-import { Song } from 'src/app/services/songs.service';
+import { Song } from 'src/app/services/songs/songs.service';
 
 export class SongDataSource extends DataSource<Song> {
   private _dataStream = new ReplaySubject<Song[]>();
