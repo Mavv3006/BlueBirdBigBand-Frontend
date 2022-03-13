@@ -1,7 +1,8 @@
+import { LocalStorageKey } from './../../../storage/local-storage-keys';
+import { Song, SongsService } from './../../../services/songs.service';
+import { FileDownloadService } from './../../../services/file-download/file-download.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { Song, SongsService } from 'src/app/services/songs.service';
-import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 import { SongDataSource } from './song-data-source';
 
 @Component({
@@ -22,7 +23,10 @@ export class SongsListComponent implements OnInit {
   @ViewChild(MatTable)
   table?: MatTable<Song>;
 
-  constructor(private songsService: SongsService) {}
+  constructor(
+    private songsService: SongsService,
+    private fileDownloadService: FileDownloadService
+  ) {}
 
   ngOnInit(): void {
     if (window.localStorage.getItem(LocalStorageKey.songs) !== null) {
@@ -57,10 +61,10 @@ export class SongsListComponent implements OnInit {
       console.error('no song selected. Downloading not available.');
       return;
     }
-    console.info(
-      `download action clicked for song "${this.currentlyClickedSong!.title}"`
+    this.fileDownloadService.downloadAndSave(
+      this.currentlyClickedSong.file_name,
+      'song'
     );
-    // TODO: start downloading song
   }
 
   playActionClicked() {
