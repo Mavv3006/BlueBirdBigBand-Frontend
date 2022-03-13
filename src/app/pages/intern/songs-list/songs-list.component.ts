@@ -1,9 +1,11 @@
+import { SongPlayingDialogComponent } from './../../../components/song-playing-dialog/song-playing-dialog.component';
 import { LocalStorageKey } from './../../../storage/local-storage-keys';
 import { Song, SongsService } from '../../../services/songs/songs.service';
 import { FileDownloadService } from './../../../services/file-download/file-download.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { SongDataSource } from './song-data-source';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-songs-list',
@@ -25,7 +27,8 @@ export class SongsListComponent implements OnInit {
 
   constructor(
     private songsService: SongsService,
-    private fileDownloadService: FileDownloadService
+    private fileDownloadService: FileDownloadService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -72,9 +75,13 @@ export class SongsListComponent implements OnInit {
       console.error('no song selected. Playing not available.');
       return;
     }
-    console.info(
-      `play action clicked for song "${this.currentlyClickedSong!.title}"`
-    );
     // TODO: start playing song
+    const dialogRef = this.dialog.open(SongPlayingDialogComponent, {
+      width: '400px',
+      data: { url: '', song: this.currentlyClickedSong },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Dialog has been closed');
+    });
   }
 }

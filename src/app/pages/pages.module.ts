@@ -33,7 +33,8 @@ import { EmailGroupComponent } from './intern/email/email-group.component';
 import { SongsListComponent } from './intern/songs-list/songs-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const components = [
   HomeComponent,
@@ -80,6 +81,7 @@ const components = [
     MatTableModule,
     MatIconModule,
     MatMenuModule,
+    MatDialogModule,
   ],
 })
 export class PagesModule {}
