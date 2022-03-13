@@ -32,6 +32,8 @@ import { EmailComponent } from './intern/email/email.component';
 import { EmailGroupComponent } from './intern/email/email-group.component';
 import { SongsListComponent } from './intern/songs-list/songs-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
 
 const components = [
   HomeComponent,
@@ -76,6 +78,8 @@ const components = [
     MatInputModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    MatIconModule,
+    MatMenuModule,
   ],
 })
 export class PagesModule {}

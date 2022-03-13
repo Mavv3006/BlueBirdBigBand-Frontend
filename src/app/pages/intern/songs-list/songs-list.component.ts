@@ -12,8 +12,9 @@ import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 })
 export class SongsListComponent implements OnInit {
   private dataSource = new SongDataSource([]);
+  private currentlyClickedSong: Song | null = null;
 
-  columns: string[] = ['title', 'genre', 'author', 'arranger'];
+  columns: string[] = ['title', 'genre', 'author', 'arranger', 'actions'];
 
   get songs() {
     return this.dataSource;
@@ -45,6 +46,33 @@ export class SongsListComponent implements OnInit {
   setSongs(new_songs: Song[]) {
     this.dataSource.setData(new_songs);
     this.table?.renderRows();
+  }
+
+  songActionsClicked(song: Song) {
+    console.info(`song action clicked for song "${song.title}"`);
+    this.currentlyClickedSong = song;
+  }
+
+  downloadActionClicked() {
+    if (this.currentlyClickedSong == null) {
+      console.error('no song selected. Downloading not available.');
+      return;
+    }
+    console.info(
+      `download action clicked for song "${this.currentlyClickedSong!.title}"`
+    );
+    // TODO: start downloading song
+  }
+
+  playActionClicked() {
+    if (this.currentlyClickedSong == null) {
+      console.error('no song selected. Playing not available.');
+      return;
+    }
+    console.info(
+      `play action clicked for song "${this.currentlyClickedSong!.title}"`
+    );
+    // TODO: start playing song
   }
 }
 

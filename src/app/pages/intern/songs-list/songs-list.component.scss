@@ -6,5 +6,15 @@ tr {
   td,
   th {
     vertical-align: middle;
+    &.mat-column-actions {
+      text-align: center;
+    }
   }
+  td.mat-column-actions {
+    border-left: 1px solid lightgray;
+  }
+}
+
+.mat-menu-icon {
+  color: white;
 }
