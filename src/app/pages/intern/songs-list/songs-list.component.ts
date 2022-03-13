@@ -1,9 +1,8 @@
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { Observable, ReplaySubject } from 'rxjs';
 import { Song, SongsService } from 'src/app/services/songs.service';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
+import { SongDataSource } from './song-data-source';
 
 @Component({
   selector: 'app-songs-list',
@@ -73,24 +72,5 @@ export class SongsListComponent implements OnInit {
       `play action clicked for song "${this.currentlyClickedSong!.title}"`
     );
     // TODO: start playing song
-  }
-}
-
-class SongDataSource extends DataSource<Song> {
-  private _dataStream = new ReplaySubject<Song[]>();
-
-  constructor(initialData: Song[]) {
-    super();
-    this.setData(initialData);
-  }
-
-  connect(_collectionViewer: CollectionViewer): Observable<readonly Song[]> {
-    return this._dataStream;
-  }
-
-  disconnect(_collectionViewer: CollectionViewer): void {}
-
-  setData(data: Song[]) {
-    this._dataStream.next(data);
   }
 }
