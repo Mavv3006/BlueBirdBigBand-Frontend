@@ -14,10 +14,10 @@ export class FileDownloadService {
   static getDownloadUrl(filename: string, type: FileType): string {
     return (
       environment.base_url +
-      environment.urls.download +
+      environment.urls.download.index +
       '/' +
       type +
-      '?`file_name' +
+      '?file_name=' +
       filename
     );
   }
