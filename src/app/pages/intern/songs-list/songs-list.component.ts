@@ -4,7 +4,6 @@ import { Song, SongsService } from '../../../services/songs/songs.service';
 import { FileDownloadService } from './../../../services/file-download/file-download.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { SongDataSource } from './song-data-source';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -13,13 +12,32 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./songs-list.component.scss'],
 })
 export class SongsListComponent implements OnInit {
-  private dataSource = new SongDataSource([]);
+  private _songs: Song[] = [];
   private currentlyClickedSong: Song | null = null;
+
+  hasValues = false;
+  hasError = false;
 
   columns = ['title', 'arranger', 'author', 'genre', 'actions'];
 
-  get songs() {
-    return this.dataSource;
+  get showSpinner(): boolean {
+    return !this.hasValues && !this.hasError;
+  }
+
+  get showError(): boolean {
+    return this.hasError;
+  }
+
+  get showValues(): boolean {
+    return this.hasValues && this.values.length > 0 && !this.hasError;
+  }
+
+  get spinnerDiameter(): number {
+    return 60; // todo: make responsive
+  }
+
+  get values(): Song[] {
+    return this._songs;
   }
 
   @ViewChild(MatTable)
@@ -32,34 +50,32 @@ export class SongsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (window.localStorage.getItem(LocalStorageKey.songs) !== null) {
-      this.setSongs(
-        JSON.parse(window.localStorage.getItem(LocalStorageKey.songs)!)
-      );
+    const storageSongs = this.getSongsFromStorage();
+    if (storageSongs != null) {
+      this.setSongs(storageSongs);
     }
 
-    this.songsService.get().subscribe(
-      (res: Song[]) => {
-        this.setSongs(res);
-        window.localStorage.setItem(LocalStorageKey.songs, JSON.stringify(res));
-      },
-      (error) => {
+    this.songsService.get().subscribe({
+      next: (data: Song[]) => this.handleSongsFromApi(data),
+      error: (error) => {
         console.error('[EmailComponent]', error);
-      }
-    );
+        this.hasError = true;
+      },
+    });
   }
 
-  setSongs(new_songs: Song[]) {
-    this.dataSource.setData(new_songs);
+  setSongs(new_songs: Song[]): void {
+    this._songs = new_songs;
+    this.hasValues = true;
     this.table?.renderRows();
   }
 
-  songActionsClicked(song: Song) {
+  songActionsClicked(song: Song): void {
     console.info(`song action clicked for song "${song.title}"`);
     this.currentlyClickedSong = song;
   }
 
-  downloadActionClicked() {
+  downloadActionClicked(): void {
     if (this.currentlyClickedSong == null) {
       console.error('no song selected. Downloading not available.');
       return;
@@ -70,7 +86,7 @@ export class SongsListComponent implements OnInit {
     );
   }
 
-  playActionClicked() {
+  playActionClicked(): void {
     if (this.currentlyClickedSong == null) {
       console.error('no song selected. Playing not available.');
       return;
@@ -83,5 +99,24 @@ export class SongsListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       console.log('Dialog has been closed');
     });
+  }
+
+  private handleSongsFromApi(data: Song[]): void {
+    const storageSongs = this.getSongsFromStorage();
+    let shouldUpdateSongs =
+      storageSongs == null ||
+      JSON.stringify(storageSongs) !== JSON.stringify(data);
+    if (shouldUpdateSongs) {
+      this.setSongs(data);
+      window.localStorage.setItem(LocalStorageKey.songs, JSON.stringify(data));
+    }
+  }
+
+  private getSongsFromStorage(): Song[] | null {
+    const storageSongs = window.localStorage.getItem(LocalStorageKey.songs);
+    if (storageSongs === null) {
+      return null;
+    }
+    return JSON.parse(storageSongs);
   }
 }

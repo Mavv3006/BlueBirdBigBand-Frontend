@@ -1,6 +1,7 @@
 <app-heading>Repertoire</app-heading>
+
 <div class="responsive-table">
-  <table mat-table matSort [dataSource]="songs" *ngIf="songs">
+  <table mat-table matSort [dataSource]="values" *ngIf="showValues">
     <ng-container matColumnDef="title">
       <th mat-header-cell mat-sort-header *matHeaderCellDef>Titel</th>
       <td mat-cell *matCellDef="let song" class="m-card-title">
@@ -53,3 +54,15 @@
     <tr mat-row *matRowDef="let row; columns: columns"></tr>
   </table>
 </div>
+
+<mat-spinner
+  *ngIf="showSpinner"
+  class="spinner"
+  [diameter]="spinnerDiameter"
+></mat-spinner>
+
+<p *ngIf="showError">
+  Es konnte keine Verbindung zum Server aufgebaut werden. Bitte die Seite neu
+  laden. Wenn dieses Problem häufiger auftritt, wenden Sie sich bitte an den
+  <a href="/kontakt">Webadmin</a>.
+</p>
