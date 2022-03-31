@@ -65,6 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'intern',
+    // TODO: protect intern routes
     children: [
       {
         path: '',
@@ -82,9 +83,11 @@ const routes: Routes = [
         path: 'emails',
         component: EmailComponent,
       },
+      // TODO: add page for concert recordings
       {
-        path: 'downloads',
-        children: [{ path: 'songs', component: SongsListComponent }],
+        path: 'repertoire',
+        // children: [{ path: 'songs', component: SongsListComponent }],
+        component: SongsListComponent,
       },
       {
         path: '**',
