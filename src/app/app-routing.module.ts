@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { IndexComponent } from './pages/intern/index/index.component';
 import { BbbbScheduleComponent } from './pages/intern/schedule/bbbb-schedule.component';
 import { DtbScheduleComponent } from './pages/intern/schedule/dtb-schedule.component';
+import { SongsListComponent } from './pages/intern/songs-list/songs-list.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'intern',
+    // TODO: protect intern routes
     children: [
       {
         path: '',
@@ -80,6 +82,12 @@ const routes: Routes = [
       {
         path: 'emails',
         component: EmailComponent,
+      },
+      // TODO: add page for concert recordings
+      {
+        path: 'repertoire',
+        // children: [{ path: 'songs', component: SongsListComponent }],
+        component: SongsListComponent,
       },
       {
         path: '**',

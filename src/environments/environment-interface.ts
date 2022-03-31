@@ -13,6 +13,10 @@ export interface Environment {
     intern: {
       emails: string;
     };
-    download: string;
+    download: {
+      index: string;
+      songs: string;
+      recordings: string;
+    };
   };
 }

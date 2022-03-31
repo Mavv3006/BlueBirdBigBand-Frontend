@@ -42,15 +42,13 @@ export class ConcertsPageComponent implements OnInit {
     this.setConcertsFromLocalStorage();
 
     this.titleService.setTitle('Auftrittinfos');
-    this.concertService.upcoming().subscribe(
-      (data) => {
-        this.handleConcertsFromApi(data);
-      },
-      (error) => {
+    this.concertService.upcoming().subscribe({
+      next: (data) => this.handleConcertsFromApi(data),
+      error: (error) => {
         console.error('Cannot make request', error);
         this.hasError = true;
-      }
-    );
+      },
+    });
   }
 
   setConcertsFromLocalStorage() {
@@ -60,13 +58,6 @@ export class ConcertsPageComponent implements OnInit {
     }
   }
 
-  setConcertsToLocalStorage(concerts: Concert[]) {
-    window.localStorage.setItem(
-      LocalStorageKey.concerts,
-      JSON.stringify(concerts)
-    );
-  }
-
   handleConcertsFromApi(data: Concert[]) {
     const storageConcerts = this.getConcertsFromStorage();
     if (
@@ -74,8 +65,10 @@ export class ConcertsPageComponent implements OnInit {
       JSON.stringify(data) !== JSON.stringify(storageConcerts)
     ) {
       this.setConcerts(data);
-      this.setConcertsToLocalStorage(data);
-      return;
+      window.localStorage.setItem(
+        LocalStorageKey.concerts,
+        JSON.stringify(data)
+      );
     }
   }
 
