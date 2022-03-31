@@ -67,18 +67,6 @@ describe('ConcertsPageComponent', () => {
     expect(titleService).toBeTruthy();
   });
 
-  it('should save concerts to local storage', () => {
-    expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBeNull(
-      'local storage has not been cleared.'
-    );
-
-    component.setConcertsToLocalStorage(mockConcerts);
-
-    expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBe(
-      mockConcertsString
-    );
-  });
-
   it('.getConcertsFromStorage should return null when there are no concerts in local storage', () => {
     expect(window.localStorage.getItem(LocalStorageKey.concerts)).toBeNull();
     expect(component.getConcertsFromStorage()).toBeNull();
@@ -93,7 +81,10 @@ describe('ConcertsPageComponent', () => {
   });
 
   it('should end the spinner when there are concerts in local storage', () => {
-    component.setConcertsToLocalStorage(mockConcerts);
+    window.localStorage.setItem(
+      LocalStorageKey.concerts,
+      JSON.stringify(mockConcerts)
+    );
 
     component.setConcertsFromLocalStorage();
     component.handleConcertsFromApi(mockConcerts);
@@ -103,7 +94,10 @@ describe('ConcertsPageComponent', () => {
   });
 
   it('should not update the ui when and local storage when the api returns the same values as currently in local storage', () => {
-    component.setConcertsToLocalStorage(mockConcerts);
+    window.localStorage.setItem(
+      LocalStorageKey.concerts,
+      JSON.stringify(mockConcerts)
+    );
     const hasValues = component.hasValues;
     const concerts = component.concerts;
 
@@ -120,7 +114,7 @@ describe('ConcertsPageComponent', () => {
   });
 
   it('should update the ui and local storage when the api returns different values then currently in local storage', () => {
-    component.setConcertsToLocalStorage([]);
+    window.localStorage.setItem(LocalStorageKey.concerts, JSON.stringify([]));
     expect(component.hasValues).toBeFalse();
     expect(component.concerts).toEqual([]);
 
@@ -132,7 +126,7 @@ describe('ConcertsPageComponent', () => {
   });
 
   it('should update the ui when calling ngOnInit()', () => {
-    component.setConcertsToLocalStorage([]);
+    window.localStorage.setItem(LocalStorageKey.concerts, JSON.stringify([]));
     expect(component.hasValues).toBeFalse();
     expect(component.concerts).toEqual([]);
 

@@ -10,6 +10,7 @@ export interface Environment {
       logout: string;
       refresh: string;
     };
+    // TODO: clean-up
     intern: {
       emails: string;
       concert_recordings: string;
