@@ -12,6 +12,7 @@ export interface Environment {
     };
     intern: {
       emails: string;
+      concert_recordings: string;
     };
     download: {
       index: string;

@@ -30,6 +30,7 @@ import { BbbbScheduleComponent } from './intern/schedule/bbbb-schedule.component
 import { DtbScheduleComponent } from './intern/schedule/dtb-schedule.component';
 import { EmailComponent } from './intern/email/email.component';
 import { EmailGroupComponent } from './intern/email/email-group.component';
+import { ConcertRecordingsComponent } from './intern/concert-recordings/concert-recordings.component';
 import { SongsListComponent } from './intern/songs-list/songs-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -59,6 +60,7 @@ const components = [
   IndexComponent,
   BbbbScheduleComponent,
   DtbScheduleComponent,
+  ConcertRecordingsComponent,
   SongsListComponent,
 ];
 

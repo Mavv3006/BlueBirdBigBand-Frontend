@@ -3,5 +3,6 @@ export enum LocalStorageKey {
   expire_date_time = 'jwt exp',
   email = 'emails',
   concerts = 'concerts',
+  concert_recordings = 'concert recordings',
   songs = 'songs',
 }
