@@ -20,7 +20,11 @@ export const environment: Environment = {
       emails: 'intern/basics',
       concert_recordings: 'intern/concert-recordings',
     },
-    download: 'download',
+    download: {
+      index: 'download',
+      songs: 'download/songs',
+      recordings: 'download/recordings',
+    },
   },
 };
 

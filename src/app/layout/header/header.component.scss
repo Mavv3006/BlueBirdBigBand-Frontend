@@ -104,6 +104,7 @@ app-desktop-navbar {
   position: absolute;
   width: 100%;
   opacity: 0;
+  z-index: -1;
 
   transition: opacity 150ms ease;
 }
@@ -111,4 +112,5 @@ app-desktop-navbar {
 .opacity-100 {
   opacity: 100;
   transition-delay: 75ms;
+  z-index: 0;
 }

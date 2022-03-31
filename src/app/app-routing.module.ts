@@ -16,6 +16,7 @@ import { IndexComponent } from './pages/intern/index/index.component';
 import { BbbbScheduleComponent } from './pages/intern/schedule/bbbb-schedule.component';
 import { DtbScheduleComponent } from './pages/intern/schedule/dtb-schedule.component';
 import { ConcertRecordingsComponent } from './pages/intern/concert-recordings/concert-recordings.component';
+import { SongsListComponent } from './pages/intern/songs-list/songs-list.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,7 @@ const routes: Routes = [
   },
   {
     path: 'intern',
+    // TODO: protect intern routes
     children: [
       {
         path: '',
@@ -81,6 +83,10 @@ const routes: Routes = [
       {
         path: 'emails',
         component: EmailComponent,
+      },
+      {
+        path: 'repertoire',
+        component: SongsListComponent,
       },
       {
         path: 'downloads',

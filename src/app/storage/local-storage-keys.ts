@@ -4,4 +4,5 @@ export enum LocalStorageKey {
   email = 'emails',
   concerts = 'concerts',
   concert_recordings = 'concert recordings',
+  songs = 'songs',
 }

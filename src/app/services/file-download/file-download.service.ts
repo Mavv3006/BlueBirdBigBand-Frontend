@@ -11,16 +11,21 @@ export type FileType = 'song' | 'recording';
 export class FileDownloadService {
   constructor(private http: HttpClient) {}
 
-  downloadFile(filename: string, type: FileType) {
-    return this.http.get(
+  static getDownloadUrl(filename: string, type: FileType): string {
+    return (
       environment.base_url +
-        environment.urls.download +
-        '/' +
-        type +
-        '?file_name=' +
-        filename,
-      { responseType: 'blob' }
+      environment.urls.download.index +
+      '/' +
+      type +
+      '?file_name=' +
+      filename
     );
+  }
+
+  downloadFile(filename: string, type: FileType) {
+    return this.http.get(FileDownloadService.getDownloadUrl(filename, type), {
+      responseType: 'blob',
+    });
   }
 
   downloadAndSave(filename: string, type: FileType) {

@@ -9,6 +9,6 @@ export const environment: Environment = {
     },
     auth: { login: '', logout: '', refresh: '' },
     intern: { emails: '', concert_recordings: '' },
-    download: '',
+    download: { index: '', recordings: '', songs: '' },
   },
 };

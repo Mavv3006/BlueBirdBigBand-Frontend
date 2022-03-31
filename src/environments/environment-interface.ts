@@ -14,6 +14,10 @@ export interface Environment {
       emails: string;
       concert_recordings: string;
     };
-    download: string;
+    download: {
+      index: string;
+      songs: string;
+      recordings: string;
+    };
   };
 }

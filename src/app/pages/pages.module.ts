@@ -31,6 +31,11 @@ import { DtbScheduleComponent } from './intern/schedule/dtb-schedule.component';
 import { EmailComponent } from './intern/email/email.component';
 import { EmailGroupComponent } from './intern/email/email-group.component';
 import { ConcertRecordingsComponent } from './intern/concert-recordings/concert-recordings.component';
+import { SongsListComponent } from './intern/songs-list/songs-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const components = [
   HomeComponent,
@@ -56,6 +61,7 @@ const components = [
   BbbbScheduleComponent,
   DtbScheduleComponent,
   ConcertRecordingsComponent,
+  SongsListComponent,
 ];
 
 @NgModule({
@@ -74,6 +80,10 @@ const components = [
     MatCardModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatTableModule,
+    MatIconModule,
+    MatMenuModule,
+    MatDialogModule,
   ],
 })
 export class PagesModule {}
