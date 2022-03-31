@@ -28,18 +28,18 @@ export class ConcertRecordingsComponent implements OnInit {
       );
     }
 
-    this.recordingService.get().subscribe(
-      (res: ConcertRecordingList[]) => {
+    this.recordingService.get().subscribe({
+      next: (res: ConcertRecordingList[]) => {
         this.recordings = res;
         window.localStorage.setItem(
           LocalStorageKey.concert_recordings,
           JSON.stringify(res)
         );
       },
-      (error) => {
+      error: (error) => {
         console.error('[ConcertRecordingsComponent]', error);
-      }
-    );
+      },
+    });
   }
 
   downloadFile(file_name: string) {

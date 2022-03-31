@@ -112,6 +112,7 @@ export class ConcertRecordingsService {
   constructor(private http: HttpClient) {}
 
   public get(): Observable<ConcertRecordingList[]> {
+    // TODO: reach out to dev server
     if (environment.production) {
       return this.http
         .get<ConcertRecordingList[]>(
