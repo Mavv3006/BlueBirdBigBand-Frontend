@@ -9,7 +9,7 @@ export const environment: Environment = {
   base_url: 'http://localhost:8080/',
   urls: {
     concerts: {
-      upcoming: 'upcoming',
+      upcoming: 'concerts/upcoming',
     },
     auth: {
       login: 'auth/login',
