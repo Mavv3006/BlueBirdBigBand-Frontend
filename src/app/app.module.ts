@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/Auth.guard';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,7 +24,10 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     LayoutModule,
     MatMenuModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   bootstrap: [AppComponent],
+  providers: [AuthGuard],
 })
 export class AppModule {}
