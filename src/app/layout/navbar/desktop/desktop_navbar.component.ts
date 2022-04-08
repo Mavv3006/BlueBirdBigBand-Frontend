@@ -15,7 +15,6 @@ export class DesktopNavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe({
       next: (value: boolean) => {
-        console.debug('[DesktopNavbarComponent] isLoggedIn =', value);
         this.isLoggedIn = value;
       },
     });
@@ -23,7 +22,7 @@ export class DesktopNavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout({
-      next: (val) => console.debug('[DesktopNavbarComponent]', val),
+      next: () => {},
       error: () => {},
       complete: () => {
         if (this.router.url.startsWith('/intern')) {

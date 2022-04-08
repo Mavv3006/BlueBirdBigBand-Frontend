@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     username: [''],
   });
 
-  _queryParams: any;
+  _redirect: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,10 +30,7 @@ export class LoginComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe({
-      next: (value: Params) => {
-        this._queryParams = value;
-        console.debug(this._queryParams);
-      },
+      next: (value: Params) => (this._redirect = value['redirect']),
     });
   }
 
@@ -53,8 +50,7 @@ export class LoginComponent implements OnInit {
       },
       complete: () => {
         this.hasClicked = false;
-        console.debug('[LoginComponent] query param', this._queryParams);
-        // this.router.navigateByUrl('/intern');
+        this.router.navigateByUrl(this._redirect);
       },
     });
   }

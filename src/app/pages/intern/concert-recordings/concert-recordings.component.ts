@@ -48,7 +48,6 @@ export class ConcertRecordingsComponent implements OnInit {
   }
 
   navigateTo(route: string) {
-    // TODO: add route for intern/downloads/songs
     this.router.navigate([route]);
   }
 }
