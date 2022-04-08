@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/Auth.guard';
 import { EmailComponent } from './pages/intern/email/email.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { NgModule } from '@angular/core';
@@ -66,41 +67,46 @@ const routes: Routes = [
   },
   {
     path: 'intern',
-    // TODO: protect intern routes
     children: [
       {
         path: '',
         component: IndexComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'termine-bbbb',
         component: BbbbScheduleComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'termine-dtb',
         component: DtbScheduleComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'emails',
         component: EmailComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'repertoire',
         component: SongsListComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'downloads',
         component: ConcertRecordingsComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: '**',
-        component: IndexComponent,
+        component: PageNotFoundComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
   {
     path: '**',
-    // redirectTo: '',
     component: PageNotFoundComponent, // TODO: update PageNotFoundComponent
   },
 ];

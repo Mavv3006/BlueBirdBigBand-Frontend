@@ -9,6 +9,7 @@ export class TokenService {
 
   public setToken(token: string): void {
     window.localStorage.setItem(LocalStorageKey.jwt, token);
+    window.localStorage.setItem(LocalStorageKey.is_logged_in, 'true');
   }
 
   public getToken(): string | null {
@@ -34,5 +35,6 @@ export class TokenService {
   public clear(): void {
     window.localStorage.removeItem(LocalStorageKey.jwt);
     window.localStorage.removeItem(LocalStorageKey.expire_date_time);
+    window.localStorage.setItem(LocalStorageKey.is_logged_in, 'false');
   }
 }
