@@ -4,6 +4,7 @@ import {
   ConcertRecordingList,
   ConcertRecordingsService,
 } from 'src/app/services/concert-recordings.service';
+import { FileDownloadService } from 'src/app/services/file-download/file-download.service';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 @Component({
@@ -16,7 +17,8 @@ export class ConcertRecordingsComponent implements OnInit {
 
   constructor(
     private recordingService: ConcertRecordingsService,
-    private router: Router
+    private router: Router,
+    private fileDownloadService: FileDownloadService
   ) {}
 
   ngOnInit(): void {
@@ -43,12 +45,10 @@ export class ConcertRecordingsComponent implements OnInit {
   }
 
   downloadFile(file_name: string) {
-    // TODO: add file download here
-    console.debug('Hier würde der Dateidownload stattfinden.');
+    this.fileDownloadService.downloadAndSave(file_name, 'recording');
   }
 
   navigateTo(route: string) {
-    // TODO: add route for intern/downloads/songs
     this.router.navigate([route]);
   }
 }

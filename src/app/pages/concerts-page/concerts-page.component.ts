@@ -26,7 +26,7 @@ export class ConcertsPageComponent implements OnInit {
   }
 
   get spinnerDiameter(): number {
-    return 60; // todo: make responsive
+    return 60;
   }
 
   get showErrorMessage() {

@@ -33,7 +33,7 @@ export class SongsListComponent implements OnInit {
   }
 
   get spinnerDiameter(): number {
-    return 60; // todo: make responsive
+    return 60;
   }
 
   get values(): Song[] {
@@ -91,7 +91,6 @@ export class SongsListComponent implements OnInit {
       console.error('no song selected. Playing not available.');
       return;
     }
-    // TODO: start playing song
     const dialogRef = this.dialog.open(SongPlayingDialogComponent, {
       width: '400px',
       data: { url: '', song: this.currentlyClickedSong },

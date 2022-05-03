@@ -1,17 +1,17 @@
 import { TokenService } from './../../../services/token/token.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
   AuthService,
   LoginResponse,
 } from '../../../services/auth/auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   hasLoginError = false;
   hasClicked = false;
   form = this.formBuilder.group({
@@ -19,12 +19,20 @@ export class LoginComponent {
     username: [''],
   });
 
+  _redirect: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private activatedRoute: ActivatedRoute
   ) {}
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe({
+      next: (value: Params) => (this._redirect = value['redirect']),
+    });
+  }
 
   login() {
     this.hasLoginError = false;
@@ -42,8 +50,7 @@ export class LoginComponent {
       },
       complete: () => {
         this.hasClicked = false;
-        // TODO: redirect to query param
-        this.router.navigateByUrl('/intern');
+        this.router.navigateByUrl(this._redirect);
       },
     });
   }

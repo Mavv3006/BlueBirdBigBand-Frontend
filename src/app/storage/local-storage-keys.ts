@@ -5,4 +5,5 @@ export enum LocalStorageKey {
   concerts = 'concerts',
   concert_recordings = 'concert recordings',
   songs = 'songs',
+  is_logged_in = 'logged_in',
 }
