@@ -10,6 +10,7 @@ import { FormBuilder } from '@angular/forms';
 const client_error = 'Error beim Login: Benutzername oder Passwort falsch.';
 const network_error =
   'Error beim Login: Verbindung mit dem Server fehlgeschlagen.';
+const server_error = 'Error beim Login: Internal Server Error.';
 
 @Component({
   templateUrl: './login.component.html',
@@ -18,7 +19,7 @@ const network_error =
 export class LoginComponent implements OnInit {
   hasLoginError = false;
   hasClicked = false;
-  error_source: 'client' | 'network' | null = null;
+  error_source: 'client' | 'network' | null | 'server' = null;
   error_message = '';
   form = this.formBuilder.group({
     password: [''],
@@ -53,8 +54,21 @@ export class LoginComponent implements OnInit {
       error: (error) => {
         this.hasLoginError = true;
         this.hasClicked = false;
-        this.error_source = error.is_client ? 'client' : 'network';
-        this.error_message = error.is_client ? client_error : network_error;
+        this.error_source = error.is_client
+          ? 'client'
+          : error.is_server
+          ? 'server'
+          : 'network';
+        this.error_message = error.is_client
+          ? client_error
+          : error.is_server
+          ? server_error
+          : network_error;
+        console.error('Login error', {
+          source: this.error_source,
+          message: this.error_message,
+          status: error.error.status,
+        });
       },
       complete: () => {
         this.hasClicked = false;

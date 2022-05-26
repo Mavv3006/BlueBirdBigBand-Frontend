@@ -102,7 +102,12 @@ export class AuthService {
       );
     }
 
-    const return_value = { error: error, is_client: error.status !== 0 };
+    const server_error = error.status.toString().startsWith('5');
+    const return_value = {
+      error: error,
+      is_client: error.status !== 0 && !server_error,
+      is_server: server_error,
+    };
 
     return throwError(() => return_value);
   }
