@@ -3,7 +3,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs/internal/observable/throwError';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TokenService } from '../token/token.service';
 
 export interface LoginData {
@@ -89,7 +89,7 @@ export class AuthService {
     return this.tokenService.getToken() !== null;
   }
 
-  private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse): Observable<never> {
     if (error.status === 0) {
       // client side or network error
       console.error('An error occurred: ', error.error);
@@ -102,6 +102,8 @@ export class AuthService {
       );
     }
 
-    return throwError(() => error.error);
+    const return_value = { error: error, is_client: error.status !== 0 };
+
+    return throwError(() => return_value);
   }
 }
