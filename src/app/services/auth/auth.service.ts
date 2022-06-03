@@ -13,11 +13,7 @@ export interface LoginData {
 
 export interface LoginResponse {
   access_token: string;
-  token_type: string;
-  expires: {
-    in: number;
-    at: number;
-  };
+  expires_at: Date;
 }
 
 export interface LogoutResponse {
@@ -60,8 +56,12 @@ export class AuthService {
       .pipe(retry(3), catchError(this.handleError))
       .subscribe({
         next: (res: LoginResponse) => {
+          let exp_date = new Date(Date.now());
+          exp_date.setHours(exp_date.getHours() + 3);
+          res.expires_at = exp_date;
+          console.debug('login response handling', res);
           this.tokenService.setToken(res.access_token);
-          this.tokenService.setExpireDateTime(res.expires.at);
+          this.tokenService.setExpireDateTime(res.expires_at);
           this.isLoggedIn.next(this.loggedIn());
           params.next(res);
         },
@@ -72,7 +72,10 @@ export class AuthService {
 
   public logout(params: LogoutParams) {
     this.http
-      .get<LogoutResponse>(environment.base_url + environment.urls.auth.logout)
+      .post<LogoutResponse>(
+        environment.base_url + environment.urls.auth.logout,
+        {}
+      )
       .pipe(retry(3), catchError(this.handleError))
       .subscribe({
         next: (res: LogoutResponse) => {

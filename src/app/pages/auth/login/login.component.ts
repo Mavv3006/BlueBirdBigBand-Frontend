@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
   }
 
   private handleLogin(response: LoginResponse) {
-    this.tokenService.setExpireDateTime(response.expires.at);
+    this.tokenService.setExpireDateTime(response.expires_at);
     this.tokenService.setToken(response.access_token);
   }
 }
