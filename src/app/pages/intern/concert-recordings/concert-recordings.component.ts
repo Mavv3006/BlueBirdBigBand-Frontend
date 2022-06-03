@@ -45,6 +45,7 @@ export class ConcertRecordingsComponent implements OnInit {
   }
 
   downloadFile(file_name: string) {
+    console.debug(file_name);
     this.fileDownloadService.downloadAndSave(file_name, 'recording');
   }
 

@@ -1,9 +1,14 @@
-import {
-  EmailService,
-  EmailGroup,
-} from './../../../services/email/email.service';
-import { Component, OnInit } from '@angular/core';
-import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
+import { Component } from '@angular/core';
+
+export interface EmailGroup {
+  name: string;
+  emails: Email[];
+}
+
+export interface Email {
+  name: string;
+  email: string;
+}
 
 @Component({
   template: `
@@ -14,26 +19,76 @@ import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
   `,
   styleUrls: ['./email.component.scss'],
 })
-export class EmailComponent implements OnInit {
-  email: EmailGroup[] | undefined = undefined;
-
-  constructor(private emailService: EmailService) {}
-
-  ngOnInit(): void {
-    if (window.localStorage.getItem(LocalStorageKey.email) !== null) {
-      this.email = JSON.parse(
-        window.localStorage.getItem(LocalStorageKey.email)!
-      );
-    }
-
-    this.emailService.get().subscribe(
-      (res: EmailGroup[]) => {
-        this.email = res;
-        window.localStorage.setItem(LocalStorageKey.email, JSON.stringify(res));
-      },
-      (error) => {
-        console.error('[EmailComponent]', error);
-      }
-    );
-  }
+export class EmailComponent {
+  email: EmailGroup[] = [
+    {
+      name: 'ALLE (Midi / Maxi)',
+      emails: [
+        { name: 'Alle (Midi/Maxi)', email: 'MusikerInnen@BlueBirdBigBand.de' },
+      ],
+    },
+    {
+      name: 'MAXI',
+      emails: [
+        {
+          name: 'Alle Maxi-Mitglieder',
+          email: 'maxi@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Saxophonsatz',
+          email: 'maxi-Saxophone@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Posaunensatz',
+          email: 'maxi-Posaunen@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Trompetensatz',
+          email: 'maxi-Trompeten@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Rhythmusgruppe',
+          email: 'maxi-Rhythmusgruppe@BlueBirdBigBand.de',
+        },
+      ],
+    },
+    {
+      name: 'MIDI',
+      emails: [
+        {
+          name: 'Alle Midi-Mitglieder',
+          email: 'midi@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Saxophonsatz',
+          email: 'midi-Saxophone@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Posaunensatz',
+          email: 'midi-Posaunen@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Trompetensatz',
+          email: 'midi-Trompeten@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Rhythmusgruppe',
+          email: 'midi-Rhythmusgruppe@BlueBirdBigBand.de',
+        },
+      ],
+    },
+    {
+      name: 'SONSTIGE',
+      emails: [
+        {
+          name: 'Bandleader',
+          email: 'bandleiter@BlueBirdBigBand.de',
+        },
+        {
+          name: 'Webmaster',
+          email: 'webadmin@bluebirdbigband.de',
+        },
+      ],
+    },
+  ];
 }
