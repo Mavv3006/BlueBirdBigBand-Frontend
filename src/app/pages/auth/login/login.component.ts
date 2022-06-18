@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
     this.error_source = null;
     this.authService.login({
       data: {
-        name: this.form.value.username,
-        password: this.form.value.password,
+        name: this.form.value.username!,
+        password: this.form.value.password!,
       },
       next: (response: LoginResponse) => this.handleLogin(response),
       error: (error) => {
