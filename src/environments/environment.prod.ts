@@ -8,7 +8,7 @@ export const environment: Environment = {
       upcoming: 'https://api.bluebirdbigband.de/upcoming',
     },
     auth: { login: '', logout: '', refresh: '' },
-    intern: { emails: '', concert_recordings: '' },
+    intern: { emails: '' },
     download: { index: '', recordings: '', songs: '' },
   },
 };
