@@ -5,7 +5,7 @@ import {
   LoginResponse,
 } from '../../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 const client_error = 'Error beim Login: Benutzername oder Passwort falsch.';
 const network_error =
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   _redirect: string = '';
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private router: Router,
     private tokenService: TokenService,
