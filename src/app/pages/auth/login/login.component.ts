@@ -7,6 +7,11 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
+const client_error = 'Error beim Login: Benutzername oder Passwort falsch.';
+const network_error =
+  'Error beim Login: Verbindung mit dem Server fehlgeschlagen.';
+const server_error = 'Error beim Login: Internal Server Error.';
+
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
@@ -14,12 +19,14 @@ import { FormBuilder } from '@angular/forms';
 export class LoginComponent implements OnInit {
   hasLoginError = false;
   hasClicked = false;
+  error_source: 'client' | 'network' | null | 'server' = null;
+  error_message = '';
   form = this.formBuilder.group({
     password: [''],
     username: [''],
   });
 
-  _queryParams: any;
+  _redirect: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,37 +37,48 @@ export class LoginComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe({
-      next: (value: Params) => {
-        this._queryParams = value;
-        console.debug(this._queryParams);
-      },
+      next: (value: Params) => (this._redirect = value['redirect']),
     });
   }
 
   login() {
     this.hasLoginError = false;
     this.hasClicked = true;
+    this.error_source = null;
     this.authService.login({
       data: {
-        name: this.form.value.username,
-        password: this.form.value.password,
+        name: this.form.value.username!,
+        password: this.form.value.password!,
       },
       next: (response: LoginResponse) => this.handleLogin(response),
       error: (error) => {
         this.hasLoginError = true;
         this.hasClicked = false;
-        console.info(error);
+        this.error_source = error.is_client
+          ? 'client'
+          : error.is_server
+          ? 'server'
+          : 'network';
+        this.error_message = error.is_client
+          ? client_error
+          : error.is_server
+          ? server_error
+          : network_error;
+        console.error('Login error', {
+          source: this.error_source,
+          message: this.error_message,
+          status: error.error.status,
+        });
       },
       complete: () => {
         this.hasClicked = false;
-        console.debug('[LoginComponent] query param', this._queryParams);
-        // this.router.navigateByUrl('/intern');
+        this.router.navigateByUrl(this._redirect);
       },
     });
   }
 
   private handleLogin(response: LoginResponse) {
-    this.tokenService.setExpireDateTime(response.expires.at);
+    this.tokenService.setExpireDateTime(response.expires_at);
     this.tokenService.setToken(response.access_token);
   }
 }

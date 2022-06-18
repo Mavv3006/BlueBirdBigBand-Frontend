@@ -107,7 +107,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent, // TODO: update PageNotFoundComponent
+    component: PageNotFoundComponent,
   },
 ];
 

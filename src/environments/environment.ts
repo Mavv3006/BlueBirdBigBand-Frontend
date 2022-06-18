@@ -6,7 +6,7 @@ import { Environment } from './environment-interface';
 
 export const environment: Environment = {
   production: false,
-  base_url: 'http://localhost:8080/',
+  base_url: 'http://localhost:8000/api/',
   urls: {
     concerts: {
       upcoming: 'concerts/upcoming',
@@ -18,7 +18,6 @@ export const environment: Environment = {
     },
     intern: {
       emails: 'intern/basics',
-      concert_recordings: 'intern/concert-recordings',
     },
     download: {
       index: 'download',

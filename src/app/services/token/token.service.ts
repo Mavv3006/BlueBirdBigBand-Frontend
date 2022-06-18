@@ -17,7 +17,7 @@ export class TokenService {
     return token;
   }
 
-  public setExpireDateTime(value: number): void {
+  public setExpireDateTime(value: Date): void {
     window.localStorage.setItem(
       LocalStorageKey.expire_date_time,
       value.toString()
@@ -29,7 +29,7 @@ export class TokenService {
     if (value == null) {
       return null;
     }
-    return new Date(+value * 1000);
+    return new Date(value);
   }
 
   public clear(): void {

@@ -60,7 +60,6 @@ export class MobileNavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe({
       next: (value: boolean) => {
-        console.debug('[MobileNavbarComponent] isLoggedIn =', value);
         this.isLoggedIn = value;
       },
     });
@@ -68,7 +67,7 @@ export class MobileNavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout({
-      next: (val) => console.debug('[MobileNavbarComponent]', val),
+      next: () => {},
       error: () => {},
       complete: () => {
         if (this.router.url.startsWith('/intern')) {

@@ -1,5 +1,5 @@
-import { EmailGroup } from './../../../services/email/email.service';
 import { Component, Input } from '@angular/core';
+import { EmailGroup } from './email.component';
 
 @Component({
   selector: 'app-email-group',

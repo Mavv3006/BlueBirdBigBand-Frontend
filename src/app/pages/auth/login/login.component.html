@@ -11,6 +11,7 @@
           id="username"
           name="username"
           formControlName="username"
+          autocomplete="username"
         />
       </mat-form-field>
       <mat-form-field class="input password">
@@ -19,13 +20,14 @@
           name="password"
           formControlName="password"
           id="password"
+          autocomplete="current-password"
           matInput
           placeholder="Passwort"
         />
       </mat-form-field>
     </div>
     <div class="login-error" *ngIf="hasLoginError">
-      Error beim Login: Benutzername oder Passwort falsch.
+      {{ error_message }}
     </div>
     <div class="login-button">
       <button

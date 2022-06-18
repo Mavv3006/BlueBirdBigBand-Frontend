@@ -2,13 +2,23 @@ import { Environment } from './environment-interface';
 
 export const environment: Environment = {
   production: true,
-  base_url: '',
+  base_url: 'https://dev.api.bluebirdbigband.de/api/',
   urls: {
     concerts: {
-      upcoming: 'https://api.bluebirdbigband.de/upcoming',
+      upcoming: 'concerts/upcoming',
     },
-    auth: { login: '', logout: '', refresh: '' },
-    intern: { emails: '', concert_recordings: '' },
-    download: { index: '', recordings: '', songs: '' },
+    auth: {
+      login: 'auth/login',
+      logout: 'auth/logout',
+      refresh: 'auth/refresh',
+    },
+    intern: {
+      emails: 'intern/basics',
+    },
+    download: {
+      index: 'download',
+      songs: 'download/songs',
+      recordings: 'download/recordings',
+    },
   },
 };
