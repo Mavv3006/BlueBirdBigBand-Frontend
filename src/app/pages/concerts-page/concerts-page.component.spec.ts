@@ -7,9 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { LocalStorageKey } from 'src/app/storage/local-storage-keys';
 
 class MockTitleService {
-  setTitle(title: string): void {
-    console.info('Title has been set to: ' + title);
-  }
+  setTitle(title: string): void {}
 }
 
 class MockConcertService {

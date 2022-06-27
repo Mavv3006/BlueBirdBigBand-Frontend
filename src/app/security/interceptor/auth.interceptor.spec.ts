@@ -47,7 +47,7 @@ describe('AuthInterceptor', () => {
     );
     expect(request.request.headers.get('Accept')).toEqual('application/json');
     expect(request.request.headers.get('Authorization')).toEqual(
-      'bearer ' + token
+      'Bearer ' + token
     );
   });
 });

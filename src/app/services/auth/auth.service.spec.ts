@@ -49,11 +49,7 @@ describe('AuthService', () => {
     const token = 'jwt token';
     const authenticationResponse = {
       access_token: token,
-      token_type: 'string',
-      expires: {
-        in: 0,
-        at: 0,
-      },
+      expires_at: new Date(),
     };
 
     // Executing
@@ -88,14 +84,10 @@ describe('AuthService', () => {
   it('should log out', () => {
     // Setup
     const authToken = 't.c.t';
-    const authHeader = 'bearer ' + authToken;
+    const authHeader = 'Bearer ' + authToken;
     const authenticationResponse = {
       access_token: authToken,
-      token_type: 'string',
-      expires: {
-        in: 0,
-        at: 0,
-      },
+      expires_at: new Date(),
     };
     service.login({
       data: { name: 'test', password: 'test' },
@@ -122,7 +114,9 @@ describe('AuthService', () => {
     });
 
     // Validation
-    expect(req.request.method).toBe('GET');
+    expect(req.request.method)
+      .withContext('validating request method')
+      .toBe('POST');
     expect(req.request.headers.get('Authorization')).toEqual(authHeader);
   });
 });

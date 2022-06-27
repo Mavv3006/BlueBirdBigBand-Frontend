@@ -29,7 +29,7 @@ export class TokenService {
     if (value == null) {
       return null;
     }
-    return new Date(value);
+    return new Date(+value * 1000);
   }
 
   public clear(): void {
