@@ -1,10 +1,10 @@
 name: Build & Lint
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
-    name: Lint
+    name: Build & Lint
     runs-on: ubuntu-latest
     steps:
       - name: get code
