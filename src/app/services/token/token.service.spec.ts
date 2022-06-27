@@ -64,7 +64,7 @@ describe('TokenService', () => {
   });
 
   it('should set exp_date_time', () => {
-    const exp_date = 1235629842193467;
+    const exp_date = new Date(1235629842193467);
     expect(
       window.localStorage.getItem(LocalStorageKey.expire_date_time)
     ).toBeNull();
@@ -89,10 +89,18 @@ describe('TokenService', () => {
 
     const response = service.getExpireDateTime();
 
-    expect(response).not.toBeNull();
-    expect(response!.getTime()).toEqual(milliseconds);
-    expect(response!.toString()).toEqual(exp_date.toString());
-    expect(response).toEqual(exp_date);
+    expect(response)
+      .withContext('response failed to not be null')
+      .not.toBeNull();
+    expect(response!.getTime())
+      .withContext('response failed to equal milliseconds')
+      .toEqual(milliseconds);
+    expect(response!.toString())
+      .withContext('response failed string comparison')
+      .toEqual(exp_date.toString());
+    expect(response)
+      .withContext('response failed date comparison')
+      .toEqual(exp_date);
   });
 
   it('should return null when no exp date time is set', () => {
