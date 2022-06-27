@@ -1,0 +1,48 @@
+@import "../../../styles/anchor-tag.scss";
+@import "../../../styles/util.scss";
+@import "../../../styles/mixin/responsive.scss";
+
+.small {
+  font-size: 80%;
+}
+
+.address {
+  @include medium {
+    text-align: right;
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-bottom: 2em;
+
+  @include medium {
+    flex-direction: row;
+    gap: 2em;
+
+    & > * {
+      width: 50%;
+    }
+  }
+
+  @include large {
+    gap: 3em;
+  }
+
+  @include extra_large {
+    gap: 4em;
+  }
+
+  @include extra_large_2 {
+    gap: 5em;
+  }
+}
+
+.legal {
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}

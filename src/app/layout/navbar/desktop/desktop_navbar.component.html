@@ -1,0 +1,68 @@
+<ul class="desktop_navbar-ul">
+  <li><p (click)="navigateTo('')">Home</p></li>
+
+  <li>
+    <button mat-button [matMenuTriggerFor]="aktuelles" class="nav-container">
+      Aktuelles
+    </button>
+    <mat-menu #aktuelles="matMenu" class="mat-submenu">
+      <button mat-menu-item (click)="navigateTo('auftritte')">Auftritte</button>
+      <button mat-menu-item (click)="navigateTo('presse')">Presseinfos</button>
+      <button mat-menu-item (click)="navigateTo('buchung')">
+        Buchungsinfos
+      </button>
+    </mat-menu>
+  </li>
+
+  <li>
+    <button mat-button [matMenuTriggerFor]="band" class="nav-container">
+      Band
+    </button>
+    <mat-menu #band="matMenu" class="mat-submenu">
+      <button mat-menu-item (click)="navigateTo('about-us')">Über uns</button>
+      <button mat-menu-item (click)="navigateTo('musiker')">Musiker</button>
+      <button mat-menu-item (click)="navigateTo('anfahrt')">Anfahrt</button>
+    </mat-menu>
+  </li>
+
+  <li>
+    <button mat-button [matMenuTriggerFor]="kontakt" class="nav-container">
+      Kontakt
+    </button>
+    <mat-menu #kontakt="matMenu" class="mat-submenu">
+      <button mat-menu-item (click)="navigateTo('kontakt')">Kontakt</button>
+      <button mat-menu-item (click)="navigateTo('impressum')">Impressum</button>
+    </mat-menu>
+  </li>
+
+  <li *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="intern" class="nav-container">
+      Intern
+    </button>
+    <mat-menu #intern="matMenu" class="mat-submenu">
+      <button mat-menu-item (click)="navigateTo('intern')">
+        Intern-Startseite
+      </button>
+      <button mat-menu-item (click)="navigateTo('intern/emails')">
+        Email-Verteiler
+      </button>
+      <button mat-menu-item (click)="navigateTo('intern/termine-bbbb')">
+        Termine BBBB
+      </button>
+      <button mat-menu-item (click)="navigateTo('intern/termine-dtb')">
+        Termine DTB
+      </button>
+      <button mat-menu-item (click)="navigateTo('intern/repertoire')">
+        Repertoire
+      </button>
+      <button mat-menu-item (click)="navigateTo('intern/downloads')">
+        Downloads
+      </button>
+    </mat-menu>
+  </li>
+
+  <li>
+    <p (click)="navigateTo('auth/login')" *ngIf="!isLoggedIn">Login</p>
+    <p (click)="logout()" *ngIf="isLoggedIn">Logout</p>
+  </li>
+</ul>

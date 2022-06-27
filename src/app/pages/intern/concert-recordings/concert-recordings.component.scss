@@ -1,0 +1,51 @@
+@import "../../../../styles/mixin/responsive.scss";
+@import "../../../../styles/anchor-tag.scss";
+
+$border-bottom: 1px solid lightgray;
+
+h2 {
+  padding-top: 10px;
+  font-size: 1.5em;
+  line-height: 1.4;
+  text-align: center;
+
+  @include medium {
+    font-size: 2.03125em;
+    line-height: 1.3;
+    text-align: left;
+  }
+}
+
+h3 {
+  text-align: left;
+  padding-bottom: 15px;
+
+  @include extra_small {
+    text-align: center;
+  }
+}
+
+.concert {
+  padding-top: 10px;
+  padding-bottom: 1em;
+  border-bottom: $border-bottom;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.files {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 15px;
+
+  @include extra_large {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.other-downloads {
+  border-bottom: $border-bottom;
+  padding-bottom: 1em;
+}

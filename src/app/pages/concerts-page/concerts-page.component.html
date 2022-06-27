@@ -1,0 +1,24 @@
+<app-heading>Auftritte</app-heading>
+
+<div class="gig-list" *ngIf="showConcerts">
+  <app-concert
+    *ngFor="let concert of concerts"
+    [concert]="concert"
+  ></app-concert>
+</div>
+
+<p *ngIf="showZeroConcertsMessage">
+  Aktuell sind keine Konzerte/Auftritte geplant.
+</p>
+
+<mat-spinner
+  *ngIf="showSpinner"
+  class="spinner"
+  [diameter]="spinnerDiameter"
+></mat-spinner>
+
+<p *ngIf="hasError">
+  Es konnte keine Verbindung zum Server aufgebaut werden. Bitte die Seite neu
+  laden. Wenn dieses Problem häufiger auftritt, wenden Sie sich bitte an den
+  <a href="/kontakt">Webadmin</a>.
+</p>

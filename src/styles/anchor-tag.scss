@@ -1,0 +1,15 @@
+@import "colors.scss";
+
+a {
+  font-weight: 600;
+  color: $light-blue;
+  &:visited,
+  &:active {
+    color: $light-blue;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

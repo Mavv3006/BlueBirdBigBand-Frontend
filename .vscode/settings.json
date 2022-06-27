@@ -1,0 +1,30 @@
+{
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.linkedEditing": true,
+  "cSpell.words": [
+    "auftritte",
+    "Auftrittinfos",
+    "BBBBler",
+    "buchung",
+    "Buchungsinfos",
+    "Gehrlein",
+    "impressum",
+    "kontakt",
+    "musiker",
+    "Presseinfos",
+    "Saxophonsatz",
+    "termine",
+    "Webadmin"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///e%3A/Dev/BBBB/angular-frontend/.github/workflows/build.yml"
+  }
+}

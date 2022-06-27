@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-journey',
   templateUrl: './journey.component.html',
-  styleUrls: ['./journey.component.scss']
+  styleUrls: ['./journey.component.scss'],
 })
 export class JourneyComponent implements OnInit {
-
-  constructor() { }
+  constructor(private titleService: Title) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Anfahrt');
   }
-
 }

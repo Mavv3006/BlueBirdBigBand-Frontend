@@ -1,27 +1,25 @@
-# AngularFrontend
+# Blue Bird Big Band Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+This project is the frondend website used for the Blue Bird Big Band. The Blue Bird Big Band is a music school big band from Speyer, Germany. This project is currently not deployed yet, as it has not reached the stage in which all the neccessary features are implemented and breaking bugs solved.
 
-## Development server
+Angular is used as the JavaScript framework to develop this project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation Guide
 
-## Code scaffolding
+This paragraph is targeted towards the (potential) contributor 😉. Here are the steps involved:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone this repo by executing the following command in the terminal: `https://github.com/Mavv3006/BlueBirdBigBand-Frontend.git` 
+2. Now you can just run `npm run start`. This will serve the project in the background. If you want to open it in the browser directly you have to run `npm run start:open` instead.
 
-## Build
+## Run the tests
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+For running the tests you have to execute the following command: `npm run test`.
 
-## Running unit tests
+## Build this project
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+There are two configurations for building the project: Production and Local. The difference is the base url for the connection to the backend.
 
-## Running end-to-end tests
+- for production run: `npm run build:prod`
+- otherwise run: `npm run build`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you want to use a local backend (recommended in development), please refer to the [Blue Bird Big Band Backend](https://github.com/Mavv3006/Blue-Bird-Big-Band-Backend) repository.

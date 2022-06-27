@@ -1,0 +1,27 @@
+<div class="headline">
+  <div class="logo">
+    <a href="/">
+      <img
+        src="/assets/logo/logo-header.gif"
+        alt="Logo der Blue Bird Big Band"
+      />
+    </a>
+  </div>
+
+  <button
+    (click)="toggleMobileMenu()"
+    class="mobile-toggle"
+    [ngClass]="{ 'open-mobile-toggle': mobile_menu_open }"
+  >
+    <mat-icon>{{ mobile_menu_open ? "close" : "menu" }}</mat-icon>
+  </button>
+</div>
+
+<app-desktop-navbar></app-desktop-navbar>
+<div class="mobile-nav-wrapper">
+  <app-mobile-navbar
+    [ngClass]="{ 'opacity-100': mobile_menu_open }"
+    class="mobile-nav"
+    [(isOpen)]="mobile_menu_open"
+  ></app-mobile-navbar>
+</div>

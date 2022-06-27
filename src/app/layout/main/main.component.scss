@@ -1,0 +1,39 @@
+@import "../../../styles/mixin/responsive";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixin/sliding-transition.scss";
+
+.main-wrapper {
+  background-color: $bigband-blue;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  @include sliding-transition;
+}
+
+main {
+  background-color: white;
+  color: black;
+  border-radius: 15px;
+  width: 85vw;
+  margin: auto;
+  margin-top: 0;
+  padding: 1.5em 1em 1em 1em;
+
+  @include sliding-transition;
+
+  @include medium {
+    padding-top: 3em;
+    width: 88vw;
+  }
+
+  @include large {
+    width: 85vw;
+  }
+
+  @include extra_large {
+    width: 80vw;
+  }
+
+  @include extra_large_2 {
+    width: 75vw;
+  }
+}

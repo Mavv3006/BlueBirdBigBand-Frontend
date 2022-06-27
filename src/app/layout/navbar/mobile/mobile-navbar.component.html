@@ -1,0 +1,72 @@
+<ul>
+  <app-navbar-element
+    container_title="Home"
+    class="clickable"
+    (click)="navigateTo('', 'home')"
+    [(isOpen)]="homeIsOpen"
+    style="z-index: 1"
+  ></app-navbar-element>
+
+  <app-navbar-element
+    container_title="Aktuelles"
+    style="z-index: 2"
+    [(isOpen)]="newsIsOpen"
+  >
+    <p (click)="navigateTo('auftritte', 'news')">Auftritte</p>
+    <p (click)="navigateTo('presse', 'news')">Presseinfos</p>
+    <p (click)="navigateTo('buchung', 'news')">Buchungsinfos</p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    container_title="Band"
+    style="z-index: 3"
+    [(isOpen)]="bandIsOpen"
+  >
+    <p (click)="navigateTo('about-us', 'band')">Über uns</p>
+    <p (click)="navigateTo('musiker', 'band')">Musiker</p>
+    <p (click)="navigateTo('anfahrt', 'band')">Anfahrt</p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    container_title="Kontakt"
+    style="z-index: 4"
+    [(isOpen)]="contactIsOpen"
+  >
+    <p (click)="navigateTo('kontakt', 'contact')">Kontakt</p>
+    <p class="impressum" (click)="navigateTo('impressum', 'contact')">
+      Impressum
+    </p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="isLoggedIn"
+    container_title="Intern"
+    style="z-index: 5"
+    [(isOpen)]="internIsOpen"
+  >
+    <p (click)="navigateTo('intern/', 'intern')">Intern-Startseite</p>
+    <p (click)="navigateTo('intern/emails', 'intern')">Email-Verteiler</p>
+    <p (click)="navigateTo('intern/termine-bbbb', 'intern')">Termine BBBB</p>
+    <p (click)="navigateTo('intern/termine-dtb', 'intern')">Termine DTB</p>
+    <p (click)="navigateTo('intern/repertoire', 'intern')">Repertoire</p>
+    <p (click)="navigateTo('intern/downloads', 'intern')">Downloads</p>
+  </app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="!isLoggedIn"
+    class="clickable"
+    [(isOpen)]="loginIsOpen"
+    container_title="Login"
+    (click)="navigateTo('auth/login', 'login')"
+    style="z-index: 6"
+  ></app-navbar-element>
+
+  <app-navbar-element
+    *ngIf="isLoggedIn"
+    class="clickable"
+    container_title="Logout"
+    [(isOpen)]="logoutIsOpen"
+    (click)="logout()"
+    style="z-index: 7"
+  ></app-navbar-element>
+</ul>

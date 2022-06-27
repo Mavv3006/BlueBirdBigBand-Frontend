@@ -1,24 +1,33 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/Auth.guard';
+import { LayoutModule } from './layout/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
-import { DropdownComponent } from './header/dropdown/dropdown.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { PagesModule } from './pages/pages.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MainComponent,
-    DropdownComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatMenuModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    PagesModule,
+    BrowserAnimationsModule,
+    ComponentsModule,
+    LayoutModule,
+    MatMenuModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthGuard],
 })
-export class AppModule { }
+export class AppModule {}

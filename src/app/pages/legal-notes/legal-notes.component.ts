@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { KlausGehrlein } from '../../models/klaus_gehrlein';
 
 @Component({
-  selector: 'app-legal-notes',
   templateUrl: './legal-notes.component.html',
-  styleUrls: ['./legal-notes.component.scss']
+  styleUrls: ['./legal-notes.component.scss'],
 })
 export class LegalNotesComponent implements OnInit {
-
-  constructor() { }
+  bandleader = KlausGehrlein;
+  constructor(private titleService: Title) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Impressum');
   }
-
 }

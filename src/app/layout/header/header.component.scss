@@ -1,0 +1,116 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixin/responsive.scss";
+@import "../../../styles/mixin/sliding-transition.scss";
+
+.hidden {
+  display: none;
+}
+
+mat-icon {
+  color: white;
+}
+
+app-desktop-navbar {
+  display: none;
+}
+
+.open-mobile-toggle {
+  background-color: $bigband-blue;
+}
+
+.headline {
+  background-color: $bigband-red;
+  height: 48px;
+  margin-top: 10px;
+
+  .logo {
+    height: 100%;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      img {
+        max-height: 48px;
+
+        @media (max-width: 390px) {
+          padding-right: 44px;
+        }
+      }
+    }
+  }
+
+  .mobile-toggle {
+    height: 48px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include sliding-transition;
+  }
+}
+
+@include medium {
+  :host {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .headline {
+    height: calc(10.125vw - 29.5px);
+    min-height: 48px;
+    max-height: 100px;
+
+    .logo {
+      width: 100%;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $bigband-red;
+
+        img {
+          // height: 4em;
+          height: 100%;
+          max-height: unset;
+        }
+      }
+    }
+  }
+
+  .mobile-toggle {
+    display: none;
+  }
+
+  app-desktop-navbar {
+    display: initial;
+  }
+
+  app-mobile-navbar {
+    display: none;
+  }
+}
+
+.mobile-nav-wrapper {
+  position: relative;
+}
+
+.mobile-nav {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  z-index: -1;
+
+  transition: opacity 150ms ease;
+}
+
+.opacity-100 {
+  opacity: 100;
+  transition-delay: 75ms;
+  z-index: 0;
+}

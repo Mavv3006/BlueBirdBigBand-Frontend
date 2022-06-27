@@ -1,1 +1,28 @@
-<p>musicians works!</p>
+<app-heading>Musiker</app-heading>
+
+<p>
+  Hier finden Sie die aktuelle Besetzung der
+  <span class="bold">Blue Bird Big Band</span>. Die
+  <span class="bold">Blue Bird Big Band</span> probt immer mittwochs von 20:00
+  bis 22:00 Uhr, aber nur außerhalb der
+  <a href="https://www.schulferien.org/Rheinland-Pfalz/rheinland-pfalz.html">Ferien in Rheinland-Pfalz</a>. Unsere <span
+    class="bold">Dometown-Band</span> probt immer davor, also auch
+  mittwochs, aber von 18:00 bis 20:00 Uhr. Unter
+  <a href="/anfahrt">Anfahrt</a> finden Sie nocheinmal die Zeiten und die genaue
+  Adresse, um zu unseren Proben zu finden.
+</p>
+
+<div>
+  <app-musicians-instrument instrument="Bandleader" [musicians]="[bandleader]">
+  </app-musicians-instrument>
+
+  <app-musicians-instrument instrument='Gesang' [musicians]="vocals"></app-musicians-instrument>
+</div>
+
+<app-musicians-instrument instrument="Saxophone" [musicians]='saxophones'></app-musicians-instrument>
+
+<app-musicians-instrument instrument="Posaunen" [musicians]='trombones'></app-musicians-instrument>
+
+<app-musicians-instrument instrument="Trompeten" [musicians]='trumpets'></app-musicians-instrument>
+
+<app-musicians-instrument instrument="Rhythmusgruppe" [musicians]='rhythms'></app-musicians-instrument>
