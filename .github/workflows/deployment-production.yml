@@ -3,10 +3,13 @@ name: Deployment Production
 on:
   pull_request:
     branches: ["release"]
+    types:
+      - closed
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   web-deploy:
+    if: github.event.pull_request.merged
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
@@ -30,3 +33,4 @@ jobs:
           username: ${{ secrets.username }}
           password: ${{ secrets.password }}
           server-dir: ${{ secrets.server_dir }}
+          local-dir: ./dist
