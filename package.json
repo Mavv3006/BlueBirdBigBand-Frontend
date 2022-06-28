@@ -7,9 +7,9 @@
     "start:open": "ng serve -o",
     "watch": "ng serve --watch",
     "build": "ng build",
-    "build:prod": "ng build --configuration production",
+    "build-prod": "ng build --configuration production",
     "test": "ng test",
-    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "test-prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prepare": "husky install"
