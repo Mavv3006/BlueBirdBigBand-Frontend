@@ -20,4 +20,4 @@ jobs:
       - name: test project
         run: |
           npm install
-          npm run test:prod
+          npm run test-prod
