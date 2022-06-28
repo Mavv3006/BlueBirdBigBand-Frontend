@@ -23,11 +23,6 @@ jobs:
           npm install
           npm run build-prod
 
-      - name: Verify Build
-        run: |
-          cd dist
-          ls
-
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -35,6 +30,6 @@ jobs:
           username: ${{ secrets.username }}
           password: ${{ secrets.password }}
           server-dir: ${{ secrets.server_dir }}
-          local-dir: ./dist/
+          local-dir: ./dist/angular-frontend
           dry-run: true
           log-level: verbose
