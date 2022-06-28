@@ -1,4 +1,4 @@
-name: Deployment Production
+name: Deployment Test
 
 on:
   pull_request:
