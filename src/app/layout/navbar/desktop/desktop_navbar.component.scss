@@ -11,8 +11,7 @@
   align-content: center;
   justify-content: center;
 
-  & > li > p,
-  .nav-container {
+  & > li > .nav-button {
     position: relative;
     display: block;
     padding: 0 18px 0 12px;
@@ -24,12 +23,11 @@
     font-weight: 600;
     text-decoration: none;
     letter-spacing: 1px;
+    font-family: "Open Sans", sans-serif;
   }
 }
 
 .nav-container {
-  font-family: "Open Sans", sans-serif;
-
   &:after {
     content: "";
     position: absolute;
