@@ -21,7 +21,7 @@ export class MusiciansComponent implements OnInit {
 
   vocals: Musician[] = [
     { name: 'Gabi Kipper', picture: 'kipper-gabi.jpeg' },
-    { name: 'Phillip', picture: this.tux },
+    { name: 'Phillip Leschhorn', picture: this.tux },
   ];
 
   saxophones: Musician[] = [
@@ -39,6 +39,7 @@ export class MusiciansComponent implements OnInit {
     { name: 'Ecki Lubisch', picture: 'lubisch-ecki.jpeg' },
     { name: 'Reinhold Paul', picture: this.tux },
     { name: 'Jürgen Illers', picture: this.tux },
+    { name: 'Ulrike Penzien', picture: this.tux },
   ];
 
   trumpets: Musician[] = [
@@ -54,6 +55,7 @@ export class MusiciansComponent implements OnInit {
     { name: 'Host Keller (p)', picture: 'keller-horst.jpeg' },
     { name: 'Rudolf Schultz (bass)', picture: this.tux_gitarrist },
     { name: 'Leonard Breuning (dr)', picture: this.tux_drummer },
+    { name: 'Karl Geörg (dr)', picture: this.tux_drummer },
   ];
 
   constructor(private titleService: Title) {}
