@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Material Icons Sharp";
+  src: url("MaterialIconsSharp-Regular.eot");
+  src: url("MaterialIconsSharp-Regular.eot?#iefix") format("embedded-opentype"),
+    url("MaterialIconsSharp-Regular.woff2") format("woff2"),
+    url("MaterialIconsSharp-Regular.woff") format("woff"),
+    url("MaterialIconsSharp-Regular.ttf") format("truetype"),
+    url("MaterialIconsSharp-Regular.svg#MaterialIconsSharp-Regular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Material Icons Round";
+  src: url("MaterialIconsRound-Regular.eot");
+  src: url("MaterialIconsRound-Regular.eot?#iefix") format("embedded-opentype"),
+    url("MaterialIconsRound-Regular.woff2") format("woff2"),
+    url("MaterialIconsRound-Regular.woff") format("woff"),
+    url("MaterialIconsRound-Regular.ttf") format("truetype"),
+    url("MaterialIconsRound-Regular.svg#MaterialIconsRound-Regular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Material Icons Outlined";
+  src: url("MaterialIconsOutlined-Regular.eot");
+  src: url("MaterialIconsOutlined-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("MaterialIconsOutlined-Regular.woff2") format("woff2"),
+    url("MaterialIconsOutlined-Regular.woff") format("woff"),
+    url("MaterialIconsOutlined-Regular.ttf") format("truetype"),
+    url("MaterialIconsOutlined-Regular.svg#MaterialIconsOutlined-Regular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Material Icons Two Tone";
+  src: url("MaterialIconsTwoTone-Regular.eot");
+  src: url("MaterialIconsTwoTone-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("MaterialIconsTwoTone-Regular.woff2") format("woff2"),
+    url("MaterialIconsTwoTone-Regular.woff") format("woff"),
+    url("MaterialIconsTwoTone-Regular.ttf") format("truetype"),
+    url("MaterialIconsTwoTone-Regular.svg#MaterialIconsTwoTone-Regular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Material Icons";
+  src: url("MaterialIcons-Regular.eot");
+  src: url("MaterialIcons-Regular.eot?#iefix") format("embedded-opentype"),
+    url("MaterialIcons-Regular.woff2") format("woff2"),
+    url("MaterialIcons-Regular.woff") format("woff"),
+    url("MaterialIcons-Regular.ttf") format("truetype"),
+    url("MaterialIcons-Regular.svg#MaterialIcons-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
