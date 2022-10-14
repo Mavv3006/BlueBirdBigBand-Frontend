@@ -33,5 +33,5 @@ jobs:
           server: ${{ secrets.server }}
           username: ${{ secrets.username }}
           password: ${{ secrets.password }}
-          server-dir: ${{ secrets.dev-dir }}
+          server-dir: ${{ secrets.dev_dir }}
           local-dir: ./dist/angular-frontend/
