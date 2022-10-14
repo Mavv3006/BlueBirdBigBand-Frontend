@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
-        uses: actions/checkout@latest
+        uses: actions/checkout@v2.5
 
       - name: Use Node.js 16
-        uses: actions/setup-node@latest
+        uses: actions/setup-node@v3.5
         with:
           node-version: "16"
 
@@ -28,7 +28,7 @@ jobs:
           npm run build-dev
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@latest
+        uses: SamKirkland/FTP-Deploy-Action@v4.3
         with:
           server: ${{ secrets.server }}
           username: ${{ secrets.username }}
