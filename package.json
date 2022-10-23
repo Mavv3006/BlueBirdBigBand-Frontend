@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "dev": "npm run start",
     "start": "ng serve",
     "start:open": "ng serve -o",
     "watch": "ng serve --watch",
-    "build": "ng build",
+    "build": "npm run build-dev",
     "build-prod": "ng build --configuration production",
     "build-dev": "ng build --configuration development",
     "test": "ng test",
